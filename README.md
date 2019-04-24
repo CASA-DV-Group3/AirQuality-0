@@ -7,6 +7,7 @@ Screen opens
 Title 'Invisible City - Air Quality' or similar
 Display windy.com or similar map of globe
     Globes available at http://techslides.com/d3-globe-with-canvas-webgl-and-three-js
+    Globe source data file at https://www.jsdelivr.com/
     Add pollution hotspots
 
 USER INTERACTION IN LEFT-HAND PANE
