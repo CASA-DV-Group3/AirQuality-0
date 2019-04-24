@@ -5,7 +5,7 @@ Presentation on 22nd May 2019
 OPENING VISUALISATION
 Screen opens
 Title 'Invisible City - Air Quality' or similar
-Display windy.com or similar map of globe available at http://techslides.com/d3-globe-with-canvas-webgl-and-three-js or http://planetaryjs.com/examples/rotating.html 
+Display windy.com or similar map of globe available at http://techslides.com/d3-globe-with-canvas-webgl-and-three-js or http://planetaryjs.com/examples/quake/index.html which has highlighted quakes which could be changed to cities 
     
 Globe source data file at https://www.jsdelivr.com/
 Add pollution hotspots
