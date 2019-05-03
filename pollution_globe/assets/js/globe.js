@@ -1,6 +1,40 @@
-var planet = planetaryjs.planet();
+var osm = new og.layer.XYZ("OpenStreetMap", {
+    isBaseLayer: true,
+    url: "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    visibility: true,
+    attribution: 'Data @ OpenStreetMap contributors, ODbL'
+});
 
-// Make the planet fit well in its canvas
-planet.projection.scale(250).translate([250, 250]);
-var canvas = document.getElementById('globe');
-planet.draw(canvas);
+var globus = new og.Globe({
+    "target": "globus",
+    "name": "Earth",
+    "terrain": new og.terrain.GlobusTerrain(),
+    "layers": [osm],
+    "autoActivated": true
+});
+
+new og.layer.Vector("Markers", {
+    clampToGround: true
+})
+    .addTo(globus.planet)
+    .add(new og.Entity({
+        lonlat: [5.73, 45.183],
+        label: {
+            text: "Hi, Globus!",
+            outline: 0.77,
+            outlineColor: "rgba(255,255,255,.4)",
+            size: 27,
+            color: "black",
+            face: "Lucida Console",
+            offset: [10, -2]
+        },
+        billboard: {
+            src: "./marker.png",
+            width: 64,
+            height: 64,
+            offset: [0, 32]
+        }
+    }));
+
+
+globus.planet.viewExtentArr([5.54,45.141,5.93,45.23]);
