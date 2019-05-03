@@ -1,6 +1,6 @@
 var osm = new og.layer.XYZ("OpenStreetMap", {
     isBaseLayer: true,
-    url: "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     visibility: true,
     attribution: 'Data @ OpenStreetMap contributors, ODbL'
 });
