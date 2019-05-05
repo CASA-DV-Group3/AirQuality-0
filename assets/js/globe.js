@@ -3,9 +3,10 @@
 */
 
 var osm = new og.layer.XYZ("OpenStreetMap", {
-    specular: [0.0003, 0.00012, 0.00001],
-    shininess: 20,
-    diffuse: [0.89, 0.9, 0.83],
+    // specular: [0.0003, 0.00012, 0.00001],
+    // shininess: 20,
+    // diffuse: [0.89, 0.9, 0.83],
+    // extent: [[-130, 21], [-87, 58]],
     isBaseLayer: true,
     url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     visibility: true,
@@ -15,7 +16,7 @@ var osm = new og.layer.XYZ("OpenStreetMap", {
 var globus = new og.Globe({
     "target": "globus",
     "name": "Earth",
-    "terrain": new og.terrain.GlobusTerrain(),
+    // "terrain": new og.terrain.GlobusTerrain(),
     "layers": [osm]
 });
 
