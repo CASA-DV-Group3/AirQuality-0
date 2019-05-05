@@ -19,7 +19,6 @@ var globus = new og.Globe({
     "layers": [osm]
 });
 
-var data = countries[0];
 var countriesLayer = new og.layer.Vector("Countries", {
     'visibility': true,
     'isBaseLayer': false,
@@ -29,7 +28,7 @@ var countriesLayer = new og.layer.Vector("Countries", {
 
 countriesLayer.addTo(globus.planet);
 
-var f = data.features;
+var f = countries[0].features;
 for (var i = 0; i < f.length; i++) {
     var fi = f[i];
     countriesLayer.add(new og.Entity({
