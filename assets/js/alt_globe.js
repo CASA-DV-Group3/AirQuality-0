@@ -15,6 +15,9 @@ const initialScale = projection.scale();
 const path = d3.geoPath().projection(projection);
 const center = [width/2, height/2];
 
+// my variables
+var rotationTimer;
+
 // Define color scale
 var color = d3.scaleLinear()
     .domain([1, 20])
@@ -40,18 +43,18 @@ function fillFn(d){
 
 function mouseover(d){
     // Highlight hovered province
+    disableRotation();
     d3.select(this).style('fill', 'orange');
-    //
-    // // Draw effects
-    // textArt(nameFn(d));
+
 }
 
 function mouseout(d){
     // Reset province color
+    // enableRotation()
     svg.selectAll('path')
-        .style('fill', function(d){return fillFn(d);});
+        // TODO fix styling
+        .style('fill', '#e5e5e5'); // function(d){return fillFn(d);});
 }
-
 
 
 drawGlobe();
@@ -60,33 +63,35 @@ enableRotation();
 
 function drawGlobe() {
     d3.queue()
-        .defer(d3.json, './world-110m.json')
-        // .defer(d3.json, './countries.geojson')
+        .defer(d3.json, './assets/js/world-110m.json')
+        .defer(d3.json, './assets/js/countries.geojson')
         .await((error, worldData, locationData) => {
-            // svg.selectAll(".segment")
-            //     .data(topojson.feature(worldData, worldData.objects.countries).features)
-            //     .enter().append("path")
-            //     .attr("class", "segment")
-            //     .attr("d", path)
-            //     .style("stroke", "#888")
-            //     .style("stroke-width", "1px")
-            //     .style("fill", (d, i) => '#e5e5e5')
-            //     .style("opacity", ".7");
-            // locations = locationData[0];
-            var features = countries[0].features;
-
-            // Update color scale domain based on data
-            color.domain([0, d3.max(features, nameLength)]);
-
-            // Draw each province as a path
-            svg.selectAll('path')
-                .data(features)
-                .enter().append('path')
-                .attr('d', path)
-                .attr('vector-effect', 'non-scaling-stroke')
-                .style('fill', fillFn)
+            svg.selectAll(".segment")
+                .data(topojson.feature(worldData, worldData.objects.countries).features)
+                .enter().append("path")
+                .attr("class", "segment")
+                .attr("d", path)
+                .style("stroke", "#888")
+                .style("stroke-width", "1px")
+                .style("fill", (d, i) => '#e5e5e5')
+                .style("opacity", ".7")
                 .on('mouseover', mouseover)
-                .on('mouseout', mouseout)
+                .on('mouseout', mouseout);
+            // locations = locationData;
+            // var features = countries[0].features;
+            //
+            // // Update color scale domain based on data
+            // color.domain([0, d3.max(features, nameLength)]);
+            //
+            // // Draw each province as a path
+            // svg.selectAll('path')
+            //     .data(features)
+            //     .enter().append('path')
+            //     .attr('d', path)
+            //     .attr('vector-effect', 'non-scaling-stroke')
+            //     .style('fill', fillFn)
+                // .on('mouseover', mouseover)
+                // .on('mouseout', mouseout)
             // .on('click', clicked);
         });
 }
@@ -104,9 +109,15 @@ function drawGraticule() {
         .style("stroke", "#ccc");
 }
 
+
+
 function enableRotation() {
-    d3.timer(function (elapsed) {
+    rotationTimer = d3.timer(function (elapsed) {
         projection.rotate([config.speed * elapsed - 120, config.verticalTilt, config.horizontalTilt]);
         svg.selectAll("path").attr("d", path);
     });
+}
+
+function disableRotation() {
+    rotationTimer.stop();
 }
