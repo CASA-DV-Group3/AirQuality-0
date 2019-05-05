@@ -1,3 +1,7 @@
+/*
+* Contains functions needed for the globe
+*/
+
 var osm = new og.layer.XYZ("OpenStreetMap", {
     isBaseLayer: true,
     url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',

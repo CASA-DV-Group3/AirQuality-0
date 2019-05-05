@@ -1,0 +1,174 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background: #FFF;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    color: #000000;
+}
+
+#map{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 82%;
+    height: 92%;
+}
+
+.left-column
+{
+    position: fixed;
+    display: block;
+    width: 18%;
+    top: 8%;
+    bottom: 0;
+    left: 0;
+    padding: 1px;
+}
+
+.left-column .left-column
+{
+    background-color: #fff;
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
+}
+
+
+
+.leaflet-verticalcenter {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    top: 90%; /* possible because the placeholder's parent is the map */
+    transform: translateY(-50%); /* using the CSS3 Transform technique */
+    padding-top: 10px;
+}
+
+.leaflet-verticalcenter .leaflet-control {
+    margin-bottom: 10px;
+}
+
+h1, h2, h3
+{
+    margin: 0;
+    padding: 0;
+}
+
+p, ol, ul
+{
+    margin-top: 0;
+}
+
+ol, ul
+{
+    padding: 0;
+    list-style: none;
+}
+
+p
+{
+    line-height: 180%;
+}
+
+strong
+{
+}
+
+a
+{
+    color: #862525;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
+.container
+{
+    overflow: hidden;
+    margin: 0em auto;
+    width: 1200px;
+}
+
+#header-wrapper
+{
+}
+
+#header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    background: #BDDC80;
+}
+
+#logo
+{
+    position: absolute;
+    top: 0.5em;
+    left: 1em;
+}
+
+#logo h1
+{
+}
+
+#logo a
+{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 26pt;
+}
+
+#menu
+{
+    position: absolute;
+    top: 2em;
+    right: 8em;
+}
+
+#menu ul
+{
+    display: inline-block;
+}
+
+#menu li
+{
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+#menu li a, #menu li span
+{
+    padding: 1em 1.5em;
+    text-decoration: none;
+    font-weight: 400;
+    color: #FFF;
+}
+
+#menu li:hover a, #menu li.active a, #menu li.active span
+{
+}
+
+#menu a:hover
+{
+    text-decoration: underline;
+}
+
+#menu .current_page_item a
+{
+}
+
+#menu .icon
+{
+}
+    
