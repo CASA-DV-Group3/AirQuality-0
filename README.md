@@ -7,7 +7,6 @@ Presentation on 22nd May 2019
 *.gitignore* – files not needed when pushing to github    
 *globe.html* & *alt_globe.html* – potential 3d globe with GeoJSON overlay templates       
 *index_dark* & *index_light* – main index file for the website (in light and dark styling)
- 
 
 ## Branches
 *activity-list-1* – for notes and extra files  
