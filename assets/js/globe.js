@@ -20,8 +20,11 @@ var globus = new og.Globe({
     "layers": [osm],
     "sun": {
         "active": false // deactivate the sun
-    }
+    },
+    "maxzoom": 6,
+    "minzoom": 7
 });
+globus.planet.setRatioLod(0.8) // low quality
 
 // add countries (Geo)JSON file with outline of countries
 var countriesLayer = new og.layer.Vector("Countries", {
