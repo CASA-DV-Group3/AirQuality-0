@@ -55,7 +55,7 @@ for (var i = 0; i < f.length; i++) {
             }
         },
         'properties' : {
-            'name' : fi.properties.ADMIN
+            'name' : fi.properties.name
         }
     }));
 }

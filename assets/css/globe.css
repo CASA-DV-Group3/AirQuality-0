@@ -1,3 +1,10 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #555;
+}
+
+/*Globe styling: */
 #globus {
     width: 60%;
     height: 60%;
@@ -13,6 +20,16 @@
     margin: 15px;
 }
 
-body {
-    margin: 0;
+/*Alt globe styling: */
+
+#globe {
+    cursor: move;
+}
+
+#current {
+    position: absolute;
+    color: white;
+    font-family: sans-serif;
+    margin-left: 4%;
+    margin-top: 4%;
 }
