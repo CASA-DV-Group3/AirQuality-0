@@ -16,15 +16,21 @@ var osm = new og.layer.XYZ("OpenStreetMap", {
 var globus = new og.Globe({
     "target": "globus",
     "name": "Earth",
-    // "terrain": new og.terrain.GlobusTerrain(),
     "layers": [osm],
     "sun": {
         "active": false // deactivate the sun
     },
-    "maxzoom": 6,
-    "minzoom": 7
+    'controls': [
+        new og.control.MouseNavigation({ autoActivate: false }),
+        new og.control.KeyboardNavigation({ autoActivate: true }),
+        // new og.control.EarthCoordinates({ autoActivate: true, center: false }),
+        new og.control.LayerSwitcher({ autoActivate: false }),
+        new og.control.ZoomControl({ autoActivate: true })//,
+        // new og.control.TouchNavigation({ autoActivate: false })
+    ]
 });
 globus.planet.setRatioLod(0.8) // low quality
+
 
 // add countries (Geo)JSON file with outline of countries
 var countriesLayer = new og.layer.Vector("Countries", {
