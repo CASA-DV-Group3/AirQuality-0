@@ -19,6 +19,7 @@ var globus = new og.Globe({
     "layers": [osm]
 });
 
+// add countries (Geo)JSON file with outline of countries
 var countriesLayer = new og.layer.Vector("Countries", {
     'visibility': true,
     'isBaseLayer': false,
@@ -28,6 +29,7 @@ var countriesLayer = new og.layer.Vector("Countries", {
 
 countriesLayer.addTo(globus.planet);
 
+// style the layer and zoom to extent on click
 var f = countries[0].features;
 for (var i = 0; i < f.length; i++) {
     var fi = f[i];
@@ -38,6 +40,9 @@ for (var i = 0; i < f.length; i++) {
             'style': {
                 'fillColor': "rgba(255,255,255,0.6)"
             }
+        },
+        'properties' : {
+            'name' : fi.properties.ADMIN
         }
     }));
 }
@@ -57,3 +62,16 @@ countriesLayer.events.on("lclick", function (e) {
 countriesLayer.events.on("touchstart", function (e) {
     globus.planet.flyExtent(e.pickingObject.geometry.getExtent());
 });
+
+// box in top right corner
+countriesLayer.events.on("mousemove", function (e) {
+    if (e.pickingObject) {
+        document.getElementById("layerName").innerHTML = e.pickingObject.properties.name;
+    } else {
+        document.getElementById("layerName").innerHTML = "";
+    }
+});
+
+
+// fit to extent of json
+globus.planet.flyExtent(countriesLayer.getExtent());

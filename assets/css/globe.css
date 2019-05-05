@@ -1,0 +1,9 @@
+#layerName {
+    position: absolute;
+    color: black;
+    background-color: white;
+    z-index: 100;
+    padding: 10px;
+    font-size: 18px;
+    margin: 15px;
+}
