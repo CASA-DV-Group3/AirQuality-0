@@ -74,4 +74,4 @@ countriesLayer.events.on("mousemove", function (e) {
 
 
 // fit to extent of json
-globus.planet.flyExtent(countriesLayer.getExtent());
+// globus.planet.flyExtent(countriesLayer.getExtent());
