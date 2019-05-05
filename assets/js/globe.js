@@ -17,7 +17,10 @@ var globus = new og.Globe({
     "target": "globus",
     "name": "Earth",
     // "terrain": new og.terrain.GlobusTerrain(),
-    "layers": [osm]
+    "layers": [osm],
+    "sun": {
+        "active": false // deactivate the sun
+    }
 });
 
 // add countries (Geo)JSON file with outline of countries
