@@ -18,7 +18,8 @@ for the layout and content of pages, changed after
 Duncan Smith suggested some changes.
 
 ## command-line basics:
-`cd` – check    
+`cd` – change directory
+`ls` – list files in current directory
 ## Basic git commands:
 `git add -A` – Add all files in current directory (folder)   
 `git commit -am "this is the commit message"` – commit file changes to GitHub   
