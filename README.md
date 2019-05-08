@@ -16,3 +16,14 @@ Presentation on 22nd May 2019
 Check the other branches for suggestions so far
 for the layout and content of pages, changed after
 Duncan Smith suggested some changes.
+
+## command-line basics:
+`cd` – change directory
+`ls` – list files in current directory
+## Basic git commands:
+`git add -A` – Add all files in current directory (folder)   
+`git commit -am "this is the commit message"` – commit file changes to GitHub   
+`git push` – push changes to GitHub   
+`git pull` – pull latest updates   
+`git checkout [BRANCH_NAME]` – change current branch name   
+`git branch`– check which branches exists in your local files and which branch you are on   
