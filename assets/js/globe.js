@@ -205,4 +205,4 @@ loadData(function(world, cList) {
     window.addEventListener('resize', scale)
     scale()
     autorotate = d3.timer(rotate)
-})
+});
