@@ -16,16 +16,3 @@ function addControlPlaceholders(map) {
     createCorner('verticalcenter', 'left');
     createCorner('verticalcenter', 'right');
 }
-
-var district_boundary = new L.geoJson();
-district_boundary.addTo(map);
-
-$.ajax({
-    dataType: "json",
-    url: "data/district.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            district_boundary.addData(data);
-        });
-    }
-}).error(function() {});

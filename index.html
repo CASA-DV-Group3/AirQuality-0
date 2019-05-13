@@ -14,6 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 	<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+	<script src="assets/js/API.js"></script>
 	<!--	<script>$(function() { alert('test: jQuery is active') });</script> &lt;!&ndash;Simple jQuery function to check it is working&ndash;&gt;-->
 </head>
     
@@ -70,29 +71,20 @@
 	map.zoomControl.setPosition('verticalcenterright');
 	// Add a scale under the zoom button
 	//L.control.scale({position: 'verticalcenterright'}).addTo(map);
-	var geojsonMarkerOptions = {
-		radius: 8,
-		fillColor: "#ff7800",
-		color: "#000",
-		weight: 1,
-		opacity: 1,
-		fillOpacity: 0.8
-	};
-	for (let i =0; i < 40; i++)
-	{
-		let lat = Math.random()*90;
-		let lng = Math.random()*180;
+
+	geojsonDATA['features'].forEach(function(row){
+		let lat = Number(row['geometry']['coordinates'][0]);
+		let lng = Number(row['geometry']['coordinates'][1]);
 		var geojsonMarkerOptions = {
-			radius: Math.random()*20,
+			radius: row['properties']['aqi'],
 			fillColor: "#ff7800",
 			color: "#000",
 			weight: 1,
 			opacity: 1,
 			fillOpacity: 0.8
 		};
-		console.log(lat,lng)
 		var marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(map).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
-	}
+	});
 
 
 </script>
