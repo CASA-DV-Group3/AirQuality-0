@@ -22,8 +22,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<!--  <script src="assets/js/API.js"></script>-->
-
+  <script src="assets/js/leaflet_functions.js"></script>
 </head>
 
 <body>
@@ -95,25 +94,7 @@
           id: 'mapbox.dark',
         }).addTo(mymap);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'assets/data/APIdata.geojson', false);
-        xhr.send();
-        var geojsonDATA = JSON.parse(xhr.responseText);
-
-        geojsonDATA['features'].forEach(function(row){
-          let lat = Number(row['geometry']['coordinates'][0]);
-          let lng = Number(row['geometry']['coordinates'][1]);
-          var geojsonMarkerOptions = {
-            radius: Math.log(row['properties']['aqi']),
-            fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-          };
-          var marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
-        });
-
+        loadAirQualityData(); // load air quality
 
       </script>
     </div>

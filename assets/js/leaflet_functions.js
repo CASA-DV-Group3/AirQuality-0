@@ -16,3 +16,25 @@ function addControlPlaceholders(map) {
     createCorner('verticalcenter', 'left');
     createCorner('verticalcenter', 'right');
 }
+
+
+function loadAirQualityData() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'assets/data/APIdata.geojson', false);
+    xhr.send();
+    let geojsonDATA = JSON.parse(xhr.responseText);
+
+    geojsonDATA['features'].forEach(function(row){
+        let lat = Number(row['geometry']['coordinates'][0]);
+        let lng = Number(row['geometry']['coordinates'][1]);
+        let geojsonMarkerOptions = {
+            radius: Math.log(row['properties']['aqi']),
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        };
+        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
+    });
+}
