@@ -19,7 +19,10 @@
 
   <!-- Material Kit CSS -->
   <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!--  <script src="assets/js/API.js"></script>-->
 
 </head>
 
@@ -76,7 +79,40 @@
     </div>
 
     <div id="page3">
-      <iframe id="map" src="map/map.html" height="100%" width="100%" frameBorder="0" scrolling="no"></iframe>
+      <div id="map">
+      </div>
+
+      <script>
+        var map = L.map('map').setView([34, 24], 3);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidWN6bHFqdSIsImEiOiJjam4zOXRjMHUwY3htM3BteXgxazVxZ3QzIn0.mmRn_HjpXDzMJrKj1apGNQ', {
+          maxZoom: 18,
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          id: 'mapbox.dark',
+        }).addTo(map);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'assets/data/APIdata.geojson', false);
+        xhr.send();
+        var geojsonDATA = JSON.parse(xhr.responseText);
+
+
+        geojsonDATA['features'].forEach(function(row){
+          let lat = Number(row['geometry']['coordinates'][0]);
+          let lng = Number(row['geometry']['coordinates'][1]);
+          var geojsonMarkerOptions = {
+            radius: Math.log(row['properties']['aqi']),
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+          };
+          var marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(map).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
+        });
+
+
+      </script>
     </div>
 
     <div class="left-column">
