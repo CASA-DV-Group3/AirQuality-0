@@ -76,7 +76,7 @@
 		let lat = Number(row['geometry']['coordinates'][0]);
 		let lng = Number(row['geometry']['coordinates'][1]);
 		var geojsonMarkerOptions = {
-			radius: Math.log(row['properties']['aqi'])+10,
+			radius: Math.log(row['properties']['aqi']),
 			fillColor: "#ff7800",
 			color: "#000",
 			weight: 1,
