@@ -10,8 +10,8 @@ var degPerSec = 6
 // start angles
 var angles = { x: -20, y: 40, z: 0}
 // colors
-var colorWater = '#8484A4E0'
-var colorLand = '#8A4B08AE'
+var colorWater = '#fff'
+var colorLand = '#111'
 var colorGraticule = '#ccc'
 var colorCountry = '#a00'
 
