@@ -2,18 +2,18 @@
 // Configuration
 
 // ms to wait after dragging before auto-rotating
-var rotationDelay = 3000
+var rotationDelay = 3000;
 // scale of the globe (not the canvas element)
-var scaleFactor = 0.9
+var scaleFactor = 0.9;
 // autorotation speed
-var degPerSec = 6
+var degPerSec = 6;
 // start angles
-var angles = { x: -20, y: 40, z: 0}
+var angles = { x: -20, y: 40, z: 0};
 // colors
-var colorWater = '#fff'
-var colorLand = '#111'
-var colorGraticule = '#ccc'
-var colorCountry = '#a00'
+var colorWater = '#fff';
+var colorLand = '#111';
+var colorGraticule = '#ccc';
+var colorCountry = '#a00';
 
 // Handler
 
