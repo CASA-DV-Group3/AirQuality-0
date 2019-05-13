@@ -82,7 +82,9 @@
       </div>
 
       <script>
-        var mymap = L.map('map').setView([34, 24], 3);
+        // set max bounds
+        var bounds = L.latLngBounds(L.latLng(-90.0, 185.227), L.latLng(90.0, -185.125));
+        var mymap = L.map('map', {maxBounds:bounds}).setView([34, 24], 3);
 
         mymap.options.minZoom = 2;
         mymap.options.maxZoom = 8;
@@ -102,12 +104,10 @@
     <div class="left-column">
       <div class="left-column-inner">
         <h3>Main Cities</h3>
-
       </div>
 
       <div class="left-column-inner">
         <h3>Air Quality Scale</h3>
-
       </div>
     </div>
   </div>
