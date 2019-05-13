@@ -22,17 +22,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-<!--  <script>-->
-<!--    //fullPage settings-->
-<!--    $(function() {-->
-<!--      $('#myPage').fullpage({-->
-<!--        sectionsColor: ['#353535', '#353535', '#353535', '#353535', '#353535', '#353535'], // page background-->
-<!--        anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],-->
-<!--        menu: '#menu',-->
-<!--      });-->
-<!--    });-->
-<!--  </script>-->
+  <script src="assets/js/API.js"></script>
 
 </head>
 
@@ -84,7 +74,7 @@
     </div>
 
     <div id="page2" class="section">
-      <iframe id="globe" src="alt_globe.html" height="100%" width="100%" frameBorder="0" scrolling="no"></iframe>
+      <iframe id="globe" src="globe.html" height="100%" width="100%" frameBorder="0" scrolling="no"></iframe>
 
     </div>
 
@@ -101,30 +91,20 @@
           id: 'mapbox.dark',
         }).addTo(map);
 
-        var geojsonMarkerOptions = {
-          radius: 8,
-          fillColor: "#ff7800",
-          color: "#000",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 0.8
-        };
 
-        for (let i =0; i < 40; i++)
-        {
-          let lat = Math.random()*90;
-          let lng = Math.random()*180;
+        geojsonDATA['features'].forEach(function(row){
+          let lat = Number(row['geometry']['coordinates'][0]);
+          let lng = Number(row['geometry']['coordinates'][1]);
           var geojsonMarkerOptions = {
-            radius: Math.random()*20,
+            radius: Math.log(row['properties']['aqi']),
             fillColor: "#ff7800",
             color: "#000",
             weight: 1,
             opacity: 1,
             fillOpacity: 0.8
           };
-          console.log(lat,lng)
           var marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(map).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
-        }
+        });
 
 
       </script>
