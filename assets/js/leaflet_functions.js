@@ -20,14 +20,12 @@ function addControlPlaceholders(map) {
 
 // Function for mapping colors to the currency values returned from the API for each country
 function getColor(d) {
-    return d > 200 ? '#540018' :
-        d > 150 ? '#800026' :
-            d > 100 ? '#BD0026' :
-                d > 50 ? '#E31A1C' :
-                    d > 20 ? '#FC4E2A' :
-                        d > 10 ? '#FD8D3C' :
-                            d > 1 ? '#FEB24C' :
-                                 '#d3d1c6';
+    return  d > 300 ? '#8e6464' :
+                d > 200 ? '#cf00ff' :
+                    d > 150 ? '#fd0011' :
+                        d > 100 ? '#ff8900' :
+                            d > 50 ? '#fcfb0e' :
+                                    '#1dff00';
 }
 
 
@@ -50,7 +48,7 @@ function loadAirQualityData() {
         };
         if (cityList.includes(row['properties']['city'].toLowerCase())) {
             console.log(row['properties']['city']);
-            let squareMarker = L.shapeMarker([51.505, -0.09], {
+            let squareMarker = L.shapeMarker([lat, lng], {
                 shape: "square",
                 radius: Math.log(row['properties']['aqi'])**1.5,
                 fillColor: getColor(row['properties']['aqi']),
