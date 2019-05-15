@@ -9,6 +9,7 @@ body
     color: #000000;
 }
 
+
 #map{
     position: absolute;
     bottom: 0;
@@ -176,4 +177,10 @@ a:hover
 #menu .icon
 {
 }
+
+/*#page2 {*/
+/*    padding:1%;*/
+/*}*/
+
+
     
