@@ -48,6 +48,12 @@ function loadAirQualityData() {
             opacity: 1,
             fillOpacity: 0.5
         };
-        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
+        if (cityList.includes(row['properties']['city'].toLowerCase())) {
+            console.log(row['properties']['city']);
+        } else {
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
+        }
+
     });
 }
+
