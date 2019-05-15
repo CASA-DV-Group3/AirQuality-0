@@ -18,6 +18,19 @@ function addControlPlaceholders(map) {
 }
 
 
+// Function for mapping colors to the currency values returned from the API for each country
+function getColor(d) {
+    return d > 200 ? '#540018' :
+        d > 150 ? '#800026' :
+            d > 100 ? '#BD0026' :
+                d > 50 ? '#E31A1C' :
+                    d > 20 ? '#FC4E2A' :
+                        d > 10 ? '#FD8D3C' :
+                            d > 1 ? '#FEB24C' :
+                                 '#d3d1c6';
+}
+
+
 function loadAirQualityData() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/APIdata.geojson', false);
@@ -29,7 +42,7 @@ function loadAirQualityData() {
         let lng = Number(row['geometry']['coordinates'][1]);
         let geojsonMarkerOptions = {
             radius: Math.log(row['properties']['aqi'])**1.5,
-            fillColor: "#ff7800",
+            fillColor: getColor(row['properties']['aqi']),
             color: "#000000",
             weight: 0.1,
             opacity: 1,
