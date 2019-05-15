@@ -28,12 +28,12 @@ function loadAirQualityData() {
         let lat = Number(row['geometry']['coordinates'][0]);
         let lng = Number(row['geometry']['coordinates'][1]);
         let geojsonMarkerOptions = {
-            radius: Math.log(row['properties']['aqi']),
+            radius: Math.log(row['properties']['aqi'])**1.5,
             fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
+            color: "#d98800",
+            weight: 0,
             opacity: 1,
-            fillOpacity: 0.8
+            fillOpacity: 0.5
         };
         let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
     });
