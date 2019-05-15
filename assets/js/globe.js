@@ -10,10 +10,10 @@ var degPerSec = 6;
 // start angles
 var angles = { x: -20, y: 40, z: 0};
 // colors
-var colorWater = '#fff';
-var colorLand = '#111';
-var colorGraticule = '#ccc';
-var colorCountry = '#a00';
+var colorWater = 'rgba(14,105,255,0.62)';
+var colorLand = '#487142';
+var colorGraticule = 'rgba(204,204,204,0)';
+var colorCountry = 'rgb(170,0,0)';
 
 // Handler
 
@@ -131,12 +131,9 @@ function rotate(elapsed) {
 function loadData(cb) {
     d3.json('../assets/data/world-110m.json', function(error, world) {
         if (error) throw error
-        // d3.tsv('https://gist.githubusercontent.com/mbostock/4090846/raw/07e73f3c2d21558489604a0bc434b3a5cf41a867/world-country-names.tsv', function(error, countries) {
-        //     if (error) throw error
         cb(world, countries)
         // })
     })
-    d3.cartodb
 
 
 }
@@ -210,3 +207,4 @@ loadData(function(world, cList) {
     autorotate = d3.timer(rotate)
 
 });
+
