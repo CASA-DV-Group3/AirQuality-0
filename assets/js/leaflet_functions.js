@@ -39,7 +39,7 @@ function loadAirQualityData() {
         let lat = Number(row['geometry']['coordinates'][0]);
         let lng = Number(row['geometry']['coordinates'][1]);
         let geojsonMarkerOptions = {
-            radius: Math.log(row['properties']['aqi'])**1.5,
+            radius: Math.log(row['properties']['aqi']),
             fillColor: getColor(row['properties']['aqi']),
             color: "#000000",
             weight: 0.1,
@@ -53,7 +53,7 @@ function loadAirQualityData() {
                 radius: Math.log(row['properties']['aqi'])**1.5,
                 fillColor: getColor(row['properties']['aqi']),
                 color: "#000000",
-                weight: 0.1,
+                weight: 0.5,
                 opacity: 1,
                 fillOpacity: 0.5
             }).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph<br>View More</div>");
