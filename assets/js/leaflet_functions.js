@@ -30,8 +30,8 @@ function loadAirQualityData() {
         let geojsonMarkerOptions = {
             radius: Math.log(row['properties']['aqi'])**1.5,
             fillColor: "#ff7800",
-            color: "#d98800",
-            weight: 0,
+            color: "#000000",
+            weight: 0.1,
             opacity: 1,
             fillOpacity: 0.5
         };
