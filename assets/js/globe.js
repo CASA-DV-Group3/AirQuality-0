@@ -136,6 +136,9 @@ function loadData(cb) {
         cb(world, countries)
         // })
     })
+    d3.cartodb
+
+
 }
 
 // https://github.com/d3/d3-polygon
@@ -205,4 +208,5 @@ loadData(function(world, cList) {
     window.addEventListener('resize', scale)
     scale()
     autorotate = d3.timer(rotate)
+
 });

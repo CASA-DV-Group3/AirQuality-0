@@ -46,8 +46,8 @@ function loadAirQualityData() {
             opacity: 1,
             fillOpacity: 0.5
         };
+
         if (cityList.includes(row['properties']['city'].toLowerCase())) {
-            console.log(row['properties']['city']);
             let squareMarker = L.shapeMarker([lat, lng], {
                 shape: "square",
                 radius: Math.log(row['properties']['aqi'])**1.5,
