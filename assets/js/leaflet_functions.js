@@ -50,6 +50,16 @@ function loadAirQualityData() {
         };
         if (cityList.includes(row['properties']['city'].toLowerCase())) {
             console.log(row['properties']['city']);
+            let squareMarker = L.shapeMarker([51.505, -0.09], {
+                shape: "square",
+                radius: Math.log(row['properties']['aqi'])**1.5,
+                fillColor: getColor(row['properties']['aqi']),
+                color: "#000000",
+                weight: 0.1,
+                opacity: 1,
+                fillOpacity: 0.5
+            }).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph<br>View More</div>");
+
         } else {
             let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
         }
