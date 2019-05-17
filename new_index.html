@@ -74,7 +74,7 @@
         </div>
     </div>
     <div id="page2" style="height: 100vh; padding: 0px 0;" class="section" data-hash="b">
-        <iframe id="globe" src="globe/globe.html" height="100%" width="100%" class="section" frameBorder="0" scrolling="no"></iframe>
+        <iframe id="globe" src="globe/globe.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>
 
     </div>
     <div id="page3" class="section" style="height: 100vh; padding: 0px 0;" data-hash="c">
@@ -131,9 +131,8 @@
     $.smartscroll({
         mode: "set",
         eventEmitter: ee,
-        autoHash: false,
-        dynamicHeight: true
-
+        initialScroll: true,
+        sectionScroll: true
     });
 
 </script>
