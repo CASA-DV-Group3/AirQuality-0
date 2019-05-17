@@ -33,7 +33,7 @@
 </head>
 <body>
 <div class="header">
-    <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" style="padding-top: 5px;" color-on-scroll="100">
 <!--        <div class="container">-->
 <!--            <div class="navbar-translate">-->
 <!--                <a class="navbar-brand" href="http://aqicn.org/map/#@g/7.7002/59.0625/2z">-->
@@ -77,7 +77,7 @@
 
     </div>
     <div id="page3" class="section" style="height: 100vh; padding: 0px 0;" data-hash="c">
-        <div id="map" style="margin-top: 0;">
+        <div id="map" style="height: 100vh;">
         </div>
 
         <script>
@@ -116,7 +116,7 @@
     $.smartscroll({
         mode: "set",
         eventEmitter: ee,
-        initialScroll: true,
+        // initialScroll: true,
         sectionScroll: true
     });
 </script>
