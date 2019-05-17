@@ -96,8 +96,21 @@
                 // noWrap: true,
             }).addTo(mymap);
 
-            const cityList = ['city of london','shanghai','copanhagen','milan', 'chicago','montreal','jakarta','delhi']; // set the cities with more information
+            mymap.scrollWheelZoom.disable();
 
+            // click to zoom
+            mymap.on('click', function() {
+                if (mymap.scrollWheelZoom.enabled()) {
+                    mymap.scrollWheelZoom.disable();
+                }
+                else {
+                    mymap.scrollWheelZoom.enable();
+                }
+            });
+
+            // mymap.once('focus', function() { mymap.scrollWheelZoom.enable(); });
+
+            const cityList = ['city of london','shanghai','copanhagen','milan', 'chicago','montreal','jakarta','delhi']; // set the cities with more information
             loadAirQualityData(); // load air quality
         </script>
     </div>
