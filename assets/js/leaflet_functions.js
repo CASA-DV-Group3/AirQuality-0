@@ -28,6 +28,15 @@ function getColor(d) {
                                     '#1dff00';
 }
 
+function changeOpacity(d) {
+    return d > 400 ? 1:
+        d > 300 ? 0.8 :
+            d > 200 ? 0.7 :
+                d > 100 ? 0.6 :
+                    d > 50 ? 0.5 :
+                        0.3;
+}
+
 
 function loadAirQualityData() {
     let xhr = new XMLHttpRequest();
@@ -44,7 +53,7 @@ function loadAirQualityData() {
             color: "#000000",
             weight: 0.1,
             opacity: 1,
-            fillOpacity: 0.5
+            fillOpacity: changeOpacity(row['properties']['aqi'])
         };
 
         if (cityList.includes(row['properties']['station'].toLowerCase())) {
