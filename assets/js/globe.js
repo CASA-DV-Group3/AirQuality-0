@@ -11,7 +11,8 @@ var degPerSec = 6;
 var angles = { x: -20, y: 40, z: 0};
 // colors
 var colorWater = 'rgba(14,105,255,0.62)';
-var colorLand = '#487142';
+var colorLand = '#487142'
+var colorPoint = '#6d1371';
 var colorGraticule = 'rgba(204,204,204,0)';
 var colorCountry = 'rgb(170,0,0)';
 
@@ -41,8 +42,8 @@ var current = d3.select('#current'),
     lastTime = d3.now(),
     degPerMs = degPerSec / 1000,
     width, height,
-    land, countries,
-    countryList,
+    land, countries, points,
+    countryList, pointList,
     autorotate, now, diff, rotation,
     currentCountry;
 
@@ -98,6 +99,10 @@ function render() {
     fill(water, colorWater)
     stroke(graticule, colorGraticule)
     fill(land, colorLand)
+    for (let i = 0; i < points.length; i++) {
+        fill(points[i], colorPoint)
+    }
+
     if (currentCountry) {
         fill(currentCountry, colorCountry)
     }
@@ -131,13 +136,16 @@ function rotate(elapsed) {
 
 function loadData(cb) {
     d3.json('../assets/data/world-110m.json', function(error, world) {
-        if (error) throw error
-        cb(world, countries)
-        // })
-    })
+        if (error) throw error;
+        cb(world, countries);
+    });
 
+    d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
+        if (error) throw error;
+        cb(aqiData, countries);
+    });
+};
 
-}
 
 // https://github.com/d3/d3-polygon
 function polygonContains(polygon, point) {
@@ -198,10 +206,21 @@ canvas
     .on('mousemove', mousemove)
 
 loadData(function(world, cList) {
-    land = topojson.feature(world, world.objects.land)
-    // countries = topojson.feature(world, world.objects.countries)
-    // countries is pre-defined in countries.js
-    countryList = cList
+    try {
+        land = topojson.feature(world, world.objects.land)
+        // countries = topojson.feature(world, world.objects.countries)
+        // countries is pre-defined in countries.js
+        countryList = cList
+    } catch (e) {
+        pointList = [];
+        world.features.forEach(function(pnt){
+            pnt.geometry.coordinates =  pnt.geometry.coordinates.reverse()
+            point = topojson.feature(world, pnt.geometry)
+            pointList.push(point)
+        });
+        points = pointList;
+    }
+
 
     window.addEventListener('resize', scale)
     scale()
