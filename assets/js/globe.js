@@ -18,6 +18,7 @@ var colorCountry = 'rgb(170,0,0)';
 // Handler
 
 function enter(country) {
+
     current.text(country && country.properties.name || 'Please Hover Over a Country')
 }
 
