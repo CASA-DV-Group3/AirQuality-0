@@ -100,7 +100,7 @@ function render() {
     stroke(graticule, colorGraticule)
     fill(land, colorLand)
     for (let i = 0; i < points.length; i++) {
-        fill(points[i], colorPoint)
+        fill(points[i], colorPoint, true)
     }
 
     if (currentCountry) {
@@ -108,12 +108,25 @@ function render() {
     }
 }
 
-function fill(obj, color) {
+function fill(obj, color, pointData) {
+    var pointData = pointData | false;
     context.beginPath()
     path(obj)
     context.fillStyle = color
     context.fill()
 }
+
+// function fillPoints(obj, color) {
+//     context.beginPath()
+//     path(obj)
+//     // try {
+//     //     path.pointRadius(function(obj) { console.log(obj); return obj.properties.aqi; });
+//     // } catch (e) {
+//     //
+//     // }
+//     context.fillStyle = color
+//     context.fill()
+// }
 
 function stroke(obj, color) {
     context.beginPath()
@@ -192,9 +205,7 @@ function getCountry(event) {
     })
 }
 
-
 // Initialization
-
 setAngles()
 
 canvas
