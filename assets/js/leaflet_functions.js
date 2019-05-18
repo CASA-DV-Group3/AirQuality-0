@@ -31,7 +31,7 @@ function getColor(d) {
 
 function loadAirQualityData() {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/APIdata.geojson', false);
+    xhr.open('GET', 'assets/data/aqi_shape.geojson', false);
     xhr.send();
     let geojsonDATA = JSON.parse(xhr.responseText);
 
