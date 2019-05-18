@@ -36,8 +36,8 @@ function loadAirQualityData() {
     let geojsonDATA = JSON.parse(xhr.responseText);
 
     geojsonDATA['features'].forEach(function(row){
-        let lat = Number(row['geometry']['coordinates'][0]);
-        let lng = Number(row['geometry']['coordinates'][1]);
+        let lat = Number(row['geometry']['coordinates'][1]);
+        let lng = Number(row['geometry']['coordinates'][0]);
         let geojsonMarkerOptions = {
             radius: Math.log(row['properties']['aqi']),
             fillColor: getColor(row['properties']['aqi']),
