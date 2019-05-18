@@ -47,6 +47,10 @@ var current = d3.select('#current'),
     autorotate, now, diff, rotation,
     currentCountry;
 
+var geoGenerator = d3.geoPath()
+    .projection(projection)
+    .context(context);
+
 // Functions
 
 function setAngles() {
@@ -100,7 +104,7 @@ function render() {
     stroke(graticule, colorGraticule)
     fill(land, colorLand)
     for (let i = 0; i < points.length; i++) {
-        fill(points[i], colorPoint, true)
+        fillPoints(points[i], colorPoint, true)
     }
 
     if (currentCountry) {
@@ -116,17 +120,14 @@ function fill(obj, color, pointData) {
     context.fill()
 }
 
-// function fillPoints(obj, color) {
-//     context.beginPath()
-//     path(obj)
-//     // try {
-//     //     path.pointRadius(function(obj) { console.log(obj); return obj.properties.aqi; });
-//     // } catch (e) {
-//     //
-//     // }
-//     context.fillStyle = color
-//     context.fill()
-// }
+function fillPoints(obj, color) {
+    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(1)
+    context.beginPath();
+    context.strokeStyle = color;
+    geoGenerator(circle());
+    context.stroke();
+    context.fill();
+}
 
 function stroke(obj, color) {
     context.beginPath()
