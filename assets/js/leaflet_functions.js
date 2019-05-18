@@ -65,10 +65,10 @@ function loadAirQualityData() {
                 weight: 0.5,
                 opacity: 1,
                 fillOpacity: 0.5
-            }).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph<br>View More</div>");
+            }).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph<br>View More</div>");
 
         } else {
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div>The Air Quality is:<br>Bar graph</div>");
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
         }
 
     });

@@ -416,6 +416,13 @@ for (let i = 0; i < city_list.length; i++) {
 }
 
 var geojsonDATA = new Geojson(features);
+
+
+function getStation24(station){
+    // GET request
+    // loaadddGraphs()
+    return
+}
 // console.log(geojsonDATA);
 // // var stringDATA = JSON.stringify(geojsonDATA);
 // // console.log(stringDATA);
