@@ -123,8 +123,9 @@ function fill(obj, color, pointData) {
 function fillPoints(obj, color) {
     var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(1)
     context.beginPath();
-    context.strokeStyle = color;
+    // context.strokeStyle = color;
     geoGenerator(circle());
+    context.fillStyle = color
     context.stroke();
     context.fill();
 }
