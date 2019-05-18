@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [1, 1]}, "properties": {"id": "id", "station": "station", "time": "time", "aqi": "aqi", "pm10": "pm10", "pm25": "pm25", "no2": "no2", "o3": "o3", "so2": "so2", "co": "co"}}]}
