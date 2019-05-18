@@ -19,13 +19,15 @@
 
     <!--FULLPAGE-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="assets/libs/lethargy.min.js"></script>
+    <script src="assets/libs/lethargy.min.js"></script>
     <script src="https://rawgit.com/Olical/EventEmitter/master/EventEmitter.min.js"></script>
     <script src="assets/libs/smartscroll.min.js"></script>
 
     <!-- Leaflet plugins & stuff -->
     <script src="assets/libs/leaflet-svg-shape-markers.min.js"></script>
     <script src="assets/js/leaflet_functions.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
     <!-- Data-->
     <script src="assets/js/countries.js"></script>
@@ -74,13 +76,13 @@
     </div>
     <div id="page2" style="height: 100vh; padding: 0px 0;" class="section" data-hash="b">
         <iframe id="globe" src="globe/globe.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>
-
     </div>
+
     <div id="page3" class="section" style="height: 100vh; padding: 0px 0;" data-hash="c">
-        <div id="map" style="height: 100vh;">
-        </div>
+        <div id="map" style="height: 100vh; margin-top: 0;"></div>
 
         <script>
+            // script for initalising th map
             // set max bounds
             var bounds = L.latLngBounds(L.latLng(-90.0, 180.227), L.latLng(90.0, -180.125));
             var mymap = L.map('map', {maxBounds:bounds}).setView([34, 24], 2);
@@ -107,10 +109,23 @@
                 }
             });
 
-            // mymap.once('focus', function() { mymap.scrollWheelZoom.enable(); });
 
             const cityList = ['city of london','shanghai','copanhagen','milan', 'chicago','montreal','jakarta','delhi']; // set the cities with more information
             loadAirQualityData(); // load air quality
+
+            // from https://github.com/CliffCloud/Leaflet.EasyButton
+            L.easyButton('fa-globe', function(btn, map){
+                mymap.setView([12.0, 97.0], 6);
+
+            }).addTo(mymap);
+
+            L.easyButton('fa-dollar', function(btn, map){
+                alert("hey!");
+            }).addTo(mymap);
+            L.easyButton('fa-check', function(btn, map){
+                alert("you clicked here!");
+            }).addTo(mymap);
+
         </script>
     </div>
     <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
