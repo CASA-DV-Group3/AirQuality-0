@@ -121,13 +121,24 @@ function fill(obj, color, pointData) {
 }
 
 function fillPoints(obj, color) {
-    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(1)
+    var rad = getRadius(obj.properties.aqi)
+    // console.log(obj)
+    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad)
     context.beginPath();
     // context.strokeStyle = color;
     geoGenerator(circle());
     context.fillStyle = color
     context.stroke();
     context.fill();
+}
+
+function getRadius(d) {
+    return  d > 300 ? 5 :
+        d > 200 ? 4 :
+            d > 150 ? 3 :
+                d > 100 ? 2 :
+                    d > 50 ? 1 :
+                        0.5;
 }
 
 function stroke(obj, color) {
