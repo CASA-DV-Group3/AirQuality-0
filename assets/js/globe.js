@@ -122,7 +122,6 @@ function fill(obj, color, pointData) {
 
 function fillPoints(obj, color) {
     var rad = getRadius(obj.properties.aqi)
-    // console.log(obj)
     var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad)
     context.beginPath();
     // context.strokeStyle = color;
@@ -240,6 +239,7 @@ loadData(function(world, cList) {
         world.features.forEach(function(pnt){
             pnt.geometry.coordinates =  pnt.geometry.coordinates.reverse()
             point = topojson.feature(world, pnt.geometry)
+            point['properties'] = pnt.properties
             pointList.push(point)
         });
         points = pointList;
