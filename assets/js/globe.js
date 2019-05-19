@@ -123,23 +123,33 @@ function fill(obj, color) {
 }
 
 function fillPoints(obj, color) {
-    var rad = getRadius(obj.properties.deaths_per1000)
-    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad)
+    var rad = getRadius(obj.properties.deaths_per1000);
+    var apCol = getAPColor(obj.properties.deaths_per1000);
+    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad);
     context.beginPath();
-    // context.strokeStyle = color;
+    // context.strokeStyle = apCol;
     geoGenerator(circle());
-    context.fillStyle = color
+    context.fillStyle = apCol;
     context.stroke();
     context.fill();
 }
 
 function getRadius(d) {
-    return  d > 200 ? 5 :
-        d > 150 ? 4 :
-            d > 100 ? 3 :
-                d > 50 ? 2 :
+    return  d > 100 ? 5 :
+        d > 80 ? 4 :
+            d > 60 ? 3 :
+                d > 40 ? 2 :
                     d > 20 ? 1 :
                         0.5;
+}
+
+function getAPColor(d) {
+    return  d > 100 ? '#0c000e' :
+        d > 80 ? '#40393c'  :
+            d > 60 ? '#5e5e5e'  :
+                d > 40 ? '#807e7d'  :
+                    d > 20 ? '#aaaaaa'  :
+                        '#c6b9c8' ;
 }
 
 function stroke(obj, color) {
