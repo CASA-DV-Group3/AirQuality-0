@@ -43,7 +43,7 @@ function subsetAirQualityData(data) {
     return subsetData
 }
 
-function loadAirQualityData() {
+function loadAirQualityData(qVal) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/aqi_shape_q.geojson', false);
     xhr.send();
@@ -60,6 +60,9 @@ function loadAirQualityData() {
             opacity: 1,
             fillOpacity: changeOpacity(row['properties']['aqi'])
         };
+        // TODO load in quantile value
+        qVal;
+        // geojsonDATA['features'][0]['properties']['q_vals']
 
         // if (cityList.includes(row['properties']['station'].toLowerCase())) {
         //     let squareMarker = L.shapeMarker([lat, lng], {
