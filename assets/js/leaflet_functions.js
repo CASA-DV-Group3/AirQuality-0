@@ -2,20 +2,20 @@
 * Contains all needed functions for the main leaflet maps
 */
 
-
-function addControlPlaceholders(map) {
-    var corners = map._controlCorners,
-        l = 'leaflet-',
-        container = map._controlContainer;
-
-    function createCorner(vSide, hSide) {
-        var className = l + vSide + ' ' + l + hSide;
-        corners[vSide + hSide] = L.DomUtil.create('div', className, container);
-    }
-
-    createCorner('verticalcenter', 'left');
-    createCorner('verticalcenter', 'right');
-}
+// TODO: prepare to remove this
+// function addControlPlaceholders(map) {
+//     var corners = map._controlCorners,
+//         l = 'leaflet-',
+//         container = map._controlContainer;
+//
+//     function createCorner(vSide, hSide) {
+//         var className = l + vSide + ' ' + l + hSide;
+//         corners[vSide + hSide] = L.DomUtil.create('div', className, container);
+//     }
+//
+//     createCorner('verticalcenter', 'left');
+//     createCorner('verticalcenter', 'right');
+// }
 
 
 // Function for mapping colors to the currency values returned from the API for each country
@@ -52,6 +52,7 @@ function subsetAirQualityData(data, qv) {
 var layerMarkers = L.layerGroup([]);
 
 
+// TODO: make transfer of load data functions
 function loadNewData() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/testAPIdata.geojson', false);
