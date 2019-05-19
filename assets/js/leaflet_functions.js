@@ -74,7 +74,7 @@ function loadNewData() {
             fillOpacity: changeOpacity(row['properties']['aqi'])
         };
 
-        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:"+row['properties']['aqi']+"<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
         layerMarkers.addLayer(marker);
     });
     mymap.addLayer(layerMarkers);
@@ -108,7 +108,7 @@ function loadAirQualityData(qVal) {
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
 
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is: "+row['properties']['aqi']+" AQI <br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
             layerMarkers.addLayer(marker);
         });
     });
