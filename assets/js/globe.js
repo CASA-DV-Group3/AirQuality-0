@@ -10,7 +10,7 @@ var degPerSec = 6;
 // start angles
 var angles = { x: -20, y: 40, z: 0};
 // colors
-var colorWater = 'rgba(14,105,255,0.62)';
+var colorWater = 'rgba(42,163,255,0.62)';
 var colorLand = '#487142'
 var colorPoint = '#6d1371';
 var colorGraticule = 'rgba(204,204,204,0)';
@@ -169,6 +169,11 @@ function rotate(elapsed) {
         render()
     }
     lastTime = now
+}
+
+function getYear() {
+    year = document.getElementById()
+    return year
 }
 
 function getCurrentData(data, year) {
