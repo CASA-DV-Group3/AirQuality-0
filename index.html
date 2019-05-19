@@ -109,13 +109,11 @@
                 }
             });
 
-            const cityList = ['city of london','shanghai','copanhagen','milan', 'chicago','montreal','jakarta','delhi']; // set the cities with more information
-            loadAirQualityData(); // load air quality
+            loadAirQualityData([3]); // load air quality 3rd quantile
 
             // from https://github.com/CliffCloud/Leaflet.EasyButton
             L.easyButton('fa-globe', function(btn, map){
                 mymap.setView([12.0, 97.0], 6);
-
             }).addTo(mymap);
 
             L.easyButton('fa-dollar', function(btn, map){
