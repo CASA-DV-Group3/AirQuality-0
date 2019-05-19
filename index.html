@@ -58,7 +58,6 @@
             </div>
     </nav>
 </div>
-<!--<div class="header">-->
 <div class="section-wrapper">
     <div id="page1" class="section"style="padding: 0px 0" data-hash="a">
             <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/cover-02.jpg')">
@@ -112,44 +111,117 @@
             var quantileView = [];
 
             // from https://github.com/CliffCloud/Leaflet.EasyButton
-            L.easyButton('fa-globe', function(btn, map){
-                // mymap.setView([12.0, 97.0], 6);
-                var index = quantileView.indexOf(3);
+            L.easyButton({
+                states: [{
+                    stateName: 'unchecked',        // name the state
+                    icon:      '&#919',               // and define its properties
+                    title:     'High Industrial (Unchecked)',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        var index = quantileView.indexOf(3);
 
-                if (index > -1) {
-                    quantileView.splice(index, 1);
-                    loadAirQualityData(quantileView);
-                } else {
-                    quantileView.push(3)
-                    loadAirQualityData(quantileView);
-                }
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(3)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('checked');
+                    }
+                }, {
+                    stateName: 'checked',
+                    icon:      'fa-check',
+                    title:     'High Industrial (Checked)',
+                    onClick: function(btn, map) {
+                        var index = quantileView.indexOf(3);
+
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(3)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('unchecked');
+                    }
+                }]
+
             }).addTo(mymap);
 
-            L.easyButton('fa-dollar', function(btn, map){
-                var index = quantileView.indexOf(2);
+            L.easyButton({
+                states: [{
+                    stateName: 'unchecked',        // name the state
+                    icon:      '&#x0039C;',               // and define its properties
+                    title:     'Middle Industrial (Unchecked)',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        var index = quantileView.indexOf(2);
 
-                if (index > -1) {
-                    quantileView.splice(index, 1);
-                    loadAirQualityData(quantileView);
-                } else {
-                    quantileView.push(2)
-                    loadAirQualityData(quantileView);
-                }
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(2)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('checked');
+                    }
+                }, {
+                    stateName: 'checked',
+                    icon:      'fa-check',
+                    title:     'Middle Industrial (Checked)',
+                    onClick: function(btn, map) {
+                        var index = quantileView.indexOf(2);
+
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(2)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('unchecked');
+                    }
+                }]
             }).addTo(mymap);
-            L.easyButton('fa-check', function(btn, map){
-                var index = quantileView.indexOf(1);
 
-                if (index > -1) {
-                    quantileView.splice(index, 1);
-                    loadAirQualityData(quantileView);
-                } else {
-                    quantileView.push(1)
-                    loadAirQualityData(quantileView);
-                }
+            L.easyButton({
+                states: [{
+                    stateName: 'unchecked',        // name the state
+                    icon:      '&#x00139;',               // and define its properties
+                    title:     'Low Industrial (Unchecked)',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        var index = quantileView.indexOf(1);
+
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(1)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('checked');
+                    }
+                }, {
+                    stateName: 'checked',
+                    icon:      'fa-check',
+                    title:     'Low Industrial (Checked)',
+                    onClick: function(btn, map) {
+                        var index = quantileView.indexOf(1);
+
+                        if (index > -1) {
+                            quantileView.splice(index, 1);
+                            loadAirQualityData(quantileView);
+                        } else {
+                            quantileView.push(1)
+                            loadAirQualityData(quantileView);
+                        }
+                        btn.state('unchecked');
+                    }
+                }]
             }).addTo(mymap);
 
             // TODO add check button for easy Buttons
-            loadAirQualityData(quantileView); // load air quality 3rd quantile
+            loadAirQualityData(quantileView); // load air quality quantile
 
         </script>
     </div>
