@@ -1,223 +1,222 @@
-Country	Agriculture	Industry	Services 
-Afghanistan 	24	21	55
- Albania 	21.6	14.9	63.5
- Algeria 	13.1	38.7	48.2
- American Samoa 	27.4	12.4	60.2
- Andorra 	14	79	6
- Angola 	10.2	61.4	28.4
- Anguilla 	2.3	21	76.6
- Antigua and Barbuda 	2.2	17.8	80
- Argentina 	11.4	30.2	58.4
- Armenia 	19.6	29.1	51.3
- Aruba 	0.4	33.3	66.3
- Australia 	3.6	28.2	68.2
- Austria 	1.5	29.4	69.1
- Azerbaijan 	5.5	62.1	32.4
- Bahamas, The 	2.2	6.5	91.3
- Bahrain 	0.4	63.6	36
- Bangladesh 	18.4	28.6	53
- Barbados 	3.2	13.9	82.9
- Belarus 	9.4	45.9	44.7
- Belgium 	0.7	21.7	77.6
- Belize 	9.7	19.8	70.5
- Benin 	36	6.4	57.6
- Bermuda 	0.7	7	92.2
- Bhutan 	16.7	45.4	37.9
- Bolivia 	10	40	50
- Bosnia and Herzegovina 	8.3	26.3	65.4
- Botswana 	2.1	45	52.9
- Brazil 	5.5	27.5	67
- British Virgin Islands 	1	11.9	87.2
- Brunei 	0.8	66.7	32.5
- Bulgaria 	5.2	30.6	64.2
- Burkina Faso 	34.7	23.3	42
- Burma 	38.2	18.2	43.6
- Burundi 	31	21.4	47.7
- Cambodia 	30	30	40
- Cameroon 	19.5	31	49.5
- Canada 	1.9	27.1	71
- Cape Verde 	8.4	15.7	75.9
- Cayman Islands 	0.5	50.4	49.1
- Central African Republic 	53.1	14.5	32.4
- Chad 	52.7	6.7	40.6
- Chile 	5.1	41.8	53.1
- China 	10.1	46.8	43.1
- Colombia 	7	37.6	55.5
- Comoros 	51.6	13.6	47
- Congo, Democratic Republic of the 	37.5	27.6	35
- Congo, Republic of the 	4.2	70.7	25.1
- Cook Islands 	11.7	9.9	78.5
- Costa Rica 	6.3	21.7	72
- Cote d'Ivoire 	30	21	49
- Croatia 	5.4	25.5	69.1
- Cuba 	4	20.8	75.2
- Curacao 	0.7	15.5	83.8
- Cyprus 	2.4	16.5	81.1
- Czech Republic 	1.6	38.1	60.3
- Denmark 	4.5	19.1	76.4
- Djibouti 	3	17	79.9
- Dominica 	21.4	22.4	56.3
- Dominican Republic 	6.7	26.1	67.2
- Ecuador 	6.5	34.6	58.9
- Egypt 	14.5	37.6	47.6
- El Salvador 	10.6	30	59.3
- Equatorial Guinea 	3.6	89.7	4.3
- Eritrea 	11	34	55
- Estonia 	3.5	28.5	61
- Ethiopia 	41	13	46
- European Union 	1.8	24.9	73.2
- Falkland Islands 	95	2.5	2.5
- Faroe Islands 	16	29	55
- Fiji 	12	20.2	67.7
- Finland 	3	29.2	67.8
- France 	1.8	18.8	79.4
- French Polynesia 	3.5	20.4	76.1
- Gabon 	5.2	54.4	40.4
- Gambia, The 	26.7	17.4	55.9
- Georgia 	8.8	22.7	68.5
- Germany 	0.8	28.6	70.6
- Ghana 	28.3	21	50.7
- Gibraltar 	0	0	100
- Greece 	3.3	17.9	78.9
- Greenland 	4	29	67
- Grenada 	5.3	14.2	80.5
- Guatemala 	13.3	24	62.7
- Guernsey 	3	10	87
- Guinea 	16.9	53.6	29.5
- Guinea-Bissau 	55.8	13	31.2
- Guyana 	18.5	30.6	50.9
- Haiti 	25	16	59
- Honduras 	12.6	26.3	61.1
- Hong Kong 	0.1	6.8	93.2
- Hungary 	3.7	31.3	65
- Iceland 	5.4	24.7	69.9
- India 	17.2	26.4	56.4
- Indonesia 	14.7	47.2	38.1
- Iran 	10.4	37.7	51.8
- Iraq 	9.7	60.5	29.8
- Ireland 	2	29	69
- Isle of Man 	1	11	88
- Israel 	2.5	31.1	64.9
- Italy 	2	24.7	73.4
- Jamaica 	5.8	29.5	64.7
- Japan 	1.2	27.3	71.6
- Jersey 	1	2	97
- Jordan 	4.5	30.8	64.7
- Kazakhstan 	5.2	37.9	56.9
- Kenya 	19	16.4	64.6
- Kiribati 	8.9	24.2	66.8
- Korea, North 	23	43.4	33.6
- Korea, South 	2.6	39.2	58.2
- Kosovo 	12.9	22.6	64.5
- Kuwait 	0.3	47.4	52.3
- Kyrgyzstan 	20.1	28.8	51.1
- Laos 	27.8	34.8	37.4
- Latvia 	4	21.7	74.3
- Lebanon 	4.6	19.7	75.7
- Lesotho 	7.5	33.1	59.4
- Liberia 	76.9	5.4	17.7
- Libya 	3.2	49.5	47.3
- Liechtenstein 	8	37	55
- Lithuania 	3.3	28.2	68.6
- Luxembourg 	0.4	13.6	86
- Macau 	0.1	9.4	90.6
- Macedonia 	9.5	27.1	63.4
- Madagascar 	28.3	16.4	55.2
- Malawi 	30.3	16.7	53
- Malaysia 	12	40	48
- Maldives 	5.6	16.9	77.5
- Mali 	38.8	21.9	39.3
- Malta 	1.9	17.2	80.9
- Marshall Islands 	31.7	14.9	53.4
- Mauritania 	17.8	37.6	44.7
- Mauritius 	4.5	24	71.4
- Mexico 	3.8	34.2	62
- Micronesia, Federated States of 	28.9	15.2	55.9
- Moldova 	16.2	20.3	63.5
- Monaco 	0	4.9	95.1
- Mongolia 	15.8	32.6	51.6
- Montenegro 	0.8	11.3	87.9
- Montserrat 	1.6	23	75.3
- Morocco 	16.6	32.2	51.2
- Mozambique 	31.5	23.8	44.7
- Namibia 	7.2	33.3	59.5
-   Nepal 	34.9	15	50.1
- Netherlands 	2.7	24.2	73.1
- New Caledonia 	2	27.1	70.9
- New Zealand 	4.8	24.5	70.7
- Nicaragua 	17.4	25.7	56.8
- Niger 	39	16	45
- Nigeria[8] 	17.8	25.7	54.6
- Niue 	23.5	26.9	49.5
- Norway 	2.6	39.7	57.7
- Oman 	1.5	49.5	48.9
- Pakistan 	20.9	25.8	53.3
- Palau 	6.2	12	81.8
- Panama 	4.1	16.7	79.2
- Papua New Guinea 	29.9	37.6	32.4
- Paraguay 	23.1	18.6	58.3
- Peru 	8	38	54
- Philippines 	12.8	31.5	55.7
- Poland 	3.4	33.6	63
- Portugal 	2.5	22.8	74.7
- Puerto Rico 	1	45	54
- Qatar 	0.1	73	26.9
- Romania 	7.9	32.9	59.2
- Russia 	4.5	36.9	58.6
- Rwanda 	33	13.9	53.1
- Saint Kitts and Nevis 	2.4	22.8	74.7
- Saint Lucia 	4.1	18.4	77.5
- Saint Martin 	1	15	84
- Saint Vincent and the Grenadines 	7.8	25.9	66.3
- Samoa 	9.9	28.8	61.4
- San Marino 	0.1	39.2	60.7
- Sao Tome and Principe 	15	24.4	60.6
- Saudi Arabia 	2	69.1	28.9
- Senegal 	15	22.8	62.2
- Serbia 	11.2	18.7	70
- Seychelles 	2	18.5	79.5
- Sierra Leone 	51.5	22	26.5
- Singapore 	0	26.6	73.4
- Sint Maarten 	0.4	18.3	81.3
- Slovakia 	3.8	35.5	60.7
- Slovenia 	2.5	6.9	90.5
- Solomon Islands 	37.7	6.4	55.9
- Somalia 	60.2	7.4	32.5
- South Africa 	2.5	31.6	65.9
- Spain 	3.2	25.8	71
- Sri Lanka 	13	29.6	57.4
- Sudan 	25	29.3	45.7
- Suriname 	10.8	24.4	64.8
- Swaziland 	8.2	46.9	44.9
- Sweden 	1.8	27.3	70.9
-  Switzerland 	1.3	27.5	71.3
- Syria 	16.9	27.4	55.7
- Taiwan 	1.3	32	66.9
- Tajikistan 	21.4	21.7	56.8
- Tanzania 	27.8	24.2	48
- Thailand 	13.3	34	52.7
- Timor-Leste 	26.5	17.8	55.6
- Togo 	46	23	31
- Tonga 	20.8	18.1	61.1
- Trinidad and Tobago 	0.3	58.4	41.3
- Tunisia 	10.6	34.6	54.8
- Turkey 	9.3	28.1	62.6
- Turkmenistan 	7.9	24.5	67.6
- Turks and Caicos Islands 	1	24.2	74.8
- Tuvalu 	16.6	27.2	56.2
- Uganda 	22	25.4	52.6
- Ukraine 	9.4	34.4	56.2
- United Arab Emirates 	0.8	53.9	45.3
- United Kingdom 	0.7	21.4	77.8
- United States 	1.2	19.2	79.6
- Uruguay 	9.4	21.7	68.9
- Uzbekistan 	21.9	37.7	40.3
- Vanuatu 	21.2	10.4	68.4
- Venezuela 	3.8	35.8	60.4
- Vietnam 	22	40.3	37.7
- U.S. Virgin Islands 	1	19	80
- West Bank and Gaza 	3.7	13.6	82.7
- Yemen 	7.9	42.2	49.9
- Zambia 	21.4	35.1	43.5
- Zimbabwe 	20.4	24.6	54.9
- World 	6.1	31.1	62.9
+"Country	Agriculture	Industry	Services "
+"Afghanistan 	24	21	55"
+" Albania 	21.6	14.9	63.5"
+" Algeria 	13.1	38.7	48.2"
+" American Samoa 	27.4	12.4	60.2"
+" Andorra 	14	79	6"
+" Angola 	10.2	61.4	28.4"
+" Anguilla 	2.3	21	76.6"
+" Antigua and Barbuda 	2.2	17.8	80"
+" Argentina 	11.4	30.2	58.4"
+" Armenia 	19.6	29.1	51.3"
+" Aruba 	0.4	33.3	66.3"
+" Australia 	3.6	28.2	68.2"
+" Austria 	1.5	29.4	69.1"
+" Azerbaijan 	5.5	62.1	32.4"
+" Bahamas     2.2	6.5	91.3"
+" Bahrain 	0.4	63.6	36"
+" Bangladesh 	18.4	28.6	53"
+" Barbados 	3.2	13.9	82.9"
+" Belarus 	9.4	45.9	44.7"
+" Belgium 	0.7	21.7	77.6"
+" Belize 	9.7	19.8	70.5"
+" Benin 	36	6.4	57.6"
+" Bermuda 	0.7	7	92.2"
+" Bhutan 	16.7	45.4	37.9"
+" Bolivia 	10	40	50"
+" Bosnia and Herzegovina 	8.3	26.3	65.4"
+" Botswana 	2.1	45	52.9"
+" Brazil 	5.5	27.5	67"
+" British Virgin Islands 	1	11.9	87.2"
+" Brunei 	0.8	66.7	32.5"
+" Bulgaria 	5.2	30.6	64.2"
+" Burkina Faso 	34.7	23.3	42"
+" Burma 	38.2	18.2	43.6"
+" Burundi 	31	21.4	47.7"
+" Cambodia 	30	30	40"
+" Cameroon 	19.5	31	49.5"
+" Canada 	1.9	27.1	71"
+" Cape Verde 	8.4	15.7	75.9"
+" Cayman Islands 	0.5	50.4	49.1"
+" Central African Republic 	53.1	14.5	32.4"
+" Chad 	52.7	6.7	40.6"
+" Chile 	5.1	41.8	53.1"
+" China 	10.1	46.8	43.1"
+" Colombia 	7	37.6	55.5"
+" Comoros 	51.6	13.6	47"
+" Democratic Republic of the  Congo   37.5	27.6	35"
+"  Republic of the Congo    4.2	70.7	25.1"
+" Cook Islands 	11.7	9.9	78.5"
+" Costa Rica 	6.3	21.7	72"
+" Cote d'Ivoire 	30	21	49"
+" Croatia 	5.4	25.5	69.1"
+" Cuba 	4	20.8	75.2"
+" Curacao 	0.7	15.5	83.8"
+" Cyprus 	2.4	16.5	81.1"
+" Czech Republic 	1.6	38.1	60.3"
+" Denmark 	4.5	19.1	76.4"
+" Djibouti 	3	17	79.9"
+" Dominica 	21.4	22.4	56.3"
+" Dominican Republic 	6.7	26.1	67.2"
+" Ecuador 	6.5	34.6	58.9"
+" Egypt 	14.5	37.6	47.6"
+" El Salvador 	10.6	30	59.3"
+" Equatorial Guinea 	3.6	89.7	4.3"
+" Eritrea 	11	34	55"
+" Estonia 	3.5	28.5	61"
+" Ethiopia 	41	13	46"
+" European Union 	1.8	24.9	73.2"
+" Falkland Islands 	95	2.5	2.5"
+" Faroe Islands 	16	29	55"
+" Fiji 	12	20.2	67.7"
+" Finland 	3	29.2	67.8"
+" France 	1.8	18.8	79.4"
+" French Polynesia 	3.5	20.4	76.1"
+" Gabon 	5.2	54.4	40.4"
+"  The Gambia  26.7	17.4	55.9"
+" Georgia 	8.8	22.7	68.5"
+" Germany 	0.8	28.6	70.6"
+" Ghana 	28.3	21	50.7"
+" Gibraltar 	0	0	100"
+" Greece 	3.3	17.9	78.9"
+" Greenland 	4	29	67"
+" Grenada 	5.3	14.2	80.5"
+" Guatemala 	13.3	24	62.7"
+" Guernsey 	3	10	87"
+" Guinea 	16.9	53.6	29.5"
+" Guinea-Bissau 	55.8	13	31.2"
+" Guyana 	18.5	30.6	50.9"
+" Haiti 	25	16	59"
+" Honduras 	12.6	26.3	61.1"
+" Hong Kong 	0.1	6.8	93.2"
+" Hungary 	3.7	31.3	65"
+" Iceland 	5.4	24.7	69.9"
+" India 	17.2	26.4	56.4"
+" Indonesia 	14.7	47.2	38.1"
+" Iran 	10.4	37.7	51.8"
+" Iraq 	9.7	60.5	29.8"
+" Ireland 	2	29	69"
+" Isle of Man 	1	11	88"
+" Israel 	2.5	31.1	64.9"
+" Italy 	2	24.7	73.4"
+" Jamaica 	5.8	29.5	64.7"
+" Japan 	1.2	27.3	71.6"
+" Jersey 	1	2	97"
+" Jordan 	4.5	30.8	64.7"
+" Kazakhstan 	5.2	37.9	56.9"
+" Kenya 	19	16.4	64.6"
+" Kiribati 	8.9	24.2	66.8"
+"  North  Korea    23	43.4	33.6"
+"  South  Korea  2.6	39.2	58.2"
+" Kosovo 	12.9	22.6	64.5"
+" Kuwait 	0.3	47.4	52.3"
+" Kyrgyzstan 	20.1	28.8	51.1"
+" Laos 	27.8	34.8	37.4"
+" Latvia 	4	21.7	74.3"
+" Lebanon 	4.6	19.7	75.7"
+" Lesotho 	7.5	33.1	59.4"
+" Liberia 	76.9	5.4	17.7"
+" Libya 	3.2	49.5	47.3"
+" Liechtenstein 	8	37	55"
+" Lithuania 	3.3	28.2	68.6"
+" Luxembourg 	0.4	13.6	86"
+" Macau 	0.1	9.4	90.6"
+" Macedonia 	9.5	27.1	63.4"
+" Madagascar 	28.3	16.4	55.2"
+" Malawi 	30.3	16.7	53"
+" Malaysia 	12	40	48"
+" Maldives 	5.6	16.9	77.5"
+" Mali 	38.8	21.9	39.3"
+" Malta 	1.9	17.2	80.9"
+" Marshall Islands 	31.7	14.9	53.4"
+" Mauritania 	17.8	37.6	44.7"
+" Mauritius 	4.5	24	71.4"
+" Mexico 	3.8	34.2	62"
+" Moldova 	16.2	20.3	63.5"
+" Monaco 	0	4.9	95.1"
+" Mongolia 	15.8	32.6	51.6"
+" Montenegro 	0.8	11.3	87.9"
+" Montserrat 	1.6	23	75.3"
+" Morocco 	16.6	32.2	51.2"
+" Mozambique 	31.5	23.8	44.7"
+" Namibia 	7.2	33.3	59.5"
+"   Nepal 	34.9	15	50.1"
+" Netherlands 	2.7	24.2	73.1"
+" New Caledonia 	2	27.1	70.9"
+" New Zealand 	4.8	24.5	70.7"
+" Nicaragua 	17.4	25.7	56.8"
+" Niger 	39	16	45"
+" Nigeria[8] 	17.8	25.7	54.6"
+" Niue 	23.5	26.9	49.5"
+" Norway 	2.6	39.7	57.7"
+" Oman 	1.5	49.5	48.9"
+" Pakistan 	20.9	25.8	53.3"
+" Palau 	6.2	12	81.8"
+" Panama 	4.1	16.7	79.2"
+" Papua New Guinea 	29.9	37.6	32.4"
+" Paraguay 	23.1	18.6	58.3"
+" Peru 	8	38	54"
+" Philippines 	12.8	31.5	55.7"
+" Poland 	3.4	33.6	63"
+" Portugal 	2.5	22.8	74.7"
+" Puerto Rico 	1	45	54"
+" Qatar 	0.1	73	26.9"
+" Romania 	7.9	32.9	59.2"
+" Russia 	4.5	36.9	58.6"
+" Rwanda 	33	13.9	53.1"
+" Saint Kitts and Nevis 	2.4	22.8	74.7"
+" Saint Lucia 	4.1	18.4	77.5"
+" Saint Martin 	1	15	84"
+" Saint Vincent and the Grenadines 	7.8	25.9	66.3"
+" Samoa 	9.9	28.8	61.4"
+" San Marino 	0.1	39.2	60.7"
+" Sao Tome and Principe 	15	24.4	60.6"
+" Saudi Arabia 	2	69.1	28.9"
+" Senegal 	15	22.8	62.2"
+" Serbia 	11.2	18.7	70"
+" Seychelles 	2	18.5	79.5"
+" Sierra Leone 	51.5	22	26.5"
+" Singapore 	0	26.6	73.4"
+" Sint Maarten 	0.4	18.3	81.3"
+" Slovakia 	3.8	35.5	60.7"
+" Slovenia 	2.5	6.9	90.5"
+" Solomon Islands 	37.7	6.4	55.9"
+" Somalia 	60.2	7.4	32.5"
+" South Africa 	2.5	31.6	65.9"
+" Spain 	3.2	25.8	71"
+" Sri Lanka 	13	29.6	57.4"
+" Sudan 	25	29.3	45.7"
+" Suriname 	10.8	24.4	64.8"
+" Swaziland 	8.2	46.9	44.9"
+" Sweden 	1.8	27.3	70.9"
+"  Switzerland 	1.3	27.5	71.3"
+" Syria 	16.9	27.4	55.7"
+" Taiwan 	1.3	32	66.9"
+" Tajikistan 	21.4	21.7	56.8"
+" Tanzania 	27.8	24.2	48"
+" Thailand 	13.3	34	52.7"
+" Timor-Leste 	26.5	17.8	55.6"
+" Togo 	46	23	31"
+" Tonga 	20.8	18.1	61.1"
+" Trinidad and Tobago 	0.3	58.4	41.3"
+" Tunisia 	10.6	34.6	54.8"
+" Turkey 	9.3	28.1	62.6"
+" Turkmenistan 	7.9	24.5	67.6"
+" Turks and Caicos Islands 	1	24.2	74.8"
+" Tuvalu 	16.6	27.2	56.2"
+" Uganda 	22	25.4	52.6"
+" Ukraine 	9.4	34.4	56.2"
+" United Arab Emirates 	0.8	53.9	45.3"
+" United Kingdom 	0.7	21.4	77.8"
+" United States 	1.2	19.2	79.6"
+" Uruguay 	9.4	21.7	68.9"
+" Uzbekistan 	21.9	37.7	40.3"
+" Vanuatu 	21.2	10.4	68.4"
+" Venezuela 	3.8	35.8	60.4"
+" Vietnam 	22	40.3	37.7"
+" U.S. Virgin Islands 	1	19	80"
+" West Bank and Gaza 	3.7	13.6	82.7"
+" Yemen 	7.9	42.2	49.9"
+" Zambia 	21.4	35.1	43.5"
+" Zimbabwe 	20.4	24.6	54.9"
+" World 	6.1	31.1	62.9"

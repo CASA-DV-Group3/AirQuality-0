@@ -37,12 +37,18 @@ function changeOpacity(d) {
                         0.3;
 }
 
+function subsetAirQualityData(data) {
+    var subsetData = data['features'];
+
+    return subsetData
+}
 
 function loadAirQualityData() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/aqi_shape.geojson', false);
     xhr.send();
     let geojsonDATA = JSON.parse(xhr.responseText);
+    console.log(geojsonDATA);
 
     geojsonDATA['features'].forEach(function(row){
         let lat = Number(row['geometry']['coordinates'][1]);
@@ -68,7 +74,7 @@ function loadAirQualityData() {
         //     }).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph<br>View More</div>");
         //
         // } else {
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
         // }
 
     });
