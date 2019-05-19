@@ -9,6 +9,7 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index.css"/>
 
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
@@ -112,10 +113,11 @@
 
             // from https://github.com/CliffCloud/Leaflet.EasyButton
             L.easyButton({
+                id: "high",
                 states: [{
                     stateName: 'unchecked',        // name the state
                     icon:      '&#919',               // and define its properties
-                    title:     'High Industrial (Unchecked)',      // like its title
+                    title:     'Highly Industrial Countries (Unchecked)',      // like its title
                     onClick: function(btn, map) {       // and its callback
                         var index = quantileView.indexOf(3);
 
@@ -131,7 +133,7 @@
                 }, {
                     stateName: 'checked',
                     icon:      'fa-check',
-                    title:     'High Industrial (Checked)',
+                    title:     'Highly Industrial Countries (Checked)',
                     onClick: function(btn, map) {
                         var index = quantileView.indexOf(3);
 
@@ -149,10 +151,11 @@
             }).addTo(mymap);
 
             L.easyButton({
+                id: "mid",
                 states: [{
                     stateName: 'unchecked',        // name the state
                     icon:      '&#x0039C;',               // and define its properties
-                    title:     'Middle Industrial (Unchecked)',      // like its title
+                    title:     'Moderately Industrial Countries (Unchecked)',      // like its title
                     onClick: function(btn, map) {       // and its callback
                         var index = quantileView.indexOf(2);
 
@@ -168,7 +171,7 @@
                 }, {
                     stateName: 'checked',
                     icon:      'fa-check',
-                    title:     'Middle Industrial (Checked)',
+                    title:     'Moderately Industrial Countries (Checked)',
                     onClick: function(btn, map) {
                         var index = quantileView.indexOf(2);
 
@@ -185,10 +188,11 @@
             }).addTo(mymap);
 
             L.easyButton({
+                id: "low",
                 states: [{
                     stateName: 'unchecked',        // name the state
                     icon:      '&#x00139;',               // and define its properties
-                    title:     'Low Industrial (Unchecked)',      // like its title
+                    title:     'Least Industrial Countries (Unchecked)',      // like its title
                     onClick: function(btn, map) {       // and its callback
                         var index = quantileView.indexOf(1);
 
@@ -204,7 +208,7 @@
                 }, {
                     stateName: 'checked',
                     icon:      'fa-check',
-                    title:     'Low Industrial (Checked)',
+                    title:     'Least Industrial Countries (Checked)',
                     onClick: function(btn, map) {
                         var index = quantileView.indexOf(1);
 
@@ -224,6 +228,7 @@
             loadAirQualityData(quantileView); // load air quality quantile
 
         </script>
+
     </div>
     <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
         Street-level visualisation
