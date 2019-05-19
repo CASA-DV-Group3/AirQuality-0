@@ -16,6 +16,9 @@ var colorPoint = '#6d1371';
 var colorGraticule = 'rgba(204,204,204,0)';
 var colorCountry = 'rgb(170,0,0)';
 
+// year for data
+var year = 2017;
+
 // Handler
 
 function enter(country) {
@@ -45,7 +48,7 @@ var current = d3.select('#current'),
     land, countries, points,
     countryList, pointList,
     autorotate, now, diff, rotation,
-    currentCountry;
+    currentCountry, currentPoint;
 
 var geoGenerator = d3.geoPath()
     .projection(projection)
@@ -112,8 +115,7 @@ function render() {
     }
 }
 
-function fill(obj, color, pointData) {
-    var pointData = pointData | false;
+function fill(obj, color) {
     context.beginPath()
     path(obj)
     context.fillStyle = color
@@ -121,7 +123,7 @@ function fill(obj, color, pointData) {
 }
 
 function fillPoints(obj, color) {
-    var rad = getRadius(obj.properties.aqi)
+    var rad = getRadius(obj.properties.deaths_per1000)
     var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad)
     context.beginPath();
     // context.strokeStyle = color;
@@ -132,11 +134,11 @@ function fillPoints(obj, color) {
 }
 
 function getRadius(d) {
-    return  d > 300 ? 5 :
-        d > 200 ? 4 :
-            d > 150 ? 3 :
-                d > 100 ? 2 :
-                    d > 50 ? 1 :
+    return  d > 200 ? 5 :
+        d > 150 ? 4 :
+            d > 100 ? 3 :
+                d > 50 ? 2 :
+                    d > 20 ? 1 :
                         0.5;
 }
 
@@ -159,7 +161,14 @@ function rotate(elapsed) {
     lastTime = now
 }
 
-function getCurrentData() {
+function getCurrentData(data, year) {
+    let returnData = [];
+    data["features"].forEach(function(row){
+        if (row["properties"]["year"] == year) {
+            returnData.push(row);
+        }
+    })
+    return returnData
     // function for getting current year of data
 }
 
@@ -244,9 +253,10 @@ loadData(function(world, cList) {
         // countries is pre-defined in countries.js
         countryList = cList
     } catch (e) {
+        // this is for loading the point data
+        world = getCurrentData(world, year); // subset the data
         pointList = [];
-        world.features.forEach(function(pnt){
-            pnt.geometry.coordinates =  pnt.geometry.coordinates.reverse()
+        world.forEach(function(pnt){
             point = topojson.feature(world, pnt.geometry)
             point['properties'] = pnt.properties
             pointList.push(point)
