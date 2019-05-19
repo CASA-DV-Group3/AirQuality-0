@@ -159,15 +159,24 @@ function rotate(elapsed) {
     lastTime = now
 }
 
+function getCurrentData() {
+    // function for getting current year of data
+}
+
 function loadData(cb) {
     d3.json('../assets/data/world-110m.json', function(error, world) {
         if (error) throw error;
         cb(world, countries);
     });
 
-    d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
+    // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
+    //     if (error) throw error;
+    //     cb(aqiData, countries);
+    // });
+
+    d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
         if (error) throw error;
-        cb(aqiData, countries);
+        cb(airPolDeaths, countries);
     });
 };
 
