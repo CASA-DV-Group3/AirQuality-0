@@ -51,8 +51,38 @@ function subsetAirQualityData(data, qv) {
 }
 var layerMarkers = L.layerGroup([]);
 
+
+function loadNewData() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'assets/data/testAPIdata.geojson', false);
+    xhr.send();
+    let geojsonDATA = JSON.parse(xhr.responseText);
+    if (layerMarkers) {
+        layerMarkers.remove()
+    }
+    // create marker layer group
+    layerMarkers = L.layerGroup([]);
+    geojsonDATA['features'].forEach(function(row){
+        let lat = Number(row['geometry']['coordinates'][0]);
+        let lng = Number(row['geometry']['coordinates'][1]);
+        let geojsonMarkerOptions = {
+            radius: Math.log(row['properties']['aqi']),
+            fillColor: getColor(row['properties']['aqi']),
+            color: "#000000",
+            weight: 0.1,
+            opacity: 1,
+            fillOpacity: changeOpacity(row['properties']['aqi'])
+        };
+
+        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:"+row['properties']['aqi']+"<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+        layerMarkers.addLayer(marker);
+    });
+    mymap.addLayer(layerMarkers);
+}
+
+
 function loadAirQualityData(qVal) {
-    // qval will be a list
+    // qval is a list of quantile values based on the buttons that have been clicked
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/aqi_shape_q.geojson', false);
     xhr.send();
@@ -61,10 +91,10 @@ function loadAirQualityData(qVal) {
     if (layerMarkers) {
         layerMarkers.remove()
     }
-    // create cluster group
+    // create marker layer group
     layerMarkers = L.layerGroup([]);
     qVal.forEach(function (qv) {
-        subsetData = subsetAirQualityData(geojsonDATA, qv)
+        subsetData = subsetAirQualityData(geojsonDATA, qv);
 
         subsetData.forEach(function(row){
             let lat = Number(row['geometry']['coordinates'][1]);
@@ -78,19 +108,7 @@ function loadAirQualityData(qVal) {
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
 
-            // if (cityList.includes(row['properties']['station'].toLowerCase())) {
-            //     let squareMarker = L.shapeMarker([lat, lng], {
-            //         shape: "square",
-            //         radius: Math.log(row['properties']['aqi'])**1.5,
-            //         fillColor: getColor(row['properties']['aqi']),
-            //         color: "#000000",
-            //         weight: 0.5,
-            //         opacity: 1,
-            //         fillOpacity: 0.5
-            //     }).addTo(mymap).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph<br>View More</div>");
-            //
-            // } else {
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is: "+row['properties']['aqi']+" AQI <br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
             layerMarkers.addLayer(marker);
         });
     });
