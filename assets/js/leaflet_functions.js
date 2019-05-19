@@ -51,6 +51,36 @@ function subsetAirQualityData(data, qv) {
 }
 var layerMarkers = L.layerGroup([]);
 
+
+function loadNewData() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'assets/data/testAPIdata.geojson', false);
+    xhr.send();
+    let geojsonDATA = JSON.parse(xhr.responseText);
+    if (layerMarkers) {
+        layerMarkers.remove()
+    }
+    // create marker layer group
+    layerMarkers = L.layerGroup([]);
+    geojsonDATA['features'].forEach(function(row){
+        let lat = Number(row['geometry']['coordinates'][0]);
+        let lng = Number(row['geometry']['coordinates'][1]);
+        let geojsonMarkerOptions = {
+            radius: Math.log(row['properties']['aqi']),
+            fillColor: getColor(row['properties']['aqi']),
+            color: "#000000",
+            weight: 0.1,
+            opacity: 1,
+            fillOpacity: changeOpacity(row['properties']['aqi'])
+        };
+
+        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
+        layerMarkers.addLayer(marker);
+    });
+    mymap.addLayer(layerMarkers);
+}
+
+
 function loadAirQualityData(qVal) {
     // qval is a list of quantile values based on the buttons that have been clicked
     let xhr = new XMLHttpRequest();
