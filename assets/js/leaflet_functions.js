@@ -52,7 +52,7 @@ function subsetAirQualityData(data, qv) {
 var layerMarkers = L.layerGroup([]);
 
 function loadAirQualityData(qVal) {
-    // qval will be a list
+    // qval is a list of quantile values based on the buttons that have been clicked
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'assets/data/aqi_shape_q.geojson', false);
     xhr.send();
@@ -64,7 +64,7 @@ function loadAirQualityData(qVal) {
     // create marker layer group
     layerMarkers = L.layerGroup([]);
     qVal.forEach(function (qv) {
-        subsetData = subsetAirQualityData(geojsonDATA, qv)
+        subsetData = subsetAirQualityData(geojsonDATA, qv);
 
         subsetData.forEach(function(row){
             let lat = Number(row['geometry']['coordinates'][1]);
