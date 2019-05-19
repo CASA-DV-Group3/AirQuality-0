@@ -10,11 +10,11 @@ var degPerSec = 6;
 // start angles
 var angles = { x: -20, y: 40, z: 0};
 // colors
-var colorWater = 'rgba(42,163,255,0.62)';
-var colorLand = '#487142'
+var colorWater = 'rgba(66,142,255,0.62)';
+var colorLand = '#447139'
 var colorPoint = '#6d1371';
 var colorGraticule = 'rgba(204,204,204,0)';
-var colorCountry = 'rgb(170,0,0)';
+var colorCountry = 'rgba(1,0,9,0.2)';
 
 // year for data
 var year = 2017;
