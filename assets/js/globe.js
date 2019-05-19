@@ -169,15 +169,15 @@ function loadData(cb) {
         cb(world, countries);
     });
 
-    // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
-    //     if (error) throw error;
-    //     cb(aqiData, countries);
-    // });
-
-    d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
+    d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
         if (error) throw error;
-        cb(airPolDeaths, countries);
+        cb(aqiData, countries);
     });
+
+    // d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
+    //     if (error) throw error;
+    //     cb(airPolDeaths, countries);
+    // });
 };
 
 
