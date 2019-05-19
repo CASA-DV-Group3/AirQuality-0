@@ -88,7 +88,7 @@
             var mymap = L.map('map', {maxBounds:bounds}).setView([34, 24], 2);
 
             mymap.options.minZoom = 2;
-            mymap.options.maxZoom = 8;
+            mymap.options.maxZoom = 10;
             mymap.doubleClickZoom.disable(); // disable double click zoom (as double click is used to rebound the map to a country in updateMap.js)
 
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidWN6bHFqdSIsImEiOiJjam4zOXRjMHUwY3htM3BteXgxazVxZ3QzIn0.mmRn_HjpXDzMJrKj1apGNQ', {
