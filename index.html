@@ -109,19 +109,47 @@
                 }
             });
 
-            loadAirQualityData([3]); // load air quality 3rd quantile
+            var quantileView = [];
 
             // from https://github.com/CliffCloud/Leaflet.EasyButton
             L.easyButton('fa-globe', function(btn, map){
-                mymap.setView([12.0, 97.0], 6);
+                // mymap.setView([12.0, 97.0], 6);
+                var index = quantileView.indexOf(3);
+
+                if (index > -1) {
+                    quantileView.splice(index, 1);
+                    loadAirQualityData(quantileView);
+                } else {
+                    quantileView.push(3)
+                    loadAirQualityData(quantileView);
+                }
             }).addTo(mymap);
 
             L.easyButton('fa-dollar', function(btn, map){
-                alert("hey!");
+                var index = quantileView.indexOf(2);
+
+                if (index > -1) {
+                    quantileView.splice(index, 1);
+                    loadAirQualityData(quantileView);
+                } else {
+                    quantileView.push(2)
+                    loadAirQualityData(quantileView);
+                }
             }).addTo(mymap);
             L.easyButton('fa-check', function(btn, map){
-                alert("you clicked here!");
+                var index = quantileView.indexOf(1);
+
+                if (index > -1) {
+                    quantileView.splice(index, 1);
+                    loadAirQualityData(quantileView);
+                } else {
+                    quantileView.push(1)
+                    loadAirQualityData(quantileView);
+                }
             }).addTo(mymap);
+
+            // TODO add check button for easy Buttons
+            loadAirQualityData(quantileView); // load air quality 3rd quantile
 
         </script>
     </div>
