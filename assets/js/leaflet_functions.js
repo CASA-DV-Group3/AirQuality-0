@@ -45,10 +45,9 @@ function subsetAirQualityData(data) {
 
 function loadAirQualityData() {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/aqi_shape.geojson', false);
+    xhr.open('GET', 'assets/data/aqi_shape_q.geojson', false);
     xhr.send();
     let geojsonDATA = JSON.parse(xhr.responseText);
-    console.log(geojsonDATA);
 
     geojsonDATA['features'].forEach(function(row){
         let lat = Number(row['geometry']['coordinates'][1]);
