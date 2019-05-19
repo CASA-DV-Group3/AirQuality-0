@@ -10,11 +10,14 @@ var degPerSec = 6;
 // start angles
 var angles = { x: -20, y: 40, z: 0};
 // colors
-var colorWater = 'rgba(14,105,255,0.62)';
+var colorWater = 'rgba(42,163,255,0.62)';
 var colorLand = '#487142'
 var colorPoint = '#6d1371';
 var colorGraticule = 'rgba(204,204,204,0)';
 var colorCountry = 'rgb(170,0,0)';
+
+// year for data
+var year = 2017;
 
 // Handler
 
@@ -45,7 +48,7 @@ var current = d3.select('#current'),
     land, countries, points,
     countryList, pointList,
     autorotate, now, diff, rotation,
-    currentCountry;
+    currentCountry, currentPoint;
 
 var geoGenerator = d3.geoPath()
     .projection(projection)
@@ -112,8 +115,7 @@ function render() {
     }
 }
 
-function fill(obj, color, pointData) {
-    var pointData = pointData | false;
+function fill(obj, color) {
     context.beginPath()
     path(obj)
     context.fillStyle = color
@@ -121,23 +123,33 @@ function fill(obj, color, pointData) {
 }
 
 function fillPoints(obj, color) {
-    var rad = getRadius(obj.properties.aqi)
-    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad)
+    var rad = getRadius(obj.properties.deaths_per1000);
+    var apCol = getAPColor(obj.properties.deaths_per1000);
+    var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad);
     context.beginPath();
-    // context.strokeStyle = color;
+    // context.strokeStyle = apCol;
     geoGenerator(circle());
-    context.fillStyle = color
+    context.fillStyle = apCol;
     context.stroke();
     context.fill();
 }
 
 function getRadius(d) {
-    return  d > 300 ? 5 :
-        d > 200 ? 4 :
-            d > 150 ? 3 :
-                d > 100 ? 2 :
-                    d > 50 ? 1 :
+    return  d > 100 ? 5 :
+        d > 80 ? 4 :
+            d > 60 ? 3 :
+                d > 40 ? 2 :
+                    d > 20 ? 1 :
                         0.5;
+}
+
+function getAPColor(d) {
+    return  d > 100 ? '#0c000e' :
+        d > 80 ? '#40393c'  :
+            d > 60 ? '#5e5e5e'  :
+                d > 40 ? '#807e7d'  :
+                    d > 20 ? '#aaaaaa'  :
+                        '#c6b9c8' ;
 }
 
 function stroke(obj, color) {
@@ -159,7 +171,19 @@ function rotate(elapsed) {
     lastTime = now
 }
 
-function getCurrentData() {
+function getYear() {
+    year = document.getElementById()
+    return year
+}
+
+function getCurrentData(data, year) {
+    let returnData = [];
+    data["features"].forEach(function(row){
+        if (row["properties"]["year"] == year) {
+            returnData.push(row);
+        }
+    })
+    return returnData
     // function for getting current year of data
 }
 
@@ -244,9 +268,10 @@ loadData(function(world, cList) {
         // countries is pre-defined in countries.js
         countryList = cList
     } catch (e) {
+        // this is for loading the point data
+        world = getCurrentData(world, year); // subset the data
         pointList = [];
-        world.features.forEach(function(pnt){
-            pnt.geometry.coordinates =  pnt.geometry.coordinates.reverse()
+        world.forEach(function(pnt){
             point = topojson.feature(world, pnt.geometry)
             point['properties'] = pnt.properties
             pointList.push(point)
