@@ -85,23 +85,8 @@
         <iframe id="globe" src="globe/globe.html" height="80%" width="100%" frameBorder="10px" scrolling="no"></iframe>
 <!--        <h3 class="text-dark">Control Panel</h3>-->
         <!-- TODO sort this slider to update the map -->
-        <h4 class="text-dark">Select Year:</h4>
-<!--        <input type="range" style="width:30%" class="custom-range" id="customRange1">-->
-        <input id="ex10" type="text" data-slider-handle="custom"/>
-        <script>
-            var slider = new Slider("#ex10", {});
-        </script>
-
-        <style>
-            /* Or display content like unicode characters or fontawesome icons */
-            .slider-handle.custom::before {
-                line-height: 20px;
-                font-size: 20px;
-                content: '\2601'; /*cloud unicode*/
-                color: #000000;
-            }
-
-        </style>
+        <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal"></span><br>
+        <input id="globeSlider" type="text" data-slider-handle="custom"/>
 
     </div>
 
@@ -136,124 +121,6 @@
                 }
             });
 
-            var quantileView = [];
-
-            // from https://github.com/CliffCloud/Leaflet.EasyButton
-            L.easyButton({
-                id: "high",
-                states: [{
-                    stateName: 'unchecked',        // name the state
-                    icon:      '&#919',               // and define its properties
-                    title:     'Highly Industrial Countries (Unchecked)',      // like its title
-                    onClick: function(btn, map) {       // and its callback
-                        var index = quantileView.indexOf(3);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(3)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('checked');
-                    }
-                }, {
-                    stateName: 'checked',
-                    icon:      'fa-check',
-                    title:     'Highly Industrial Countries (Checked)',
-                    onClick: function(btn, map) {
-                        var index = quantileView.indexOf(3);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(3)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('unchecked');
-                    }
-                }]
-
-            }).addTo(mymap);
-
-            L.easyButton({
-                id: "mid",
-                states: [{
-                    stateName: 'unchecked',        // name the state
-                    icon:      '&#x0039C;',               // and define its properties
-                    title:     'Moderately Industrial Countries (Unchecked)',      // like its title
-                    onClick: function(btn, map) {       // and its callback
-                        var index = quantileView.indexOf(2);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(2)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('checked');
-                    }
-                }, {
-                    stateName: 'checked',
-                    icon:      'fa-check',
-                    title:     'Moderately Industrial Countries (Checked)',
-                    onClick: function(btn, map) {
-                        var index = quantileView.indexOf(2);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(2)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('unchecked');
-                    }
-                }]
-            }).addTo(mymap);
-
-            L.easyButton({
-                id: "low",
-                states: [{
-                    stateName: 'unchecked',        // name the state
-                    icon:      '&#x00139;',               // and define its properties
-                    title:     'Least Industrial Countries (Unchecked)',      // like its title
-                    onClick: function(btn, map) {       // and its callback
-                        var index = quantileView.indexOf(1);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(1)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('checked');
-                    }
-                }, {
-                    stateName: 'checked',
-                    icon:      'fa-check',
-                    title:     'Least Industrial Countries (Checked)',
-                    onClick: function(btn, map) {
-                        var index = quantileView.indexOf(1);
-
-                        if (index > -1) {
-                            quantileView.splice(index, 1);
-                            loadAirQualityData(quantileView);
-                        } else {
-                            quantileView.push(1)
-                            loadAirQualityData(quantileView);
-                        }
-                        btn.state('unchecked');
-                    }
-                }]
-            }).addTo(mymap);
-
-            // TODO add check button for easy Buttons
-            loadAirQualityData(quantileView); // load air quality quantile
-
         </script>
 
     </div>
@@ -270,6 +137,8 @@
     </div>
 </div>
 
+<script src="assets/js/slidersAndButtons.js"></script>
+
 <script>
     var ee = new EventEmitter();
     $.smartscroll({
@@ -279,6 +148,8 @@
         sectionScroll: true
     });
 
+    // TODO add check button for easy Buttons
+    loadAirQualityData(quantileView); // load air quality quantile
 </script>
 
 </body>
