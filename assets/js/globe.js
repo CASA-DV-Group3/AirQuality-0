@@ -149,7 +149,7 @@ function getAPColor(d) {
             d > 60 ? '#5e5e5e'  :
                 d > 40 ? '#807e7d'  :
                     d > 20 ? '#aaaaaa'  :
-                        '#fffffd' ;
+                        '#c6b9c8' ;
 }
 
 function stroke(obj, color) {
@@ -192,6 +192,7 @@ function loadData(cb) {
         if (error) throw error;
         cb(world, countries);
     });
+
     //
     // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
     //     if (error) throw error;
