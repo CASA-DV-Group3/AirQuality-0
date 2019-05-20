@@ -263,7 +263,7 @@ function loadAll(year) {
 
     function loadCanvas(year)
     {
-        year = year || 1990
+        year = year || 1990;
         // d3.select("canvas").remove();
         loadData(function(world, cList) {
             try {
@@ -292,7 +292,7 @@ function loadAll(year) {
 
     }
 
-    loadCanvas(1990)
+    loadCanvas(year)
     // Initialization
     setAngles()
 
