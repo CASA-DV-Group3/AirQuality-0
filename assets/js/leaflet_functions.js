@@ -92,8 +92,9 @@ function loadAirQualityData(qVal) {
                 opacity: 1,
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
-
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['aqi'] + "'>The Graph Goes Here</div><br><button onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>");
+            //TODO: chose better style
+            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['aqi'] + "'>The Graph Goes Here</div><br><button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>"
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup(markerPopup);
             marker.on('click', onMarkerClick );
             function onMarkerClick(e) {
                 var popup = e.target.getPopup();
