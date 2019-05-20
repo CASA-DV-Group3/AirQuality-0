@@ -7,13 +7,16 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
     <link href='../assets/css/2.5DStreet.css' type='text/css' rel='stylesheet' />
     <!--This link failed-->
 
     <style>
         body { margin:0; padding:0; }
 
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #streetview { position:absolute; top:0; bottom:0; width:100%; }
 
         .map-overlay {
             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -61,6 +64,23 @@
             font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
 
+        .map-overlay .viewButton {
+            background-color: Transparent;
+            width: 120px;
+            color: white;
+            border-bottom-color: white;
+            border-bottom-width: thin;
+            border-radius: 4px;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline;
+            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+        }
+
+        .map-overlay .viewButton:hover {background-color: rgba(255, 255, 255, 0.3)}
+
         .map-overlay h2 {
             color: #eaeaea;
             font-size: 24px;
@@ -90,7 +110,7 @@
 
 </head>
 <body>
-<div id='map'></div>
+<div id='streetview'></div>
 
 <div class='map-overlay top'>
     <div class='map-overlay-inner'>
@@ -113,20 +133,26 @@
             <input type="button" class="button" id="PM10e" value="PM 10 Exceedence" ><label></label>
             <input type="button" class="button" id="PM25e" value="PM 2.5 Exceedence" ><label></label>
         </div>
+
+        <h3>Choose view: </h3>
+        <div class="bottonlist">
+            <input type="button" class="viewButton" id="3D" value="Street View">
+            <input type="button" class="viewButton" id="top" value="Airscape">
+        </div>
     </div>
 </div>
 
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoidWN6bHFqdSIsImEiOiJjam4zOXRjMHUwY3htM3BteXgxazVxZ3QzIn0.mmRn_HjpXDzMJrKj1apGNQ';
-    const map = new mapboxgl.Map({
-        container: 'map',
+    var map = new mapboxgl.Map({
+        container: 'streetview',
         style: 'mapbox://styles/uczlqju/cjv3rkko11j721fqr3s1xekl1',
         center: [-0.115, 51.515],
-        zoom: 14,
+        zoom: 12,
         maxZoom: 18,
         minZoom: 10,
-        pitch: 60
+        pitch: 0
     });
 
 
@@ -151,7 +177,7 @@
             },
             'source-layer': 'MM_CentralLondonHeights', // name of tileset
             paint: {
-                'fill-extrusion-color': '#a5a5a5',
+                'fill-extrusion-color': '#919191',
                 'fill-extrusion-height': ['/', ['number', ['get', 'relh2'], 1], 1],  //expression that controls the extrusion height based on attribute
                 'fill-extrusion-opacity': 1,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
@@ -277,6 +303,33 @@
                 map.setPaintProperty('airQuality','fill-extrusion-height', layerHeight);
             })
         }
+
+        document.getElementById("3D").addEventListener('click', function(e){
+            let viewAngle = 60;
+            let zoomSize = 14;
+            let cor = [-0.12, 51.52];
+            map.flyTo({
+                centre: cor,
+                zoom: zoomSize,
+                pitch: viewAngle,
+                speed: 0.2, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+            });
+        });
+
+        document.getElementById("top").addEventListener('click', function(e){
+            let viewAngle = 0;
+            let zoomSize = 12;
+            let cor = [-0.115, 51.515];
+            map.flyTo({
+                centre: cor,
+                zoom: zoomSize,
+                pitch: viewAngle,
+                speed: 0.2, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+            });
+        });
+
 
     });
 
