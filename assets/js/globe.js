@@ -261,12 +261,12 @@ function loadAll(year) {
         // d3.select("canvas").remove();
         if (first) {
             loadData(function(world, cList) {
+                countryList = cList
                 try {
                     land = topojson.feature(world, world.objects.land)
                     // countries = topojson.feature(world, world.objects.countries)
                     // countries is pre-defined in countries.js
                     countryList = cList
-                    console.log(countryList)
                 } catch (e) {
                     // this is for loading the point data
                     world = getCurrentData(world, year); // subset the data
@@ -293,7 +293,7 @@ function loadAll(year) {
             land = topojson.feature(worldShp, worldShp.objects.land)
             // countries = topojson.feature(world, world.objects.countries)
             // countries is pre-defined in countries.js
-            countryList = cList;
+            // countryList = cList;
             // this is for loading the point data
             airPol = getCurrentData(airPol, year); // subset the data
             pointList = [];
@@ -304,8 +304,11 @@ function loadAll(year) {
             });
             points = pointList;
             }
+        window.addEventListener('resize', scale)
+        scale()
+        autorotate = d3.timer(rotate)
+        first = false
         }
-
 
     loadCanvas(year)
     // Initialization
