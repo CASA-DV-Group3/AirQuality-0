@@ -2,22 +2,6 @@
 * Contains all needed functions for the main leaflet maps
 */
 
-// TODO: prepare to remove this
-// function addControlPlaceholders(map) {
-//     var corners = map._controlCorners,
-//         l = 'leaflet-',
-//         container = map._controlContainer;
-//
-//     function createCorner(vSide, hSide) {
-//         var className = l + vSide + ' ' + l + hSide;
-//         corners[vSide + hSide] = L.DomUtil.create('div', className, container);
-//     }
-//
-//     createCorner('verticalcenter', 'left');
-//     createCorner('verticalcenter', 'right');
-// }
-
-
 // Function for mapping colors to the currency values returned from the API for each country
 function getColor(d) {
     return  d > 300 ? '#8e6464' :
