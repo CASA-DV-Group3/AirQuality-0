@@ -100,9 +100,9 @@
 
         <h3>Choose a year: </h3>
         <table><tr><td>
-            <input type="radio" class="radiobutton" id="2008" value="2008" checked><label>2008</label>
-            <input type="radio" class="radiobutton" id="2011" value="2011"><label>2011</label>
-            <input type="radio" class="radiobutton" id="2015" value="2015"><label>2015</label>
+            <input type="radio" class="radiobutton" name="year" id="2008" value="2008"><label>2008</label>
+            <input type="radio" class="radiobutton" name="year" id="2011" value="2011"><label>2011</label>
+            <input type="radio" class="radiobutton" name="year" id="2015" value="2015" checked><label>2015</label>
         </td>
         </tr>
         </table>
@@ -135,6 +135,7 @@
 
     // Set default parameters of map-loading function
     var layerField = 'NO2a_15';
+    var layerHeight = ['/', ['number', ['get', layerField], 0.2], 0.2];
 
     map.on('load', function() {
         // Set global light properties which influence 3D layer shadows
@@ -176,11 +177,13 @@
                     type: 'exponential',
                     stops: [
                         [0, '#4fe421'],
-                        [100, '#dbc21b'],
-                        [200, '#af5319'],
-                        [300, '#9b3316']]
+                        [20, '#e1bb25'],
+                        [50, '#d78021'],
+                        [100, '#be491b'],
+                        [450, '#912a16'],
+                        [800, '#5e0e20']]
                 },
-                'fill-extrusion-height': ['/', ['number', ['get', layerField], 0.1], 0.1],  //expression that controls the extrusion height based on attribute
+                'fill-extrusion-height': layerHeight,  //expression that controls the extrusion height based on attribute
                 'fill-extrusion-opacity': 0.8,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
                     duration: 1000,
@@ -201,31 +204,40 @@
             if (document.getElementById('2011').checked) {
                 radioID = '2011';
             }
-            else if (document.getElementById('2015').checked) {
-                radioID = '2015';
+            else if (document.getElementById('2008').checked) {
+                radioID = '2008';
             }
             else {
-                radioID = '2008';
+                radioID = '2015';
             }
 
             layerList[i].addEventListener('click', function(e) {
-                const buttonID = e.target.id;
+                buttonID = e.target.id;
 
                 layerField = buttonID + "_" + radioID.substring(2);
                 layerField = layerField.replace(/\s/g,'');
 
-                var layerHeight = ['/', ['number', ['get', layerField], 0.1], 0.1];
+                if (buttonID === 'NOX'){
+                    layerHeight = ['/', ['number', ['get', layerField], 0.7], 0.7];
+                }
+                else if (buttonID === 'PM10a' || buttonID === 'PM25e'){
+                    layerHeight = ['/', ['number', ['get', layerField], 0.05], 0.05];
+                }
+                else {
+                    layerHeight = ['/', ['number', ['get', layerField], 0.2], 0.2];
+                }
                 var paintDesign = {
                     property: layerField,
                     type: 'exponential',
                     stops: [
                         [0, '#4fe421'],
-                        [50, '#b2d71a'],
-                        [100, '#af9526'],
-                        [200, '#af5319'],
-                        [300, '#9b3316'],
+                        [20, '#e1bb25'],
+                        [50, '#d78021'],
+                        [100, '#be491b'],
+                        [450, '#912a16'],
                         [800, '#5e0e20']]
                 };
+
 
                 map.setPaintProperty('airQuality','fill-extrusion-color', paintDesign);
                 map.setPaintProperty('airQuality','fill-extrusion-height', layerHeight);
@@ -241,16 +253,25 @@
                 layerField = buttonID + "_" + radioID.substring(2);
                 layerField = layerField.replace(/\s/g,'');
 
-                var layerHeight = ['/', ['number', ['get', layerField], 0.1], 0.1];
+                if (buttonID === 'NOX'){
+                    layerHeight = ['/', ['number', ['get', layerField], 0.7], 0.7];
+                }
+                else if (buttonID === 'PM10a' || buttonID === 'PM25e'){
+                    layerHeight = ['/', ['number', ['get', layerField], 0.05], 0.05];
+                }
+                else {
+                    layerHeight = ['/', ['number', ['get', layerField], 0.2], 0.2];
+                }
+
                 var paintDesign = {
                     property: layerField,
                     type: 'exponential',
                     stops: [
                         [0, '#4fe421'],
-                        [50, '#b2d71a'],
-                        [100, '#af9526'],
-                        [200, '#af5319'],
-                        [300, '#9b3316'],
+                        [20, '#e1bb25'],
+                        [50, '#d78021'],
+                        [100, '#be491b'],
+                        [450, '#912a16'],
                         [800, '#5e0e20']]
                 };
 
@@ -265,4 +286,4 @@
 </script>
 
 </body>
-</html></html>
+</html>
