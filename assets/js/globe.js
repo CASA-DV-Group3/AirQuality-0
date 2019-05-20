@@ -2,7 +2,9 @@
 // Configuration
 
 var countries,
-    points;
+    points,
+    countryList;
+var first = true;
 function loadAll(year) {
     if (document.getElementById('globe')) {
         d3.selectAll("canvas").remove()
@@ -56,7 +58,7 @@ function loadAll(year) {
         degPerMs = degPerSec / 1000,
         width, height,
         land,
-        countryList, pointList,
+        pointList,
         autorotate, now, diff, rotation,
         currentCountry;
 
@@ -193,13 +195,16 @@ function loadAll(year) {
     }
 
     function loadData(cb) {
-        d3.json('../assets/data/world-110m.json', function(error, world) {
+        d3.json('../assets/data/world-110m.json', function(error, worldShape) {
             if (error) throw error;
-            cb(world, countries);
+            localStorage.setItem("worldShape", JSON.stringify(worldShape));
+
+            cb(worldShape, countries);
         });
 
         d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
             if (error) throw error;
+            localStorage.setItem("airPol", JSON.stringify(airPolDeaths));
             cb(airPolDeaths, countries);
         });
     };
@@ -254,32 +259,53 @@ function loadAll(year) {
     {
         year = year || 1990;
         // d3.select("canvas").remove();
-        loadData(function(world, cList) {
-            try {
-                land = topojson.feature(world, world.objects.land)
-                // countries = topojson.feature(world, world.objects.countries)
-                // countries is pre-defined in countries.js
-                countryList = cList
-            } catch (e) {
-                // this is for loading the point data
-                world = getCurrentData(world, year); // subset the data
-                pointList = [];
-                world.forEach(function(pnt){
-                    point = topojson.feature(world, pnt.geometry)
-                    point['properties'] = pnt.properties
-                    pointList.push(point)
-                });
-                points = pointList;
+        if (first) {
+            loadData(function(world, cList) {
+                try {
+                    land = topojson.feature(world, world.objects.land)
+                    // countries = topojson.feature(world, world.objects.countries)
+                    // countries is pre-defined in countries.js
+                    countryList = cList
+                    console.log(countryList)
+                } catch (e) {
+                    // this is for loading the point data
+                    world = getCurrentData(world, year); // subset the data
+                    pointList = [];
+                    world.forEach(function(pnt){
+                        point = topojson.feature(world, pnt.geometry)
+                        point['properties'] = pnt.properties
+                        pointList.push(point)
+                    });
+                    points = pointList;
+                }
+
+
+                window.addEventListener('resize', scale)
+                scale()
+                autorotate = d3.timer(rotate)
+                first = false
+            });
+
+        } else {
+            var worldShp = JSON.parse(localStorage.getItem("worldShape"));
+            var airPol = JSON.parse(localStorage.getItem("airPol"));
+
+            land = topojson.feature(worldShp, worldShp.objects.land)
+            // countries = topojson.feature(world, world.objects.countries)
+            // countries is pre-defined in countries.js
+            countryList = cList;
+            // this is for loading the point data
+            airPol = getCurrentData(airPol, year); // subset the data
+            pointList = [];
+            airPol.forEach(function(pnt){
+                point = topojson.feature(airPol, pnt.geometry)
+                point['properties'] = pnt.properties
+                pointList.push(point)
+            });
+            points = pointList;
             }
+        }
 
-
-            window.addEventListener('resize', scale)
-            scale()
-            autorotate = d3.timer(rotate)
-
-        });
-
-    }
 
     loadCanvas(year)
     // Initialization
@@ -292,7 +318,5 @@ function loadAll(year) {
             .on('end', dragended)
         )
         .on('mousemove', mousemove)
-    current.exit().remove()
-    // current.exit().remove()
 
 }
