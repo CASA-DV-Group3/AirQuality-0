@@ -193,7 +193,7 @@ function loadData(cb) {
         cb(world, countries);
     });
 
-    d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
+    // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
     //
     // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
     //     if (error) throw error;
