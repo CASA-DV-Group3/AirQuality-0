@@ -57,8 +57,6 @@
 
         .map-overlay .button:hover {background-color: rgba(255, 255, 255, 0.3)}
 
-        .map-overlay .button:active {background-color: rgba(255, 255, 255, 0.3)}
-
         .map-overlay .radiobutton{
             font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
@@ -125,7 +123,7 @@
         container: 'map',
         style: 'mapbox://styles/uczlqju/cjv3rkko11j721fqr3s1xekl1',
         center: [-0.115, 51.515],
-        zoom: 13,
+        zoom: 14,
         maxZoom: 18,
         minZoom: 10,
         pitch: 60
@@ -141,7 +139,7 @@
         // Set global light properties which influence 3D layer shadows
         map.setLight({color: "#fff", intensity: 0.15, position: [1.15, 210, 30]});
         // Add standard navigation control
-        map.addControl(new mapboxgl.NavigationControl());
+        map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
         // Load the 3D employment hexagon layer as a fill-extrusion type
         map.addLayer({
@@ -153,9 +151,9 @@
             },
             'source-layer': 'MM_CentralLondonHeights', // name of tileset
             paint: {
-                'fill-extrusion-color': '#797979',
+                'fill-extrusion-color': '#a5a5a5',
                 'fill-extrusion-height': ['/', ['number', ['get', 'relh2'], 1], 1],  //expression that controls the extrusion height based on attribute
-                'fill-extrusion-opacity': 0.8,
+                'fill-extrusion-opacity': 1,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
                     duration: 1000,
                     delay: 0
@@ -184,7 +182,7 @@
                         [800, '#5e0e20']]
                 },
                 'fill-extrusion-height': layerHeight,  //expression that controls the extrusion height based on attribute
-                'fill-extrusion-opacity': 0.8,
+                'fill-extrusion-opacity': 0.7,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
                     duration: 1000,
                     delay: 0
@@ -286,4 +284,4 @@
 </script>
 
 </body>
-</html>
+</html></html>
