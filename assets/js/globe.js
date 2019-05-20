@@ -193,7 +193,10 @@ function loadData(cb) {
         cb(world, countries);
     });
 
+<<<<<<< HEAD
     // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
+=======
+>>>>>>> master
     //
     // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
     //     if (error) throw error;
@@ -204,11 +207,6 @@ function loadData(cb) {
         if (error) throw error;
         cb(airPolDeaths, countries);
     });
-
-    // d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
-    //     if (error) throw error;
-    //     cb(airPolDeaths, countries);
-    // });
 };
 
 
