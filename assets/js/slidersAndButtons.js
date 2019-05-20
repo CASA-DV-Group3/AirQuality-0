@@ -7,6 +7,18 @@ slider.on("slide", function(sliderValue) {
 });
 
 
+mymap.scrollWheelZoom.disable();
+
+// click to zoom
+mymap.on('dblclick', function() {
+    if (mymap.scrollWheelZoom.enabled()) {
+        mymap.scrollWheelZoom.disable();
+    }
+    else {
+        mymap.scrollWheelZoom.enable();
+    }
+});
+
 
 var quantileView = [];
 
