@@ -12,6 +12,7 @@ function loadAll(year) {
         d3.selectAll("globe").remove()
 
     }
+
     var year = year;
     document.getElementById('canvasid').innerHTML = '<canvas id="globe" style="height: 100%; width: 100%;"></canvas>'; // replaces the inner HTML of #someBox to a canvas
 
@@ -264,8 +265,6 @@ function loadAll(year) {
                 countryList = cList;
                 try {
                     land = topojson.feature(world, world.objects.land)
-                    // countries = topojson.feature(world, world.objects.countries)
-                    // countries is pre-defined in countries.js
                     countryList = cList
                 } catch (e) {
                     // this is for loading the point data
@@ -290,10 +289,6 @@ function loadAll(year) {
             let airPol = JSON.parse(localStorage.getItem("airPol"));
 
             land = topojson.feature(worldShp, worldShp.objects.land)
-            // countries = topojson.feature(world, world.objects.countries)
-            // countries is pre-defined in countries.js
-            // countryList = cList;
-            // this is for loading the point data
             airPol = getCurrentData(airPol, year); // subset the data
             let pointList = [];
             airPol.forEach(function(pnt){
