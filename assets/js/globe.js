@@ -17,7 +17,7 @@ var colorGraticule = 'rgba(204,204,204,0)';
 var colorCountry = 'rgba(1,0,9,0.2)';
 
 // year for data
-var year = 2017;
+// var year = 2017;
 
 // Handler
 
@@ -31,7 +31,6 @@ function leave(country) {
 }
 
 // Variables
-
 var current = d3.select('#current'),
     canvas = d3.select('#globe'),
     context = canvas.node().getContext('2d'),
@@ -251,39 +250,45 @@ function getCountry(event) {
     })
 }
 
-// Initialization
-setAngles()
-
-canvas
-    .call(d3.drag()
-        .on('start', dragstarted)
-        .on('drag', dragged)
-        .on('end', dragended)
-    )
-    .on('mousemove', mousemove)
-
-loadData(function(world, cList) {
-    try {
-        land = topojson.feature(world, world.objects.land)
-        // countries = topojson.feature(world, world.objects.countries)
-        // countries is pre-defined in countries.js
-        countryList = cList
-    } catch (e) {
-        // this is for loading the point data
-        world = getCurrentData(world, year); // subset the data
-        pointList = [];
-        world.forEach(function(pnt){
-            point = topojson.feature(world, pnt.geometry)
-            point['properties'] = pnt.properties
-            pointList.push(point)
-        });
-        points = pointList;
-    }
+function loadCanvas(year)
+{
+    year = year || 1990
+    // d3.select("canvas").remove();
+    loadData(function(world, cList) {
+        try {
+            land = topojson.feature(world, world.objects.land)
+            // countries = topojson.feature(world, world.objects.countries)
+            // countries is pre-defined in countries.js
+            countryList = cList
+        } catch (e) {
+            // this is for loading the point data
+            world = getCurrentData(world, year); // subset the data
+            pointList = [];
+            world.forEach(function(pnt){
+                point = topojson.feature(world, pnt.geometry)
+                point['properties'] = pnt.properties
+                pointList.push(point)
+            });
+            points = pointList;
+        }
 
 
-    window.addEventListener('resize', scale)
-    scale()
-    autorotate = d3.timer(rotate)
+        window.addEventListener('resize', scale)
+        scale()
+        autorotate = d3.timer(rotate)
 
-});
+    });
+
+    // Initialization
+    setAngles()
+
+    canvas
+        .call(d3.drag()
+            .on('start', dragstarted)
+            .on('drag', dragged)
+            .on('end', dragended)
+        )
+        .on('mousemove', mousemove)
+
+}
 
