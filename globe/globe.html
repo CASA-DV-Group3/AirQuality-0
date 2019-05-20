@@ -33,6 +33,7 @@
 
     slider.on("slide", function(sliderValue) {
     document.getElementById("globeSliderVal").textContent = sliderValue;
+    loadAll(sliderValue)
     });
 
     loadAll() // load canvas layer
