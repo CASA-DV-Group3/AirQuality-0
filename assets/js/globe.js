@@ -202,7 +202,7 @@ function loadData(cb) {
 
     d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
         if (error) throw error;
-        cb(aqiData, countries);
+        cb(airPolDeaths, countries);
     });
 
     // d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
