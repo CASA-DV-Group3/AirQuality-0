@@ -1,0 +1,1 @@
+['STATIONdata1905.geojson', 'STATIONdata1906.geojson', 'STATIONdata1907.geojson', 'STATIONdata1908.geojson', 'STATIONdata1909.geojson', 'STATIONdata1910.geojson', 'STATIONdata1912.geojson', 'STATIONdata1914.geojson', 'STATIONdata1915.geojson', 'STATIONdata1916.geojson', 'STATIONdata1920.geojson', 'STATIONdata1921.geojson']
