@@ -149,7 +149,7 @@ function getAPColor(d) {
             d > 60 ? '#5e5e5e'  :
                 d > 40 ? '#807e7d'  :
                     d > 20 ? '#aaaaaa'  :
-                        '#c6b9c8' ;
+                        '#fffffd' ;
 }
 
 function stroke(obj, color) {
