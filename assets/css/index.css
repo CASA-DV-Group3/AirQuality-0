@@ -17,3 +17,7 @@
     content: '\2601'; /*cloud unicode*/
     color: #000000;
 }
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    width: 350px;
+}

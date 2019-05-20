@@ -2,22 +2,6 @@
 * Contains all needed functions for the main leaflet maps
 */
 
-// TODO: prepare to remove this
-// function addControlPlaceholders(map) {
-//     var corners = map._controlCorners,
-//         l = 'leaflet-',
-//         container = map._controlContainer;
-//
-//     function createCorner(vSide, hSide) {
-//         var className = l + vSide + ' ' + l + hSide;
-//         corners[vSide + hSide] = L.DomUtil.create('div', className, container);
-//     }
-//
-//     createCorner('verticalcenter', 'left');
-//     createCorner('verticalcenter', 'right');
-// }
-
-
 // Function for mapping colors to the currency values returned from the API for each country
 function getColor(d) {
     return  d > 300 ? '#8e6464' :
@@ -49,8 +33,8 @@ function subsetAirQualityData(data, qv) {
     });
     return subsetData
 }
-var layerMarkers = L.layerGroup([]);
 
+var layerMarkers = L.layerGroup([]);
 
 // TODO: make transfer of load data functions
 function loadNewData() {
@@ -108,15 +92,29 @@ function loadAirQualityData(qVal) {
                 opacity: 1,
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
+            //TODO: chose better style
+            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['aqi'] + "'>The Graph Goes Here</div><br><button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>"
+            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup(markerPopup);
+            marker.on('click', onMarkerClick );
+            function onMarkerClick(e) {
+                var popup = e.target.getPopup();
+                var chart_div = document.getElementById("graphpopup");
+                popup.setContent( chart_div );
 
-            let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>Station ID: " + row['properties']['station'] +"The Air Quality is: "+row['properties']['aqi']+" AQI <br><button onclick='mymap.setView([51.1, 0.12], 6);';>A Button</button>Bar graph</div>");
+                let uniqId = $('#graphpopup > div')[0];
+                // console.log($('#graphpopup > div')[0]) // get all divs below
+                uniqId.innerHTML = ""
+                uniqId = "#" + uniqId.id.toString();
+
+                drawLineChart(14, "Shanghai", uniqId)
+            }
             layerMarkers.addLayer(marker);
         });
     });
     mymap.addLayer(layerMarkers);
 }
 
-function drawLineChart(date, cityname){
+function drawLineChart(date, cityname, divID){
     // parse the date / time
     var parseTime = d3.timeParse("%H");
 
@@ -154,7 +152,7 @@ function drawLineChart(date, cityname){
     }
 
 
-    var fields = ["aqi", "pm10", "pm25", "no2", "co", "so2", "o3"];
+    var fields = ["aqi"]//, "pm10", "pm25", "no2", "co", "so2", "o3"];
 
     // Check the time of data
     if (airQuality[0]["time"] === airQuality[1]["time"]){
@@ -166,12 +164,12 @@ function drawLineChart(date, cityname){
     airQuality.forEach(function(element){
         element["hour"] = parseTime(element["hour"]);
         element["aqi"] = +element["aqi"];
-        element["pm10"] = +element["pm10"];
-        element["pm25"] = +element["pm25"];
-        element["no2"] = +element["no2"];
-        element["co"] = +element["co"];
-        element["so2"] = +element["so2"];
-        element["o3"] = +element["o3"];
+        // element["pm10"] = +element["pm10"];
+        // element["pm25"] = +element["pm25"];
+        // element["no2"] = +element["no2"];
+        // element["co"] = +element["co"];
+        // element["so2"] = +element["so2"];
+        // element["o3"] = +element["o3"];
     });
 
     // Sort the data according to GMT(BST)
@@ -205,7 +203,7 @@ function drawLineChart(date, cityname){
             // append the svg object to the body of the page
             // appends a 'group' element to 'svg'
             // moves the 'group' element to the top left margin
-            var svg = d3.select("graphpopup").append("svg")
+            var svg = d3.select(divID).append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
