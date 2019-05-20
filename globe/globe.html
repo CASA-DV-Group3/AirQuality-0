@@ -10,7 +10,10 @@
 <body>
 <div style="height: 90vh;">
 <h2 id="current"></h2>
-<canvas id="globe" style="height: 100%; width: 100%;"></canvas>
+<div id="canvasid">
+    <canvas id="globe" style="height: 100%; width: 100%;"></canvas>
+</div>
+<div id="refdiv"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider@0.1.2/build/d3-simple-slider.js"></script> <!--sliders-->
@@ -31,7 +34,7 @@
     document.getElementById("globeSliderVal").textContent = sliderValue;
     });
 
-    loadCanvas() // load canvas layer
+    loadAll() // load canvas layer
     </script>
 
 </div>
