@@ -1,10 +1,11 @@
 // adapted from: https://jorin.me/d3-canvas-globe-hover/
 // Configuration
 
+// GLOBALS
 var countries,
     points,
-    countryList;
-var first = true;
+    countryList,
+    first = true;
 function loadAll(year) {
     if (document.getElementById('globe')) {
         d3.selectAll("canvas").remove()
@@ -258,10 +259,9 @@ function loadAll(year) {
     function loadCanvas(year)
     {
         year = year || 1990;
-        // d3.select("canvas").remove();
         if (first) {
             loadData(function(world, cList) {
-                countryList = cList
+                countryList = cList;
                 try {
                     land = topojson.feature(world, world.objects.land)
                     // countries = topojson.feature(world, world.objects.countries)
@@ -270,7 +270,7 @@ function loadAll(year) {
                 } catch (e) {
                     // this is for loading the point data
                     world = getCurrentData(world, year); // subset the data
-                    pointList = [];
+                    let pointList = [];
                     world.forEach(function(pnt){
                         point = topojson.feature(world, pnt.geometry)
                         point['properties'] = pnt.properties
@@ -279,7 +279,6 @@ function loadAll(year) {
                     points = pointList;
                 }
 
-
                 window.addEventListener('resize', scale)
                 scale()
                 autorotate = d3.timer(rotate)
@@ -287,8 +286,8 @@ function loadAll(year) {
             });
 
         } else {
-            var worldShp = JSON.parse(localStorage.getItem("worldShape"));
-            var airPol = JSON.parse(localStorage.getItem("airPol"));
+            let worldShp = JSON.parse(localStorage.getItem("worldShape"));
+            let airPol = JSON.parse(localStorage.getItem("airPol"));
 
             land = topojson.feature(worldShp, worldShp.objects.land)
             // countries = topojson.feature(world, world.objects.countries)
@@ -296,18 +295,19 @@ function loadAll(year) {
             // countryList = cList;
             // this is for loading the point data
             airPol = getCurrentData(airPol, year); // subset the data
-            pointList = [];
+            let pointList = [];
             airPol.forEach(function(pnt){
                 point = topojson.feature(airPol, pnt.geometry)
                 point['properties'] = pnt.properties
                 pointList.push(point)
             });
             points = pointList;
+
+            window.addEventListener('resize', scale)
+            scale()
+            autorotate = d3.timer(rotate)
             }
-        window.addEventListener('resize', scale)
-        scale()
-        autorotate = d3.timer(rotate)
-        first = false
+
         }
 
     loadCanvas(year)
