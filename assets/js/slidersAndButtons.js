@@ -1,12 +1,3 @@
-var slider = new Slider("#globeSlider", {step: 1,
-    min: 1990,
-    max: 2017});
-
-slider.on("slide", function(sliderValue) {
-    document.getElementById("globeSliderVal").textContent = sliderValue;
-});
-
-
 mymap.scrollWheelZoom.disable();
 
 // click to zoom

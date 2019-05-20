@@ -8,33 +8,30 @@
     <script src="../assets/libs/versor.js"></script>
 </head>
 <body>
+<div style="height: 90vh;">
 <h2 id="current"></h2>
-<canvas id="globe"></canvas>
+<canvas id="globe" style="height: 100%; width: 100%;"></canvas>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider@0.1.2/build/d3-simple-slider.js"></script> <!--sliders-->
 <script src="../assets/js/globe.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
+</div>
+<div style="height: 10vh; text-align: center">
+    <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal">1990</span><br>
+    <input id="globeSlider" type="text" data-slider-handle="custom"/>
+    <link rel="stylesheet" href="../assets/css/index.css"/>
+    <script>
+    var slider = new Slider("#globeSlider", {step: 1,
+    min: 1990,
+    max: 2017});
 
-<controls>
-<p>Select a Year</p>
-<input id="rotation" type="range" min="1990" max="2017" step="1" value="2017" style="width: 50%;"/>
-</controls>
-
-<style>
-    controls {
-    width:220px;
-    position: absolute;
-    padding:10px;
-    }
-</style>
-
-<script>
-    // Events for sliders and button
-    // TODO add to globe.js
-    document.getElementById("rotation").addEventListener("change", function() {
-        var chosenYear = this.value;
-        console.log(this.value)
+    slider.on("slide", function(sliderValue) {
+    document.getElementById("globeSliderVal").textContent = sliderValue;
     });
-</script>
+    </script>
+
+</div>
 </body>
 </html>
