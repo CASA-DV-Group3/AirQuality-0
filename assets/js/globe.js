@@ -58,7 +58,7 @@ function loadAll(year) {
         land,
         countryList, pointList,
         autorotate, now, diff, rotation,
-        currentCountry, currentPoint;
+        currentCountry;
 
     var geoGenerator = d3.geoPath()
         .projection(projection)
@@ -181,11 +181,6 @@ function loadAll(year) {
         lastTime = now
     }
 
-    function getYear() {
-        year = document.getElementById("globeSliderVal").textContent
-        return year
-    }
-
     function getCurrentData(data, year) {
         let returnData = [];
         data["features"].forEach(function(row){
@@ -202,12 +197,6 @@ function loadAll(year) {
             if (error) throw error;
             cb(world, countries);
         });
-
-        //
-        // d3.json('../assets/data/APIdata.geojson', function(error, aqiData) {
-        //     if (error) throw error;
-        //     cb(aqiData, countries);
-        // });
 
         d3.json('../assets/data/airpollutionDeaths.geojson', function(error, airPolDeaths) {
             if (error) throw error;
@@ -263,7 +252,7 @@ function loadAll(year) {
 
     function loadCanvas(year)
     {
-        year = year || 1990
+        year = year || 1990;
         // d3.select("canvas").remove();
         loadData(function(world, cList) {
             try {
@@ -292,7 +281,7 @@ function loadAll(year) {
 
     }
 
-    loadCanvas(1990)
+    loadCanvas(year)
     // Initialization
     setAngles()
 
@@ -303,5 +292,7 @@ function loadAll(year) {
             .on('end', dragended)
         )
         .on('mousemove', mousemove)
+    current.exit().remove()
+    // current.exit().remove()
 
 }

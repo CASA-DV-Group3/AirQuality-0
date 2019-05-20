@@ -8,7 +8,7 @@
     <script src="../assets/libs/versor.js"></script>
 </head>
 <body>
-<div style="height: 90vh;">
+<div style="height: 80vh;">
 <h2 id="current"></h2>
 <div id="canvasid">
     <canvas id="globe" style="height: 100%; width: 100%;"></canvas>
@@ -21,7 +21,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
 </div>
-<div style="height: 10vh; text-align: center">
+<br><br><br>
+<div style="height: 10vh; text-align: center" class="text-dark">
     <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal">1990</span><br>
     <input id="globeSlider" type="text" data-slider-handle="custom"/>
     <link rel="stylesheet" href="../assets/css/index.css"/>
@@ -32,6 +33,7 @@
 
     slider.on("slide", function(sliderValue) {
     document.getElementById("globeSliderVal").textContent = sliderValue;
+    loadAll(sliderValue)
     });
 
     loadAll() // load canvas layer
