@@ -85,7 +85,7 @@
         <iframe id="globe" src="globe/globe.html" height="80%" width="100%" frameBorder="10px" scrolling="no"></iframe>
 <!--        <h3 class="text-dark">Control Panel</h3>-->
         <!-- TODO sort this slider to update the map -->
-        <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal"></span><br>
+        <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal">1990</span><br>
         <input id="globeSlider" type="text" data-slider-handle="custom"/>
 
     </div>
@@ -94,7 +94,7 @@
         <div id="map" style="height: 100vh; margin-top: 0;"></div>
 
         <script>
-            // script for initalising th map
+            // script for initialising th map
             // set max bounds
             var bounds = L.latLngBounds(L.latLng(-90.0, 180.227), L.latLng(90.0, -180.125));
             var mymap = L.map('map', {maxBounds:bounds}).setView([34, 24], 2);
