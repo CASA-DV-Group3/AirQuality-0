@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>Display a map</title>
+    <title>Street View</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
@@ -33,7 +33,7 @@
             border: none;
             width: 100%;
             display: block;
-            padding-bottom: 10px;
+            padding: 0px 10px 10px 10px;
         }
 
         .map-overlay .bottonlist{
@@ -50,9 +50,8 @@
             padding: 5px;
             text-align: left;
             text-decoration: none;
-            display: inline-block;
-            font: inherit;
-            font-size: 16px;
+            display: block;
+            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
             cursor: pointer;
         }
 
@@ -61,13 +60,12 @@
         .map-overlay .button:active {background-color: rgba(255, 255, 255, 0.3)}
 
         .map-overlay .radiobutton{
-            font: inherit;
+            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
 
         .map-overlay h2 {
             color: #eaeaea;
             font-size: 24px;
-            color: #ffffff;
             line-height: 24px;
             display: block;
             margin: 0 0 10px;
@@ -84,7 +82,7 @@
         }
 
         .map-overlay label {
-            font: 16px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
             color: #ffffff;
             vertical-align: bottom;
             margin: 0;
@@ -126,11 +124,11 @@
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/uczlqju/cjv3rkko11j721fqr3s1xekl1',
-        center: [-0.12, 51.51],
+        center: [-0.115, 51.515],
         zoom: 13,
         maxZoom: 18,
         minZoom: 10,
-        pitch: 30,
+        pitch: 60
     });
 
 
@@ -158,7 +156,7 @@
                 'fill-extrusion-height': ['/', ['number', ['get', 'relh2'], 1], 1],  //expression that controls the extrusion height based on attribute
                 'fill-extrusion-opacity': 0.8,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
-                    duration: 10,
+                    duration: 1000,
                     delay: 0
                 }
             }
@@ -185,7 +183,7 @@
                 'fill-extrusion-height': ['/', ['number', ['get', layerField], 0.1], 0.1],  //expression that controls the extrusion height based on attribute
                 'fill-extrusion-opacity': 0.8,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
-                    duration: 10,
+                    duration: 1000,
                     delay: 0
                 }
             }
