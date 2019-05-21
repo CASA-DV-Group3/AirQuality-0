@@ -16,68 +16,44 @@ var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys
     {year: 1948, text:"Donora smog in Pennsylvania, USA.  Nearly half the population of the small town were affected and twenty died from the smog of hydrogen fluoride, sulphur dioxide and other toxins."},
     {year: 1930, text:"Sixty people died in the December smog covering the valley of factories lining the River Meuse in Belgium. \n " +
             "It 'led to the first scientific proof for the potential of atmospheric pollution to cause deaths.'\n" +
-            "Belgium did not introduce air quality legislation until it was created by the EU."},];
+            "Belgium did not introduce air quality legislation until it was created by the EU."},]
 
-var firstPageLine = [{year:"", text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."},
-    {year: 2019, text: "Second inquest into death of Ella Kissi-Debrah in London reveals reluctant action despite awareness," +
-            "'There is momentum for change and it is fundamental that air pollution is brought down to within lawful limits.'"},
-    {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the 'airpocalypse' the previous year caused by the extra smoke and chemicals."}];
+var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
-var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
-function getHomePageStory() {
-    document.getElementById("buttonbar").style.display = "block";
-    document.getElementById("timePoint").style.display = "block";
+function getIntro() {
     var index = 0;
-    document.getElementById('page1_innertext').innerHTML = firstPageLine[index].text;
-
-    document.getElementById("next").addEventListener('click', function(e) {
-        if (index === 2){
-            document.getElementById("timePoint").style.display = "none";
-            document.getElementById('page1_innertext').innerHTML = originalText;
-            document.getElementById("buttonbar").style.display = "none";
-            return
-        }
-        else{
-            index = index + 1;
-            document.getElementById('timePoint').innerHTML = firstPageLine[index].year;
-            document.getElementById('page1_innertext').innerHTML = firstPageLine[index].text;
-        }
-    })
-
-    document.getElementById("prev").addEventListener('click', function(e){
-        if (index === 0){
-            document.getElementById("timePoint").style.display = "none";
+    document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
+    document.getElementById("buttonbar").style.display = "block";
+    document.getElementById("prev").addEventListener('click', function(e) {
+        if (index === 0) {
             document.getElementById("buttonbar").style.display = "none";
             document.getElementById('page1_innertext').innerHTML = originalText;
             return
         }
-        else{
-            index = index - 1;
-            document.getElementById('timePoint').innerHTML = firstPageLine[index].year;
-            document.getElementById('page1_innertext').innerHTML = firstPageLine[index].text;
-        }
+    });
 
-    })
 }
 
-function getHistory() {
+
+
+function getStory() {
     document.getElementById("buttonbar").style.display = "block";
     document.getElementById("timePoint").style.display = "block";
     var index = 0;
-    document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
+    document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
 
     document.getElementById("next").addEventListener('click', function(e) {
         if (index === 12){
             document.getElementById("timePoint").style.display = "none";
-            document.getElementById('page2_innertext').innerHTML = originalText;
+            document.getElementById('page1_innertext').innerHTML = originalText;
             document.getElementById("buttonbar").style.display = "none";
             return
         }
         else{
             index = index + 1;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
+            document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
         }
     })
 
@@ -85,13 +61,13 @@ function getHistory() {
         if (index === 0){
             document.getElementById("timePoint").style.display = "none";
             document.getElementById("buttonbar").style.display = "none";
-            document.getElementById('page2_innertext').innerHTML = originalText;
+            document.getElementById('page1_innertext').innerHTML = originalText;
             return
         }
         else{
             index = index - 1;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
+            document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
         }
 
     })
