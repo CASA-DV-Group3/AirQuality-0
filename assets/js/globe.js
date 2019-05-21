@@ -57,6 +57,22 @@ function loadAll(year) {
     function enter(country) {
 
         current.text(country && country.properties.name || 'Please Hover Over a Country')
+        let countryName = country.properties.name;
+        let airPol = JSON.parse(localStorage.getItem("airPol"));
+        let countrySubset = []
+        airPol.features.forEach(function(val) {
+            if (val.properties.country == countryName) {
+                countrySubset.push(val)
+            }
+        });
+        plotCountryAirPol(countrySubset);
+
+    }
+
+    function plotCountryAirPol(data) {
+        document.getElementById('current').innerHTML = "Hello"
+
+
     }
 
     function leave(country) {
