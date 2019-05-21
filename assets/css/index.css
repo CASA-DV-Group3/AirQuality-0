@@ -29,10 +29,12 @@
 }
 
 .line {
-    stroke-width: 3;
-    stroke: #ffab00;
+    stroke-width: 2;
+    stroke: rgba(80, 110, 173, 0.8);
     fill: none;
+    shape-rendering: crispEdges;
 }
+
 
 
 /*.axis path,*/

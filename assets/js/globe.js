@@ -78,7 +78,7 @@ function loadAll(year) {
         // set the dimensions and margins of the graph
         var margin = {top: 5, right: 5, bottom: 50, left: 40},
             width = 300 - margin.left - margin.right,
-            height = 130 - margin.top - margin.bottom;
+            height = 170 - margin.top - margin.bottom;
 
         // parse the date / time
         var parseTime = d3.timeParse("%Y");
@@ -113,6 +113,7 @@ function loadAll(year) {
         // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.date; }));
         y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
+        y.domain([0,140])
         // Add the valueline path.
         svg.append("path")
             .data([data])
@@ -146,9 +147,9 @@ function loadAll(year) {
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .style("font-size", "12px")
+            .style("font-size", "10px")
             .attr("font-family", "Saira Condensed")
-            .text("Deaths per 1000");
+            .text("Deaths per 1000 people");
 
     }
 
