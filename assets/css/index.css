@@ -21,3 +21,9 @@
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
     width: 350px;
 }
+
+
+#myDiv1, #myDiv2, #myDiv3 {
+ display: none;
+ text-align: center;
+}

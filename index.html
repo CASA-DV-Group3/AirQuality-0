@@ -35,8 +35,8 @@
     <!-- Story -->
     <script src="assets/js/stories.js"></script>
 
+
 </head>
-<body>
 <div class="header">
     <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" style="padding-top: 5px;" color-on-scroll="100">
             <div class="collapse navbar-collapse">
@@ -45,13 +45,13 @@
                     <li data-menuanchor="page2"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
                     <li data-menuanchor="page3"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
                     <li data-menuanchor="page4"><a href="#page4" title="Street Map"><img src="assets/img/street.png"></a></li>
-<!--                    <li data-menuanchor="about" onclick="on()"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>-->
-                    <li onclick="on()"><img src="assets/img/info-button.png" title="About"></li>
-<!--                    <li ><img src="media/icon_7.png" title="About"></li>-->
+                    <li data-menuanchor="about" onclick="on()"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>
+<!--                    <li onclick="on()" href="#about"><img src="assets/img/info-button.png" title="About"></li>-->
                 </ul>
             </div>
     </nav>
 </div>
+
 <div class="section-wrapper">
     <div id="page1" class="section"style="padding: 0px 0" data-hash="a">
             <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/cover-02.jpg')">
@@ -69,10 +69,37 @@
                 </div>
         </div>
     </div>
+
+    <div class="section"  style="display: block; vertical-align: middle;">
+        <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
+            <br>
+        </div>
+
+
+    </div>
+
+
     <div id="page2" style="height: 100vh; padding: 0px 0;" class="section" data-hash="b">
         <iframe id="globe" src="globe/globe.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>
 
     </div>
+    <div class="section"  style="display: block; vertical-align: middle;">
+        <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
+            <br>
+        </div>
+    </div>
+
+
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <div id="page3" class="section" style="height: 100vh; padding: 0px 0;" data-hash="c">
         <div id="map" style="height: 100vh;  margin-top: 0;"></div>
@@ -94,7 +121,21 @@
             }).addTo(mymap);
 
         </script>
+
+        <script src="assets/js/mapp5.js"></script>
     </div>
+    <div class="section text-dark"  style="display: block; vertical-align: middle;">
+        <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
+            <br>
+            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
+            <br>
+        </div>
+    </div>
+
+
     <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
         <iframe id="streetMap" src="street/2.5D_centralLondon.html" height="100%" width="100%"  scrolling="no"></iframe>
     </div>
@@ -145,3 +186,6 @@
 
 </body>
 </html>
+
+
+

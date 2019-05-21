@@ -79,7 +79,7 @@ function loadAirQualityData(qVal) {
     // create marker layer group
     layerMarkers = L.layerGroup([]);
     qVal.forEach(function (qv) {
-        subsetData = subsetAirQualityData(geojsonDATA, qv);
+        subsetData  = subsetAirQualityData(geojsonDATA, qv);
 
         subsetData.forEach(function(row){
             let lat = Number(row['geometry']['coordinates'][1]);
