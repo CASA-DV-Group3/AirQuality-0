@@ -244,7 +244,7 @@ function drawLineChart(date, uniqId, divID){
             // Add the X Axis
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));//.ticks(5).tickFormat(d3.timeFormat("%H")));
+                .call(d3.axisBottom(x).ticks(11).tickValues([0,1,2,3,4,5,6,7,8,9,10,11]).tickFormat(d3.format(".0f")));//.ticks(5).tickFormat(d3.timeFormat("%H")));
 
             // Add the Y Axis
             svg.append("g")
