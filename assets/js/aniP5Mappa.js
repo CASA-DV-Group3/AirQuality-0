@@ -95,12 +95,12 @@ function draw() {
     // draw time counter and background box on the Upper-Right
     fill(10, 200);
     rectMode(CORNERS);
-    rect(width-250, 0, width, 40);
+    rect(width-270, 0, width-20, 40);
     // rect(width*0, height*.90, width*.16, height);
     fill(255);
     textSize(20);
     textAlign(LEFT, CENTER);
-    text(data.features[484].properties.time, width-230, 20);
+    text(data.features[484].properties.time, width-250, 20);
 
     // plot the points
     for (let station of data.features) {
