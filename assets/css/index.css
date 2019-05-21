@@ -28,11 +28,43 @@
  text-align: center;
 }
 
-.line {
-    stroke-width: 2;
-    stroke: rgba(80, 110, 173, 0.8);
+/*.line {*/
+/*    stroke-width: 2;*/
+/*    stroke: rgba(80, 110, 173, 0.8);*/
+/*    fill: none;*/
+/*    shape-rendering: crispEdges;*/
+/*}*/
+
+
+.axis path,
+.axis line {
     fill: none;
+    stroke: #D4D8DA;
+    stroke-width: 2px;
     shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: #6F257F;
+    stroke-width: 5px;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus circle {
+    fill: #F1F3F3;
+    stroke: #6F257F;
+    stroke-width: 5px;
+}
+
+.hover-line {
+    stroke: #6F257F;
+    stroke-width: 2px;
+    stroke-dasharray: 3,3;
 }
 
 
