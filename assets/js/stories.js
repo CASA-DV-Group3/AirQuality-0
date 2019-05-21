@@ -18,7 +18,7 @@ var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys
             "It 'led to the first scientific proof for the potential of atmospheric pollution to cause deaths.'\n" +
             "Belgium did not introduce air quality legislation until it was created by the EU."},]
 
-var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
+var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getIntro();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
 
 function getIntro() {
