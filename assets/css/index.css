@@ -15,7 +15,7 @@
     line-height: 20px;
     font-size: 20px;
     content: '\2601'; /*cloud unicode*/
-    color: #000000;
+    color: #5a5a5a;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
