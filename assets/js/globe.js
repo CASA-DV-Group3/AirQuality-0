@@ -153,8 +153,8 @@ function loadAll(year) {
     }
 
     function leave(country) {
-        current.text('Please Hover Over a Country')
-        d3.select("#globePlot").selectAll("*").remove()
+        current.text(country && country.properties.name || 'Please Hover Over a Country')
+        // d3.select("#globePlot").selectAll("*").remove()
     }
 
     // Variables
