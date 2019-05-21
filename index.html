@@ -129,21 +129,21 @@
                 id: 'mapbox.dark'
             }).addTo(mymap);
 
-            L.Control.Watermark = L.Control.extend({
-                onAdd: function(map) {
-                    var img = L.DomUtil.create('img');
-                    img.src = 'assets/img/London-air-pollution-838x420.jpg';
-                    img.style.width = '200px';
-                    return img;
-                },
-                onRemove: function(map) {
-                    // Nothing to do here
-                }
-            });
-            L.control.watermark = function(opts) {
-                return new L.Control.Watermark(opts);
-            }
-            L.control.watermark({ position: 'bottomleft' }).addTo(mymap);
+            // L.Control.Watermark = L.Control.extend({
+            //     onAdd: function(map) {
+            //         var img = L.DomUtil.create('img');
+            //         img.src = 'assets/img/London-air-pollution-838x420.jpg';
+            //         img.style.width = '200px';
+            //         return img;
+            //     },
+            //     onRemove: function(map) {
+            //         // Nothing to do here
+            //     }
+            // });
+            // L.control.watermark = function(opts) {
+            //     return new L.Control.Watermark(opts);
+            // }
+            // L.control.watermark({ position: 'bottomleft' }).addTo(mymap);
 
         </script>
 
@@ -192,7 +192,7 @@
         <br/>
 
         <p>
-            <br/>Creators : Thomas Keel, Qiuwen, Ju, Zixin, Lyu, Jay Wilson
+            <br/>Creators : Thomas Keel, Qiuwen Ju, Zixin Lyu, Jay Wilson
             <br/>Map engine : <a href="https://www.mapbox.com/" target="_blank">Mapbox GL JS</a>
                                 <a href="https://www.leafletjs.com/" target="_blank">Leaflet JS</a>
 
