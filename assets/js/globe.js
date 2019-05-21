@@ -70,6 +70,7 @@ function loadAll(year) {
     }
 
     function plotCountryAirPol(data) {
+        d3.select("#globePlot").selectAll("*").remove()
         // document.getElementById('current').innerHTML = "Hello";
         // set the dimensions and margins of the graph
         var margin = {top: 5, right: 5, bottom: 50, left: 40},
@@ -89,7 +90,7 @@ function loadAll(year) {
             .y(function(d) { return y(d.properties.deaths_per1000); });
 
 
-        var svg = d3.select('#current').append("svg")
+        var svg = d3.select('#globePlot').append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -129,6 +130,7 @@ function loadAll(year) {
 
     function leave(country) {
         current.text('Please Hover Over a Country')
+        d3.select("#globePlot").selectAll("*").remove()
     }
 
     // Variables
