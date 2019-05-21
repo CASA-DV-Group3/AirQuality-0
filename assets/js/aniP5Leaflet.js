@@ -1,6 +1,5 @@
 
 // basemap variables
-var canvas;
 var animap;
 var bounds;
 var zoomLat = 36.4156;
@@ -51,21 +50,17 @@ function preload() {
 }
 
 function setup() {
-    // noCanvas();
-    // canvas = createCanvas(windowWidth, 200);
-    // canvas.addTo(animap);
-    // animap.overlay(canvas);
     // Create the base map
     bounds = L.latLngBounds(L.latLng(-90.0, 180.227), L.latLng(90.0, -180.125));
     animap = L.map('mapid', {
         maxBounds: bounds,
         maxZoom: 10,
-        minZoom: 2}).setView([zoomLat, zoomLng], zoomLevel); //[34, 24], 2
+        minZoom: 2}).setView([zoomLat, zoomLng], zoomLevel);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.dark',
-        accessToken: 'pk.eyJ1IjoidWNmbnpseSIsImEiOiJjanZ3c3U3ejcwM2h1NGFwbmw5dW5lMDV1In0.0MT4L1fn2EnAv2YIz65TfA'
+        accessToken: 'pk.eyJ1IjoidWNmbnpseSIsImEiOiJjanZ4emd0NDkwMXViM3ltbnludjRyNHFuIn0.HqhJ2fe_OAaO_opl87cZbg'
     }).addTo(animap);
     // Set up the zoom events
         // disable scrollWheelZoom
@@ -98,18 +93,14 @@ function setup() {
     // set up the color value
     color1 = color(color1);
     color2 = color(color2); // red, 200
-
-    // L.marker([51.5, -0.09]).addTo(mymap)
-    //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    //     .openPopup();
 }
 
 function draw() {
     // set the refresh rate of the draw()
-    frameRate(60); // refresh every 1/30 second (30 times in 1 second)
+    // frameRate(30); // refresh every 1/30 second (30 times in 1 second)
 
 
-    console.log(n)
+    console.log(n);
     data = datas[n];
     runCounter();// switch data in datas
 
