@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index.css"/>
+
+    <!-- Material Kit CSS -->
+    <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>History</title>
+    <script src="../assets/js/stories.js"></script>
+</head>
+<body>
+<div id="page2" class="section"style="padding: 0px 0" data-hash="a">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/cover-02.jpg')">
+<div class="container">
+    <div class="row">
+<div class="col-md-8 ml-auto mr-auto">
+    <div id="timePoint" class="title text-center" style="display: none"></div>
+    <div id="page2_innertext" class="brand text-center">
+        <h1>Invisible Cities</h1>
+        <h3 class="title text-center">World City Air Quality</h3>
+        <button type="button" onclick="getHistory();" class="btn btn-outline-info">Begin Story</button>
+    </div>
+    <div id="buttonbar" class="btn-bar" style="display:none">
+        <div id="sliderbuttons"><a id="prev" href="#" ><</a><a id="next" href="#" >></a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

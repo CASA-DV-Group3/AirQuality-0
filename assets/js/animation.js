@@ -48,6 +48,18 @@ function preload() {
     data09 = loadJSON('../assets/data/stationData/STATIONdata2008_merged.geojson');
     data10 = loadJSON('../assets/data/stationData/STATIONdata2009_merged.geojson');
     data11 = loadJSON('../assets/data/stationData/STATIONdata2010_merged.geojson');
+    let datas = [data01,data02,data03,data04,data05,data06,data07,data08,data09,data10,data11];
+    for (let n in datas)
+    for (let station of data.features) {
+        let aqi = station.properties.aqi;
+        let r = sqrt(aqi/3);
+        let colorp = lerpColor(color1,color2,aqi/200).toString('#rrggbb');
+        L.circleMarker([station.geometry.coordinates[1], station.geometry.coordinates[0]], {
+            radius: r,
+            stroke: false,
+            fillColor: colorp,
+            fillOpacity: 0.5}).addTo(markerLayer);
+    }
 }
 
 function setup() {
@@ -109,7 +121,6 @@ function draw() {
     frameRate(60); // refresh every 1/30 second (30 times in 1 second)
 
 
-    console.log(n)
     data = datas[n];
     runCounter();// switch data in datas
 
