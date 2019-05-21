@@ -212,8 +212,8 @@ function drawLineChart(date, uniqId, divID){
 
             // define the line
             var valueline = d3.line()
-                .x(function(d) { console.log(d['hour']); return x(d['hour']); })
-                .y(function(d) { console.log(d[contaminant]); return y(d[contaminant]); });
+                .x(function(d) { return x(d['order']); })
+                .y(function(d) { return y(d[contaminant]); });
 
             // append the svg object to the body of the page
             // appends a 'group' element to 'svg'
@@ -227,7 +227,7 @@ function drawLineChart(date, uniqId, divID){
 
 
             // Scale the range of the data
-            x.domain(d3.extent(airQuality, function(element) { return element["hour"]; }));
+            x.domain(d3.extent(airQuality, function(element) { console.log(element['hour']); return element["order"]; }));
             y.domain([0, d3.max(airQuality, function(element) { return element[contaminant]; })]);
 
             // Add the valueline path.
@@ -246,12 +246,12 @@ function drawLineChart(date, uniqId, divID){
                 .call(d3.axisLeft(y));
 
             // Add tags to axis
-            //svg.append("text")
-            //.attr("transform",
-            //"translate(" + (width/2) + " ," +
-            //(height + margin.top + 20) + ")")
-            //.style("text-anchor", "middle")
-            //.text("Time");
+            svg.append("text")
+            .attr("transform",
+            "translate(" + (width/2) + " ," +
+            (height + margin.top + 20) + ")")
+            .style("text-anchor", "middle")
+            .text("Time");
 
             svg.append("text")
                 .attr("transform", "rotate(-90)")

@@ -27,3 +27,9 @@
  display: none;
  text-align: center;
 }
+
+.line {
+    stroke-width: 3;
+    stroke: #ffab00;
+    fill: none;
+}
