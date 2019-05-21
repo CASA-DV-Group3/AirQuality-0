@@ -36,24 +36,24 @@ function getIntro() {
 }
 
 
-
+var storyText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button class='btn btn-outline-danger' type=\"button\" onclick=\"getStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 function getStory() {
     document.getElementById("buttonbar").style.display = "block";
     document.getElementById("timePoint").style.display = "block";
     var index = 0;
-    document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
+    document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
 
     document.getElementById("next").addEventListener('click', function(e) {
-        if (index === 12){
+        if (index === storyLine.length){
             document.getElementById("timePoint").style.display = "none";
-            document.getElementById('page1_innertext').innerHTML = originalText;
+            document.getElementById('page2_innertext').innerHTML = storyText;
             document.getElementById("buttonbar").style.display = "none";
             return
         }
         else{
             index = index + 1;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
+            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
         }
     })
 
@@ -61,13 +61,13 @@ function getStory() {
         if (index === 0){
             document.getElementById("timePoint").style.display = "none";
             document.getElementById("buttonbar").style.display = "none";
-            document.getElementById('page1_innertext').innerHTML = originalText;
+            document.getElementById('page2_innertext').innerHTML = storyText;
             return
         }
         else{
             index = index - 1;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page1_innertext').innerHTML = storyLine[index].text;
+            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
         }
 
     })
