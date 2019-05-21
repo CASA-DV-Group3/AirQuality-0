@@ -77,10 +77,10 @@ function loadAll(year) {
             height = 130 - margin.top - margin.bottom;
 
         // parse the date / time
-        var parseTime = d3.timeParse("%y");
+        var parseTime = d3.timeParse("%Y");
 
         // set the ranges
-        var x = d3.scaleTime().range([0, width]);
+        var x = d3.scaleLinear().range([0, width])
         var y = d3.scaleLinear().range([height, 0]);
 
         // define the line
@@ -99,8 +99,9 @@ function loadAll(year) {
 
 
         data.forEach(function(d) {
-            console.log(d)
-            d.date = parseTime(d.properties.year);
+            // d.date = parseTime(d.properties.year);
+            // d.date = +d.properties.year;
+            d.date = +d.properties.year;
             d.deaths = +d.properties.deaths_per1000;
         });
 
@@ -108,7 +109,6 @@ function loadAll(year) {
         // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.date; }));
         y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
-        console.log(x,y)
         // Add the valueline path.
         svg.append("path")
             .data([data])
@@ -116,13 +116,14 @@ function loadAll(year) {
             .attr("d", valueline);
 
         // Add the X Axis
-        svg.append("g")
+        var xaxis = svg.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0f")));//.tickValues([1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]);;
+
 
         // Add the Y Axis
         svg.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y).ticks(8));
 
     }
 

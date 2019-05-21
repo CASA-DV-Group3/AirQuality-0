@@ -117,7 +117,7 @@ function loadAirQualityData(qVal) {
 
 function drawLineChart(date, uniqId, divID){
     // parse the date / time
-    var parseTime = d3.timeParse("%H:%M:%S");
+    var parseTime = d3.timeParse("%B %d, %Y");
     var formatTime = d3.timeFormat("%H:%M");
 
     // Get the data
@@ -241,15 +241,14 @@ function drawLineChart(date, uniqId, divID){
                 .data([airQuality])
                 .attr("class", "line")
                 .attr("d", valueline);
-
             // Add the X Axis
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));
+                .call(d3.axisBottom(x));//.ticks(5).tickFormat(d3.timeFormat("%H")));
 
             // Add the Y Axis
             svg.append("g")
-                .call(d3.axisLeft(y));
+                .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0f")));
 
             // Add tags to axis
             svg.append("text")

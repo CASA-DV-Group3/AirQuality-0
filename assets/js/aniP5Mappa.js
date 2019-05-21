@@ -88,7 +88,6 @@ function draw() {
     // set the refresh rate of the draw()
     // frameRate(30); // refresh every 1/30 second (30 times in 1 second)
 
-    console.log(n);
     data = datas[n];
     runCounter(5);// switch data in datas
 
