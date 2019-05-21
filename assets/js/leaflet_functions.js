@@ -70,7 +70,7 @@ function loadNewData() {
 function loadAirQualityData(qVal) {
     // qval is a list of quantile values based on the buttons that have been clicked
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/aqi_shape_q.geojson', false);
+    xhr.open('GET', 'assets/data/stationData/STATIONdata1904_merged.geojson', false);
     xhr.send();
     let geojsonDATA = JSON.parse(xhr.responseText);
     var subsetData;
@@ -94,8 +94,9 @@ function loadAirQualityData(qVal) {
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
             //TODO: chose better style
-            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['aqi'] + "'>The Graph Goes Here</div><br><button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>"
+            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['id'] + "'>The Graph Goes Here</div><br><button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>"
             let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup(markerPopup);
+            let uniqueIDNumber = row['properties']['id'];
             marker.on('click', onMarkerClick );
             function onMarkerClick(e) {
                 var popup = e.target.getPopup();
@@ -106,8 +107,8 @@ function loadAirQualityData(qVal) {
                 // console.log($('#graphpopup > div')[0]) // get all divs below
                 uniqId.innerHTML = "Loading 24hr graph for this station"
                 uniqId = "#" + uniqId.id.toString();
-
-                drawLineChart(14, "Shanghai", uniqId)
+                console.log(uniqId)
+                drawLineChart(20, uniqueIDNumber, uniqId)
             }
             layerMarkers.addLayer(marker);
         });
@@ -115,16 +116,17 @@ function loadAirQualityData(qVal) {
     mymap.addLayer(layerMarkers);
 }
 
-function drawLineChart(date, cityname, divID){
+function drawLineChart(date, uniqId, divID){
     // parse the date / time
-    var parseTime = d3.timeParse("%H");
+    var parseTime = d3.timeParse("%H:%M:%S");
+    var formatTime = d3.timeFormat("%H:%M");
 
     // Get the data
     var airQuality = [];
 
     // Read in all records of an assigned date
-    for (let hour=1; hour <24; hour+=2 ){
-        let H = hour.toString();
+    for (var i=0; i <11; i++ ){
+        let H = i.toString();
         let D = date.toString();
         if(H.length < 2){
             H = "0" + H;
@@ -136,7 +138,8 @@ function drawLineChart(date, cityname, divID){
         // define the file name
         // Change the path when necessary
         // Attention: use "\\" instead of "\"
-        let jsonfilename = "assets/data/cityData/APIdata"+ D + H + ".geojson";
+        let jsonfilename = "assets/data/stationData/STATIONdata"+ D + H + "_merged.geojson";
+
         let xhr = new XMLHttpRequest();
         xhr.open('GET', jsonfilename, false);
         xhr.send();
@@ -145,11 +148,21 @@ function drawLineChart(date, cityname, divID){
         //if (error) throw error;
         //})
         geojsonData["features"].forEach(function(row){
-            if (row["properties"]["city"] === cityname) {
-                row["properties"]["hour"] = hour;
+            if (row["properties"]["id"] === uniqId) {
+                let strList = row["properties"]["time"].split("T");
+                row["properties"]["hour"] = strList[1];
+                row["properties"]["order"] = i;
                 airQuality.push(row["properties"]);
             }
         });
+    };
+    console.log(airQuality)
+
+
+    // a error report
+    var errorMassage = "The historical data of this city is not available.";
+    if (airQuality.length === 0){
+        return errorMassage;
     }
 
 
@@ -157,13 +170,13 @@ function drawLineChart(date, cityname, divID){
 
     // Check the time of data
     if (airQuality[0]["time"] === airQuality[1]["time"]){
-        var errorMassage = "The historical data of this city is not available.";
         return errorMassage;
     }
 
     // format the data
     airQuality.forEach(function(element){
-        element["hour"] = parseTime(element["hour"]);
+        var T = parseTime(element["hour"]);
+        element["hour"] = formatTime(T);
         element["aqi"] = +element["aqi"];
         // element["pm10"] = +element["pm10"];
         // element["pm25"] = +element["pm25"];
@@ -175,8 +188,8 @@ function drawLineChart(date, cityname, divID){
 
     // Sort the data according to GMT(BST)
     airQuality.sort(function(a, b){
-        return a["hour"]-b["hour"];
-    })
+        return a["order"]-b["order"];
+    });
 
     // Creat chart for every contaminant
     for (let i=0; i<fields.length; i++){
@@ -184,6 +197,7 @@ function drawLineChart(date, cityname, divID){
         if (airQuality[0][contaminant] < 0
             && airQuality[1][contaminant] < 0
             && airQuality[0][contaminant] === airQuality[1][contaminant] ){
+
         }
 
         else{
@@ -198,8 +212,8 @@ function drawLineChart(date, cityname, divID){
 
             // define the line
             var valueline = d3.line()
-                .x(function(d) { return x(d.hour); })
-                .y(function(d) { return y(d[contaminant]); });
+                .x(function(d) { console.log(d['hour']); return x(d['hour']); })
+                .y(function(d) { console.log(d[contaminant]); return y(d[contaminant]); });
 
             // append the svg object to the body of the page
             // appends a 'group' element to 'svg'
