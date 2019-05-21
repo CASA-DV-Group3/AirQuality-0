@@ -45,7 +45,9 @@
                     <li data-menuanchor="page2"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
                     <li data-menuanchor="page3"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
                     <li data-menuanchor="page4"><a href="#page4" title="Street Map"><img src="assets/img/street.png"></a></li>
-                    <li data-menuanchor="page5"><a href="#page5" title="About"><img src="assets/img/info-button.png"></a></li>
+<!--                    <li data-menuanchor="about" onclick="on()"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>-->
+                    <li onclick="on()"><img src="assets/img/info-button.png" title="About"></li>
+<!--                    <li ><img src="media/icon_7.png" title="About"></li>-->
                 </ul>
             </div>
     </nav>
@@ -96,12 +98,35 @@
     <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
         <iframe id="streetMap" src="street/2.5D_centralLondon.html" height="100%" width="100%"  scrolling="no"></iframe>
     </div>
-    <div id="page5" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
-        About
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about" onclick="off()">
+    <div id="aboutText">
+        <h3>London Invisible Cities</h3>
+        <br/>
+
+        <p>
+            <br/>Creators : Thomas Keel, Qiuwen, Ju, Zixin, Lyu, Jay Wilson
+            <br/>Map engine : <a href="https://www.mapbox.com/" target="_blank">Mapbox GL JS</a>
+                                <a href="https://www.leafletjs.com/" target="_blank">Leaflet JS</a>
+
+                <br/>Github : <a href="https://github.com/CASA-DV-Group3/AirQuality-0.github.io" target="_blank">@CASA-DV-Group3</a>
+            <br/>
+            <br/>@ 2019 CASA, University College London</p>
     </div>
+
 </div>
-<div class="footer">
-</div>
+
+<!-- ABOUT/CLICK EVENTS -->
+<script>
+    function on() {
+        document.getElementById("about").style.display = "block";
+    }
+    function off() {
+        document.getElementById("about").style.display = "none";
+    }
+</script>
 
 <script src="assets/js/slidersAndButtons.js"></script>
 
@@ -109,7 +134,7 @@
     // TODO: change to dom content loaded
     var ee = new EventEmitter();
     $.smartscroll({
-        mode: "set",
+        mode: "vp",
         eventEmitter: ee,
         // initialScroll: true,
         sectionScroll: true
