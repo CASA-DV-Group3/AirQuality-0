@@ -83,11 +83,10 @@ function loadAll(year) {
         var x = d3.scaleTime().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 
-
         // define the line
         var valueline = d3.line()
-            .x(function(d) { return x(d.year); })
-            .y(function(d) { return y(d.deaths_per1000); });
+            .x(function(d) { return x(d.properties.year); })
+            .y(function(d) { return y(d.properties.deaths_per1000); });
 
 
         var svg = d3.select('#current').append("svg")
@@ -100,14 +99,16 @@ function loadAll(year) {
 
 
         data.forEach(function(d) {
-            d.date = parseTime(d.year);
-            d.deaths = +d.deaths_per1000;
+            console.log(d)
+            d.date = parseTime(d.properties.year);
+            d.deaths = +d.properties.deaths_per1000;
         });
+
 
         // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.date; }));
         y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
-
+        console.log(x,y)
         // Add the valueline path.
         svg.append("path")
             .data([data])
