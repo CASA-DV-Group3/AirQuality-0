@@ -42,8 +42,8 @@
             <div class="collapse navbar-collapse">
                 <ul id="menu" >
                     <li data-menuanchor="page1" class="active"><a href="#page1" title="Top"><img src="assets/img/homepage.png"></a></li>
-                    <li data-menuanchor="page2"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
-                    <li data-menuanchor="page3"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
+                    <li data-menuanchor="page2" class="active"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
+                    <li data-menuanchor="page3" class="active"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
                     <li data-menuanchor="page4"><a href="#page4" title="Street Map"><img src="assets/img/street.png"></a></li>
                     <li data-menuanchor="about" onclick="on()"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>
 <!--                    <li onclick="on()" href="#about"><img src="assets/img/info-button.png" title="About"></li>-->
@@ -62,7 +62,7 @@
                             <div id="page1_innertext" class="brand text-center">
                                 <h1>Invisible Cities</h1>
                                 <h3 class="title text-center">World City Air Quality</h3>
-                                <button type="button" onclick="getFirstPageStory();" class="btn btn-outline-info">Begin Story</button>
+                                <button type="button" onclick="getStory('1');" class="btn btn-outline-info">Begin Story</button>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="section"  style="display: block; vertical-align: middle;">
+    <div class="section"  style="display: block; vertical-align: middle;" data-hash="ab">
         <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
             <br>
@@ -88,7 +88,7 @@
         <iframe id="globe" src="globe/globe.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>
 
     </div>
-    <div class="section"  style="display: block; vertical-align: middle;">
+    <div class="section"  style="display: block; vertical-align: middle;" data-hash="bc">
         <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
             <br>
@@ -108,7 +108,7 @@
             // script for initialising th map
             // set max bounds
             var bounds = L.latLngBounds(L.latLng(-90.0, 180.227), L.latLng(90.0, -180.125));
-            var mymap = L.map('map', {maxBounds:bounds}).setView([34, 24], 2);
+            var mymap = L.map('map', {maxBounds:bounds, keyboard: false}).setView([34, 24], 2);
 
             mymap.options.minZoom = 2;
             mymap.options.maxZoom = 10;
@@ -124,7 +124,7 @@
 
         <script src="assets/js/mapp5.js"></script>
     </div>
-    <div class="section text-dark"  style="display: block; vertical-align: middle;">
+    <div class="section text-dark"  style="display: block; vertical-align: middle;" data-hash="cd">
         <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
             <br>
@@ -142,7 +142,7 @@
 </div>
 
 <!-- ABOUT -->
-<div class="section" id="about" onclick="off()">
+<div class="section" id="about" style="display: none" onclick="off()" data-hash="ab">
     <div id="aboutText">
         <h3>London Invisible Cities</h3>
         <br/>

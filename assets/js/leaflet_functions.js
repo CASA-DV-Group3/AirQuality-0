@@ -2,6 +2,7 @@
 * Contains all needed functions for the main leaflet maps
 */
 
+var title = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getStory('1');\" class=\"btn btn-outline-info\">Begin Story</button>"
 // Function for mapping colors to the currency values returned from the API for each country
 function getColor(d) {
     return  d > 300 ? '#8e6464' :
