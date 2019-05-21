@@ -241,6 +241,7 @@ function drawLineChart(date, uniqId, divID){
                 .data([airQuality])
                 .attr("class", "line")
                 .attr("d", valueline);
+
             // Add the X Axis
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")

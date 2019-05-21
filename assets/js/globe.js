@@ -129,6 +129,27 @@ function loadAll(year) {
         svg.append("g")
             .call(d3.axisLeft(y).ticks(8));
 
+
+        // Add tags to axis
+        svg.append("text")
+            .attr("transform",
+                "translate(" + (width/2) + " ," +
+                (height + margin.top + 30) + ")")
+            .style("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "Saira")
+            .text("Year");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .style("font-size", "12px")
+            .attr("font-family", "Saira Condensed")
+            .text("Deaths per 1000");
+
     }
 
     function leave(country) {
