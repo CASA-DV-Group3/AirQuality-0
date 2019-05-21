@@ -45,8 +45,7 @@
                     <li data-menuanchor="page2" class="active"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
                     <li data-menuanchor="page3" class="active"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
                     <li data-menuanchor="page4"><a href="#page4" title="Street Map"><img src="assets/img/street.png"></a></li>
-                    <li data-menuanchor="about" onclick="on()"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>
-<!--                    <li onclick="on()" href="#about"><img src="assets/img/info-button.png" title="About"></li>-->
+                    <li onclick="on();"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>
                 </ul>
             </div>
     </nav>
@@ -142,7 +141,7 @@
 
 <!-- ABOUT -->
 <div class="section" id="about" style="display: none" onclick="off()" data-hash="ab">
-    <div id="aboutText">
+    <div id="aboutText" class="text-dark">
         <h3>London Invisible Cities</h3>
         <br/>
 
