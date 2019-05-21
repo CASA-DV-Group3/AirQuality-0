@@ -58,6 +58,9 @@ function loadAll(year) {
 
         current.text(country && country.properties.name || 'Please Hover Over a Country')
         let countryName = country.properties.name;
+        if (countryName == "United States of America") {
+            countryName = "United States"
+        }
         let airPol = JSON.parse(localStorage.getItem("airPol"));
         let countrySubset = []
         airPol.features.forEach(function(val) {
