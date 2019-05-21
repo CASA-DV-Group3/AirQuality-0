@@ -44,11 +44,11 @@ function loadAll(year) {
     // start angles
     var angles = { x: -20, y: 40, z: 0};
     // colors
-    var colorWater = 'rgba(66,142,255,0.62)';
-    var colorLand = '#447139'
+    var colorWater = 'rgba(59,127,231,0.77)';
+    var colorLand = '#327129'
     var colorPoint = '#6d1371';
     var colorGraticule = 'rgba(204,204,204,0)';
-    var colorCountry = 'rgba(1,0,9,0.2)';
+    var colorCountry = 'rgba(200,197,21,0.2)';
 
     // year for data
 
@@ -256,7 +256,7 @@ function loadAll(year) {
         var apCol = getAPColor(obj.properties.deaths_per1000);
         var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad);
         context.beginPath();
-        // context.strokeStyle = apCol;
+        context.strokeStyle = "rgba(93,96,99,0.51)";
         geoGenerator(circle());
         context.fillStyle = apCol;
         context.stroke();
@@ -264,21 +264,21 @@ function loadAll(year) {
     }
 
     function getRadius(d) {
-        return  d > 100 ? 5 :
-            d > 80 ? 4 :
-                d > 60 ? 3 :
-                    d > 40 ? 2 :
-                        d > 20 ? 1 :
+        return  d > 100 ? 4 :
+            d > 80 ? 3 :
+                d > 60 ? 2 :
+                    d > 40 ? 1 :
+                        d > 20 ? 0.75 :
                             0.5;
     }
 
     function getAPColor(d) {
-        return  d > 100 ? '#0c000e' :
-            d > 80 ? '#40393c'  :
-                d > 60 ? '#5e5e5e'  :
-                    d > 40 ? '#807e7d'  :
-                        d > 20 ? '#aaaaaa'  :
-                            '#c6b9c8' ;
+        return  d > 100 ? 'rgba(59,56,59,0.75)' :
+            d > 80 ? 'rgba(93,96,99,0.75)'  :
+                d > 60 ? 'rgba(123,123,123,0.76)'  :
+                    d > 40 ? 'rgba(164,161,160,0.75)'  :
+                        d > 20 ? 'rgba(215,215,215,0.76)'  :
+                            'rgba(253,240,255,0.75)' ;
     }
 
     function stroke(obj, color) {
