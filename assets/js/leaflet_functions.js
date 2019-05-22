@@ -22,6 +22,27 @@ function changeOpacity(d) {
                         0.3;
 }
 
+
+
+var info = L.control({
+    position: 'bottomright'
+});
+
+info.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Live Currency Comparison</h4>' + (props ?
+        '<b>' + props.ADMIN + '</b><br /> Currency = ' + props.currency + '</b><br />' + '1 ' + currentCurrency + '= ' + props.value + ' ' + props.currency:
+        '<b> Current Base Currency = ' + currentCurrency + '</b> <br>Hover over a country to compare</br>');
+};
+
+
+
 function subsetAirQualityData(data, qv) {
     var subsetData = [];
     var counter = 0;
@@ -241,11 +262,14 @@ function drawLineChart(date, uniqId, divID){
                 .data([airQuality])
                 .attr("class", "line")
                 .attr("d", valueline);
-
             // Add the X Axis
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x).ticks(11).tickValues([0,1,2,3,4,5,6,7,8,9,10,11]).tickFormat(d3.format(".0f")));//.ticks(5).tickFormat(d3.timeFormat("%H")));
+                .call(d3.axisBottom(x).ticks(11).tickValues([0,1,2,3,4,5,6,7,8,9,10,11]).tickFormat(function (d) {
+                    if (d === 0) return -11; // No label for '0'
+                    else if (d < 0) d = -d; // No nagative labels
+                    return -(11 - d);
+                }));  //.tickFormat(d3.format(".0f")));//.ticks(5).tickFormat(d3.timeFormat("%H")));
 
             // Add the Y Axis
             svg.append("g")
@@ -257,7 +281,7 @@ function drawLineChart(date, uniqId, divID){
             "translate(" + (width/2) + " ," +
             (height + margin.top + 20) + ")")
             .style("text-anchor", "middle")
-            .text("Time");
+            .text("Hours ago");
 
             // svg.selectAll(".dot")
             //     .data([airQuality])
@@ -285,7 +309,7 @@ function drawLineChart(date, uniqId, divID){
                 .attr("x",0 - (height / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
-                .text(contaminant);
+                .text(contaminant.toUpperCase());
 
         }
 
