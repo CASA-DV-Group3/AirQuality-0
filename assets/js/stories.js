@@ -1,4 +1,4 @@
-var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."},
+var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys air.<br>  Some truly pay a far higher price with each breath."},
     {year: 2019, text: "Second inquest into death of Ella Kissi-Debrah in London reveals reluctant action despite awareness," +
             "'There is momentum for change and it is fundamental that air pollution is brought down to within lawful limits.'"},
     {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the 'airpocalypse' the previous year caused by the extra smoke and chemicals."},
