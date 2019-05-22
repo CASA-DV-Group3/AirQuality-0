@@ -91,7 +91,7 @@ function loadNewData() {
 function loadAirQualityData(qVal) {
     // qval is a list of quantile values based on the buttons that have been clicked
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/stationData/STATIONdata1904_merged.geojson', false);
+    xhr.open('GET', 'assets/data/stationData/STATIONdata2010_merged.geojson', false);
     xhr.send();
     let geojsonDATA = JSON.parse(xhr.responseText);
     var subsetData;
@@ -114,8 +114,25 @@ function loadAirQualityData(qVal) {
                 opacity: 1,
                 fillOpacity: changeOpacity(row['properties']['aqi'])
             };
-            //TODO: chose better style
-            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station ID:</b> " + row['properties']['station'] +"<br><b>The Air Quality is:</b> "+row['properties']['aqi']+" AQI <br><br><div id='graphHere"+ row['properties']['id'] + "'>The Graph Goes Here</div><br><button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button></div>"
+            let timeDate;
+            try {
+                timeDate = row['properties']['time'].split('T')
+            } catch(e) {
+                timeDate = ["date unknown", "time unknown"]
+            }
+            let so2 = row['properties']['so2'];
+                no2 = row['properties']['no2'];
+            if (so2 < 0) {
+                so2 = "No Data Available"
+            }
+
+            if (no2 < 0) {
+                no2 = "No Data Available"
+            }
+
+            let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station:</b> " + row['properties']['station'] +"<br><b>Station ID:</b> " + row['properties']['id'] +"<br><b>Latest Date: </b>" + timeDate[0] + "<br><b>Latest Time: </b>" + timeDate[1] + "<br><b>Current Air Quality Levels:</b><br><b style='color: #750082;'>AQI:</b> "+ row['properties']['aqi'] +" <br><b style='color: #208182;'>NO2: </b>" + no2 + "<br><b style='color: #822a1d;'>SO2: </b>" + so2 + "<br><div id='graphHere"+ row['properties']['id'] + "'>The Graph Goes Here</div><br></div>"
+            //TODO: chose better style and add button
+            // <button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button>
             let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup(markerPopup);
             let uniqueIDNumber = row['properties']['id'];
             marker.on('click', onMarkerClick );
@@ -186,10 +203,6 @@ function drawLineChart(date, uniqId, divID){
         theId.innerHTML = "Sorry no available data!"
         return errorMassage;
     }
-
-
-    // console.log($('#graphpopup > div')[0]) // get all divs below
-
 
 
     var fields = ["aqi"]//, "pm10", "pm25", "no2", "co", "so2", "o3"];
