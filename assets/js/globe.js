@@ -24,6 +24,12 @@ function loadData(cb) {
     });
 };
 
+function loadLegend() {
+    // d3.select("#legendGlobe").selectAll("*").remove()
+    document.getElementById('legendGlobe').innerHTML = "Legend Here"
+    // document.getElementById('legendGlobe').innerHTML = "<img src='../globe_legend.png'></img>"
+}
+
 
 function loadAll(year) {
     if (document.getElementById('globe')) {
@@ -151,6 +157,12 @@ function loadAll(year) {
             .attr("font-family", "Saira Condensed")
             .text("Deaths per 1000 people");
 
+        legend = svg.append("g")
+            .attr("class","legend")
+            .attr("transform","translate(50,30)")
+            .style("font-size","12px")
+            .call(d3.legend)
+
     }
 
     function leave(country) {
@@ -226,11 +238,6 @@ function loadAll(year) {
     }
 
     function render() {
-        // for (var obj of canvas.getObjects()) {
-        //     delete obj._cacheCanvas;
-        // }
-        // context.clear();
-
         context.clearRect(0, 0, width, height)
         fill(water, colorWater)
         stroke(graticule, colorGraticule)
