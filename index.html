@@ -133,21 +133,31 @@
                 id: 'mapbox.dark'
             }).addTo(mymap);
 
-            // L.Control.Watermark = L.Control.extend({
-            //     onAdd: function(map) {
-            //         var img = L.DomUtil.create('img');
-            //         img.src = 'assets/img/London-air-pollution-838x420.jpg';
-            //         img.style.width = '200px';
-            //         return img;
-            //     },
-            //     onRemove: function(map) {
-            //         // Nothing to do here
-            //     }
-            // });
-            // L.control.watermark = function(opts) {
-            //     return new L.Control.Watermark(opts);
-            // }
-            // L.control.watermark({ position: 'bottomleft' }).addTo(mymap);
+
+            var legend = L.control({
+                position: 'bottomright'
+            });
+
+            legend.onAdd = function(map) {
+                var div = L.DomUtil.create('div', 'info legend'),
+                    // loop through the grades
+                    grades = [NaN, 0,50,100,150,200,250,300,500, 1000];
+
+                div.innerHTML += '<b>Air Quality Metric</b><br>'
+                // loop through our density intervals and generate a label with a colored square for each interval
+                for (var i = 0; i < grades.length; i++) {
+                    // Make the first value No Data Avaialble
+                    if (i == 0) {
+                        div.innerHTML += '<i style="background:' + getColor(grades[i] + 0.0000001) + '"></i> ' + "No Data Available" + '<br>';
+                    } else {
+                        div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '"></i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                    }
+                }
+                return div;
+            };
+
+            legend.addTo(mymap); // add the legend
+
 
         </script>
 
