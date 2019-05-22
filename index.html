@@ -134,6 +134,7 @@
             }).addTo(mymap);
 
 
+            var info = L.control({position: 'bottomleft'});
             var legend = L.control({
                 position: 'bottomright'
             });
@@ -141,23 +142,36 @@
             legend.onAdd = function(map) {
                 var div = L.DomUtil.create('div', 'info legend'),
                     // loop through the grades
-                    grades = [NaN, 0,50,100,150,200,250,300,500, 1000];
+                    grades = [NaN, 50,100,150,200,300];
 
                 div.innerHTML += '<b>Air Quality Metric</b><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
                 for (var i = 0; i < grades.length; i++) {
                     // Make the first value No Data Avaialble
                     if (i == 0) {
-                        div.innerHTML += '<i style="background:' + getColor(grades[i] + 0.0000001) + '"></i> ' + "No Data Available" + '<br>';
+                        div.innerHTML += '<i style="background:' + getColor(grades[i] + 0.0000001) + '">O</i> ' + "No Data Available" + '<br>';
                     } else {
-                        div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '"></i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                        div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '">O</i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
                     }
                 }
                 return div;
             };
 
-            legend.addTo(mymap); // add the legend
+            info.onAdd = function(map) {
+                this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+                this.update();
+                return this._div;
+            };
 
+            // method that we will use to update the control based on feature properties passed
+            info.update = function (props) {
+                this._div.innerHTML = '<h3>Text about the map</h3><br><h4>This will reload when changing points</h4>'//'<h4>Live Currency Comparison</h4>' + (props ?
+                //     '<b>' + props.ADMIN + '</b><br /> Currency = ' + props.currency + '</b><br />' + '1 ' + currentCurrency + '= ' + props.value + ' ' + props.currency:
+                //     '<b> Current Base Currency = ' + currentCurrency + '</b> <br>Hover over a country to compare</br>');
+            };
+
+            legend.addTo(mymap); // add the legend
+            info.addTo(mymap); // add the legend
 
         </script>
 
@@ -215,7 +229,6 @@
             <br/>@ 2019 CASA, University College London</p>
             <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </div>
-
 </div>
 
 <!-- ABOUT/CLICK EVENTS -->

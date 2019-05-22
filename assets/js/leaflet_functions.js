@@ -142,7 +142,6 @@ function loadAirQualityData(qVal) {
                 popup.setContent( chart_div );
 
                 let uniqId = $('#graphpopup > div')[0];
-                // console.log($('#graphpopup > div')[0]) // get all divs below
                 uniqId.innerHTML = "Loading 24hr graph for this station..."
                 uniqId = "#" + uniqId.id.toString();
                 drawLineChart(20, uniqueIDNumber, uniqId)
