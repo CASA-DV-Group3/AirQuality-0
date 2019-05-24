@@ -64,16 +64,16 @@ function loadLegend() {
     div.style.textAlign = 'left';
     let sizes = ["fa-xs", "fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     if (column == "deaths") {
-        div.innerHTML += '<b>Deaths from Air Quality</b><br>';
+        div.innerHTML += '<b>Deaths from Particulates per 100,000 persons</b><br>';
         div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(0) + '">No Data</i><br>';
         for (var i = 0; i < grades.length; i++) {
-            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " Deaths" + '<br>' : ' Deaths');
         }
     } else {
-        div.innerHTML += '<b>Exposure to Air Quality</b><br>';
+        div.innerHTML += '<b>Exposure to Particulate Matter (micrograms per cubic metre)</b><br>';
         div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(0) + '">No Data</i><br>';
         for (var i = 0; i < grades.length; i++) {
-            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " &mu;/m<sup>3</sup>" + '<br>' : ' mg/m3');
         }
     }
 

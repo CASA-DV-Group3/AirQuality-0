@@ -12,8 +12,8 @@
 /*Slider icon*/
 .slider-handle.custom::before {
     tooltip: 'never';
-    line-height: 20px;
-    font-size: 20px;
+    /*line-height: 20px;*/
+    font-size: 30px;
     content: '\2601'; /*cloud unicode*/
     color: #5a5a5a;
 }
