@@ -79,17 +79,45 @@ function loadChart(data) {
     d3.select("#globePlot").selectAll("*").remove();
 
     x = [];
-    y = [];
+    y1 = [];
+    y2 = [];
     data.forEach(function(d) {
         x.push(d.properties.year);
-        y.push(d.properties.deaths_per100000);
+        // account for missing values
+        if (d.properties.deaths_per100000 == undefined){
+            y1.push(0);
+        } else {
+            y1.push(d.properties.deaths_per100000);
+        }
+
+        // account for missing values
+        if (d.properties.pm25_exposure == undefined){
+            y2.push(0);
+        } else {
+            y2.push(d.properties.pm25_exposure);
+        }
+
     });
-
-
 
     var trace1 = {
         x: x,
-        y: y,
+        y: y1,
+        name: "Deaths per 100k",
+        line: {
+            color: 'rgb(132,30,129)',
+            width: 2
+        },
+        type: 'scatter'
+    };
+
+    var trace2 = {
+        x: x,
+        y: y2,
+        name: "PM2.5 Exposure",
+        line: {
+            color: 'rgb(91,172,139)',
+            width: 2
+        },
         type: 'scatter'
     };
 
@@ -101,10 +129,42 @@ function loadChart(data) {
             t: 5,
             pad: 0
         },
-        yaxis: {range: [0, 150]},
-        paper_bgcolor: 'rgba(0,0,0,0)'
-    }
-    Plotly.newPlot('globePlot', [trace1], layout);
+        showlegend: true,
+        legend: {
+            x: 0,
+            y: 1,
+            traceorder: 'normal',
+            font: {
+                family: 'sans-serif',
+                size: 12,
+                color: '#000'
+            },
+            bgcolor: '#E2E2E2',
+            bordercolor: '#FFFFFF',
+            borderwidth: 2
+        },
+        xaxis: {
+            range: [1990,2017],
+            title: {
+                text: 'Year',
+                font: {
+                    size: 18,
+                    color: '#7f7f7f'
+                }}
+        },
+        yaxis: {
+            range: [0, 220],
+            title: {
+                text: 'Count',
+                font: {
+                    size: 18,
+                    color: '#7f7f7f'
+                }}
+        },
+        paper_bgcolor: 'rgba(67,67,67,0)',
+        plot_bgcolor: 'rgb(104,104,104)'
+    };
+    Plotly.newPlot('globePlot', [trace1,trace2], layout);
 }
 
 
