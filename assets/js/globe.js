@@ -83,7 +83,7 @@ function loadAll(year) {
     var angles = { x: -20, y: 40, z: 0};
     // colors
     var colorWater = 'rgba(59,127,231,0.77)';
-    var colorLand = '#327129'
+    var colorLand = '#327129';
     var colorPoint = '#6d1371';
     var colorGraticule = 'rgba(204,204,204,0)';
     var colorCountry = 'rgba(200,197,21,0.2)';

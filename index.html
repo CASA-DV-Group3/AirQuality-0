@@ -144,17 +144,17 @@
             legend.onAdd = function(map) {
                 var div = L.DomUtil.create('div', 'info legend'),
                     // loop through the grades
-                    grades = [NaN, 50,100,150,200,300];
+                    grades = [0,  50,100,150,200,300];
 
                 div.innerHTML += '<b>Air Quality Metric</b><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
                 for (var i = 0; i < grades.length; i++) {
                     // Make the first value No Data Avaialble
-                    if (i == 0) {
-                        div.innerHTML += '<i style="background:' + getColor(grades[i] + 0.0000001) + '">O</i> ' + "No Data Available" + '<br>';
-                    } else {
-                        div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '">O</i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-                    }
+                    // if (i == 0) {
+                    //     div.innerHTML += '<i style="background:' + getColor(grades[i] + 0.0000001) + '">O</i> ' + "No Data Available" + '<br>';
+                    // } else {
+                    div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '">O</i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                    // }
                 }
                 return div;
             };
