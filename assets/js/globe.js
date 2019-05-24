@@ -42,7 +42,8 @@ function getAPColor(d) {
             d > 60 ? 'rgba(78,70,135,0.76)'  :
                 d > 40 ? 'rgba(101,71,163,0.75)'  :
                     d > 20 ? 'rgba(120,73,184,0.76)'  :
-                        'rgba(152,87,230,0.82)' ;
+                        d > 0 ? 'rgba(158,82,229,0.76)'  :
+                        'rgba(113,120,119,0.82)' ;
 }
 
 function getExpColor(d) {
@@ -51,7 +52,8 @@ function getExpColor(d) {
             d > 60 ? 'rgba(65,106,91,0.76)'  :
                 d > 40 ? 'rgba(81,128,112,0.75)'  :
                     d > 20 ? 'rgba(114,184,161,0.76)'  :
-                        'rgba(128,215,186,0.82)' ;
+                        d > 0 ? 'rgba(142,226,200,0.76)'  :
+                        'rgba(113,120,119,0.82)' ;
 }
 
 function loadLegend() {
@@ -59,15 +61,18 @@ function loadLegend() {
     d3.select("#legendGlobe").selectAll("*").remove();
     var div = document.getElementById('legendGlobe')
     div.innerHTML = "";
-    var grades = [0,20,40,60,80,100];
+    var grades = [1,20,40,60,80,100];
     div.style.textAlign = 'left';
-    div.innerHTML += '<b>Deaths from Air Quality</b><br>';
-    let sizes = ["fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
+    let sizes = ["fa-xs", "fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     if (column == "deaths") {
+        div.innerHTML += '<b>Deaths from Air Quality</b><br>';
+        div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(0) + '">No Data</i><br>';
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
     } else {
+        div.innerHTML += '<b>Exposure to Air Quality</b><br>';
+        div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(0) + '">No Data</i><br>';
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
