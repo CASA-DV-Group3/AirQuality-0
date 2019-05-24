@@ -47,11 +47,11 @@ function loadLegend() {
     // d3.select("#legendGlobe").selectAll("*").remove()
     var div = document.getElementById('legendGlobe')
     var grades = [0,20,40,60,80,100];
-
-    div.innerHTML += '<b>Deaths from Air Quality</b><br>'
+    div.innerHTML += '<b>Deaths from Air Quality</b><br>';
+    let sizes = ["fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML += '<i style="background:' + getAPColor(grades[i]+0.0000001) + '">O</i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-        // }
+        console.log(sizes[i])
+        div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 }
 
