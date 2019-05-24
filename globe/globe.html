@@ -13,6 +13,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
     <link rel="stylesheet" href="../assets/css/index.css"/>
+    <link rel="stylesheet" href="../assets/css/material-kit.css"/>
+    <link rel="stylesheet" href="../assets/libs/material-kit.js"/>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://unpkg.com/d3-simple-slider@0.1.2/build/d3-simple-slider.js"></script> <!--sliders-->
@@ -20,30 +22,32 @@
 
 </head>
 <body>
-<div style="height: 80vh;">
-    <div class="panel panel-default text-light" style="position: absolute; margin-left: 0%; margin-top: 25%;">
-        <h2 class="text-light" style="text-align: center">Global Health Impact</h2>
-        <span class="text-dark">Current Year: </span><span class="text-light" id="globeSliderVal">1990</span><br>
-        <input id="globeSlider" type="text" data-slider-handle="custom"/>
+<div style="height: 100vh; background: rgba(0,0,0,0.84);" >
+    <div class="panel panel-default text-light" style="position: absolute; margin-left: 1%; margin-top: 30%;">
+        <h3 class="text-light" style="text-align: center">Global Health Impact</h3>
+        <div id="theSlider" style="margin-left: 10%">
+            <i class="fa fa-play" id="playButton" onclick="console.log('here')"></i> <span class="text-light">Current Year: </span><span class="text-light" id="globeSliderVal">1990</span><br>
+             <input id="globeSlider" style="margin-left: 10%" type="text" data-slider-handle="custom"/>
+        </div>
         <br>
-        This is where text about the globe is here
-        <br>
+        <p>This is where text about the globe is here</p>
         <button class="button" style="margin-left: 30%;">Change data</button>
     </div>
     <h2 id="current"></h2>
-    <div class="text-light" id="globePlot" style="position:absolute; margin-top: 7%; width:20%; height: 35%;">Hover over a country</div>
+    <div class="text-light" id="globePlot" style="position:absolute; margin-top: 10%; margin-left: 1%; width:20%; height: 35%;">
+        <h3 class="text-light" style="margin-left: 20%; margin-top: 10%;">Hover over a country to start</h3>
+    </div>
     <div class="panel panel-default">
         <div class="panel-body" id="legendGlobe" style="position:absolute; margin-top: 25%; margin-left: 80%; bottom:0; width: 20%;">
             <h2>Legend</h2>
         </div>
     </div>
-<div id="canvasid">
+<div id="canvasid" style="margin-left: 5%">
     <canvas id="globe" style="height: 90%; width: 90%;"></canvas>
 </div>
 <div id="refdiv"></div>
 </div>
 <br><br><br>
-<div style="margin-left: 50%; text-align: center" class="text-dark">
     <script>
         var slider = new Slider("#globeSlider", {step: 1,
             min: 1990,
@@ -58,6 +62,5 @@
         loadAll() // load canvas layer
     </script>
 
-</div>
 </body>
 </html>
