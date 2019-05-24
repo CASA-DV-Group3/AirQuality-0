@@ -119,9 +119,11 @@ function loadChart(data) {
         name: "Deaths per 100k",
         line: {
             color: 'rgb(132,30,129)',
-            width: 2
+            width: 2,
+            dash: 'dot',
+            shape: 'spline'
         },
-        type: 'scatter'
+        mode: 'lines+markers'
     };
 
     var trace2 = {
@@ -130,9 +132,10 @@ function loadChart(data) {
         name: "PM2.5 Exposure",
         line: {
             color: 'rgb(91,172,139)',
-            width: 2
+            width: 2,
+            shape: 'spline'
         },
-        type: 'scatter'
+        mode: 'lines+markers'
     };
 
     var layout = {
