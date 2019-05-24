@@ -91,7 +91,7 @@ function setup() {
     setTimeout(function() {
         mbmap = animap.map;
         mbmap.scrollZoom.disable();
-        mbmap.keyboard.disableRotation();
+        // mbmap.keyboard.disableRotation();
         mbmap.removeLayer("settlement-label");
         mbmap.removeLayer("settlement-subdivision-label");
     }, 5000);
