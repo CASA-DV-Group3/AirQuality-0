@@ -317,7 +317,8 @@ function loadAll(year) {
         context.fill()
     }
 
-    function fillPoints(obj, color) {
+    function fillPoints(obj, column) {
+        column = column || "deaths";
         var rad = getRadius(obj.properties.deaths_per1000);
         var apCol = getAPColor(obj.properties.deaths_per1000);
         var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad);
