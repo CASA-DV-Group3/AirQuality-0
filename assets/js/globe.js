@@ -47,6 +47,7 @@ function loadLegend() {
     // d3.select("#legendGlobe").selectAll("*").remove()
     var div = document.getElementById('legendGlobe')
     var grades = [0,20,40,60,80,100];
+    div.style.textAlign = 'left';
     div.innerHTML += '<b>Deaths from Air Quality</b><br>';
     let sizes = ["fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     for (var i = 0; i < grades.length; i++) {
