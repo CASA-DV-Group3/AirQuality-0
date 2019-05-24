@@ -51,7 +51,6 @@ function loadLegend() {
     div.innerHTML += '<b>Deaths from Air Quality</b><br>';
     let sizes = ["fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     for (var i = 0; i < grades.length; i++) {
-        console.log(sizes[i])
         div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 }
@@ -406,9 +405,10 @@ function loadAll(year) {
         })
     }
 
-    function loadCanvas(year)
+    function loadCanvas(year, column)
     {
         year = year || 1990;
+        column = column || "deaths";
         if (first) {
             loadData(function(world, cList) {
                 countryList = cList;
