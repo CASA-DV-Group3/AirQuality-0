@@ -125,3 +125,25 @@ L.easyButton({
         }
     }]
 }).addTo(mymap);
+
+
+L.easyButton({
+    id: "playViz",
+    states: [{
+        stateName: 'unplayed',        // name the state
+        icon:      '&#x25b6;',               // and define its properties
+        title:     'Play',      // like its title
+        onClick: function(btn, map) {       // and its callback
+            console.log("Hello");
+            btn.state('played');
+        }
+    }, {
+        stateName: 'played',
+        icon:      'fa-pause',
+        title:     'Pause',
+        onClick: function(btn, map) {
+            console.log("Hello");
+            btn.state('unplayed');
+        }
+    }]
+}).addTo(mymap);
