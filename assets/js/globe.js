@@ -57,7 +57,6 @@ function getExpColor(d) {
 }
 
 function loadLegend() {
-
     d3.select("#legendGlobe").selectAll("*").remove();
     var div = document.getElementById('legendGlobe')
     div.innerHTML = "";
