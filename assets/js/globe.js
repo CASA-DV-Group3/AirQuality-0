@@ -24,10 +24,35 @@ function loadData(cb) {
     });
 };
 
+
+function getRadius(d) {
+    return  d > 100 ? 4 :
+        d > 80 ? 3 :
+            d > 60 ? 2 :
+                d > 40 ? 1 :
+                    d > 20 ? 0.75 :
+                        0.5;
+}
+
+function getAPColor(d) {
+    return  d > 100 ? 'rgba(59,56,59,0.75)' :
+        d > 80 ? 'rgba(93,96,99,0.75)'  :
+            d > 60 ? 'rgba(123,123,123,0.76)'  :
+                d > 40 ? 'rgba(164,161,160,0.75)'  :
+                    d > 20 ? 'rgba(215,215,215,0.76)'  :
+                        'rgba(253,240,255,0.75)' ;
+}
+
 function loadLegend() {
     // d3.select("#legendGlobe").selectAll("*").remove()
-    document.getElementById('legendGlobe').innerHTML = "Legend Here"
-    // document.getElementById('legendGlobe').innerHTML = "<img src='../globe_legend.png'></img>"
+    var div = document.getElementById('legendGlobe')
+    var grades = [0,20,40,60,80,100];
+
+    div.innerHTML += '<b>Deaths from Air Quality</b><br>'
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML += '<i style="background:' + getAPColor(grades[i]+0.0000001) + '">O</i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        // }
+    }
 }
 
 function loadChart(data) {
@@ -302,24 +327,6 @@ function loadAll(year) {
         context.fillStyle = apCol;
         context.stroke();
         context.fill();
-    }
-
-    function getRadius(d) {
-        return  d > 100 ? 4 :
-            d > 80 ? 3 :
-                d > 60 ? 2 :
-                    d > 40 ? 1 :
-                        d > 20 ? 0.75 :
-                            0.5;
-    }
-
-    function getAPColor(d) {
-        return  d > 100 ? 'rgba(59,56,59,0.75)' :
-            d > 80 ? 'rgba(93,96,99,0.75)'  :
-                d > 60 ? 'rgba(123,123,123,0.76)'  :
-                    d > 40 ? 'rgba(164,161,160,0.75)'  :
-                        d > 20 ? 'rgba(215,215,215,0.76)'  :
-                            'rgba(253,240,255,0.75)' ;
     }
 
     function stroke(obj, color) {
