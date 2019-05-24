@@ -30,6 +30,38 @@ function loadLegend() {
     // document.getElementById('legendGlobe').innerHTML = "<img src='../globe_legend.png'></img>"
 }
 
+function loadChart(data) {
+    d3.select("#globePlot").selectAll("*").remove();
+
+    x = [];
+    y = [];
+    data.forEach(function(d) {
+        x.push(d.properties.year);
+        y.push(d.properties.deaths_per1000);
+    });
+
+
+
+    var trace1 = {
+        x: x,
+        y: y,
+        type: 'scatter'
+    };
+
+    var layout = {
+        margin: {
+            l: 40,
+            r: 5,
+            b: 50,
+            t: 5,
+            pad: 0
+        },
+        yaxis: {range: [0, 150]},
+        paper_bgcolor: 'rgba(0,0,0,0)'
+    }
+    Plotly.newPlot('globePlot', [trace1], layout);
+}
+
 
 function loadAll(year) {
     if (document.getElementById('globe')) {
@@ -79,91 +111,93 @@ function loadAll(year) {
     }
 
     function plotCountryAirPol(data) {
-        d3.select("#globePlot").selectAll("*").remove()
-        // document.getElementById('current').innerHTML = "Hello";
-        // set the dimensions and margins of the graph
-        var margin = {top: 5, right: 5, bottom: 50, left: 40},
-            width = 300 - margin.left - margin.right,
-            height = 170 - margin.top - margin.bottom;
-
-        // parse the date / time
-        var parseTime = d3.timeParse("%Y");
-
-        // set the ranges
-        var x = d3.scaleLinear().range([0, width])
-        var y = d3.scaleLinear().range([height, 0]);
-
-        // define the line
-        var valueline = d3.line()
-            .x(function(d) { return x(d.properties.year); })
-            .y(function(d) { return y(d.properties.deaths_per1000); });
-
-
-        var svg = d3.select('#globePlot').append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-
-
-
-        data.forEach(function(d) {
-            // d.date = parseTime(d.properties.year);
-            // d.date = +d.properties.year;
-            d.date = +d.properties.year;
-            d.deaths = +d.properties.deaths_per1000;
-        });
-
-
-        // Scale the range of the data
-        x.domain(d3.extent(data, function(d) { return d.date; }));
-        y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
-        y.domain([0,140])
-        // Add the valueline path.
-        svg.append("path")
-            .data([data])
-            .attr("class", "line")
-            .attr("d", valueline);
-
-        // Add the X Axis
-        var xaxis = svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0f")));//.tickValues([1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]);;
-
-
-        // Add the Y Axis
-        svg.append("g")
-            .call(d3.axisLeft(y).ticks(8));
-
-
-        // Add tags to axis
-        svg.append("text")
-            .attr("transform",
-                "translate(" + (width/2) + " ," +
-                (height + margin.top + 30) + ")")
-            .style("text-anchor", "middle")
-            .style("font-size", "14px")
-            .attr("font-family", "Saira")
-            .text("Year");
-
-        svg.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - margin.left)
-            .attr("x",0 - (height / 2))
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .style("font-size", "10px")
-            .attr("font-family", "Saira Condensed")
-            .text("Deaths per 1000 people");
-
-        legend = svg.append("g")
-            .attr("class","legend")
-            .attr("transform","translate(50,30)")
-            .style("font-size","12px")
-            .call(d3.legend)
-
+        loadChart(data)
     }
+    //     d3.select("#globePlot").selectAll("*").remove()
+    //     // document.getElementById('current').innerHTML = "Hello";
+    //     // set the dimensions and margins of the graph
+    //     var margin = {top: 5, right: 5, bottom: 50, left: 40},
+    //         width = 300 - margin.left - margin.right,
+    //         height = 170 - margin.top - margin.bottom;
+    //
+    //     // parse the date / time
+    //     var parseTime = d3.timeParse("%Y");
+    //
+    //     // set the ranges
+    //     var x = d3.scaleLinear().range([0, width])
+    //     var y = d3.scaleLinear().range([height, 0]);
+    //
+    //     // define the line
+    //     var valueline = d3.line()
+    //         .x(function(d) { return x(d.properties.year); })
+    //         .y(function(d) { return y(d.properties.deaths_per1000); });
+    //
+    //
+    //     var svg = d3.select('#globePlot').append("svg")
+    //         .attr("width", width + margin.left + margin.right)
+    //         .attr("height", height + margin.top + margin.bottom)
+    //         .append("g")
+    //         .attr("transform",
+    //             "translate(" + margin.left + "," + margin.top + ")");
+    //
+    //
+    //
+    //     data.forEach(function(d) {
+    //         // d.date = parseTime(d.properties.year);
+    //         // d.date = +d.properties.year;
+    //         d.date = +d.properties.year;
+    //         d.deaths = +d.properties.deaths_per1000;
+    //     });
+    //
+    //
+    //     // Scale the range of the data
+    //     x.domain(d3.extent(data, function(d) { return d.date; }));
+    //     y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
+    //     y.domain([0,140])
+    //     // Add the valueline path.
+    //     svg.append("path")
+    //         .data([data])
+    //         .attr("class", "line")
+    //         .attr("d", valueline);
+    //
+    //     // Add the X Axis
+    //     var xaxis = svg.append("g")
+    //         .attr("transform", "translate(0," + height + ")")
+    //         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0f")));//.tickValues([1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]);;
+    //
+    //
+    //     // Add the Y Axis
+    //     svg.append("g")
+    //         .call(d3.axisLeft(y).ticks(8));
+    //
+    //
+    //     // Add tags to axis
+    //     svg.append("text")
+    //         .attr("transform",
+    //             "translate(" + (width/2) + " ," +
+    //             (height + margin.top + 30) + ")")
+    //         .style("text-anchor", "middle")
+    //         .style("font-size", "14px")
+    //         .attr("font-family", "Saira")
+    //         .text("Year");
+    //
+    //     svg.append("text")
+    //         .attr("transform", "rotate(-90)")
+    //         .attr("y", 0 - margin.left)
+    //         .attr("x",0 - (height / 2))
+    //         .attr("dy", "1em")
+    //         .style("text-anchor", "middle")
+    //         .style("font-size", "10px")
+    //         .attr("font-family", "Saira Condensed")
+    //         .text("Deaths per 1000 people");
+    //
+    //     legend = svg.append("g")
+    //         .attr("class","legend")
+    //         .attr("transform","translate(50,30)")
+    //         .style("font-size","12px")
+    //         .call(d3.legend)
+    //
+    // }
 
     function leave(country) {
         current.text(country && country.properties.name || 'Please Hover Over a Country')
