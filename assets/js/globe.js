@@ -558,7 +558,7 @@ function loadAll(year) {
             points = pointList;
 
             window.addEventListener('resize', scale)
-            scale()
+            scale();
             autorotate = d3.timer(rotate)
             }
 
