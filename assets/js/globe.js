@@ -10,6 +10,7 @@ var countries,
     graticule = d3.geoGraticule10(),
     year = 2017;
     column = "deaths"; // either 'deaths' or 'exposure'
+    theClick = false;
 
 function loadData(cb) {
     d3.json('../assets/data/world-110m.json', function(error, worldShape) {
@@ -75,6 +76,15 @@ function loadLegend() {
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " &mu;/m<sup>3</sup>" + '<br>' : ' mg/m3');
         }
+    }
+
+}
+
+function clicker() {
+    if (theClick) {
+        theClick = false
+    } else {
+        theClick = true
     }
 
 }
@@ -200,6 +210,9 @@ function loadAll(year) {
     // year for data
 
     function enter(country) {
+        if (theClick) {
+            return
+        }
 
         current.text(country && country.properties.name || 'Please Hover Over a Country')
         let countryName = country.properties.name;
@@ -465,6 +478,9 @@ function loadAll(year) {
     }
 
     function mousemove() {
+        if (theClick) {
+            return
+        }
         var c = getCountry(this)
         if (!c) {
             if (currentCountry) {
@@ -477,9 +493,16 @@ function loadAll(year) {
         if (c === currentCountry) {
             return
         }
-        currentCountry = c
-        render()
-        enter(c)
+
+        if (theClick == true) {
+            currentCountry = c
+            enter(c)
+        } else {
+            currentCountry = c
+            render()
+            enter(c)
+        }
+
     }
 
     function getCountry(event) {
@@ -552,6 +575,7 @@ function loadAll(year) {
             .on('end', dragended)
         )
         .on('mousemove', mousemove)
+        .on('click', clicker)
 
 
 }
