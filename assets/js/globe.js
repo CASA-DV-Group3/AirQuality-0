@@ -7,7 +7,9 @@ var countries,
     countryList,
     land,
     first = true,
-    graticule = d3.geoGraticule10();
+    graticule = d3.geoGraticule10(),
+    year = 2017;
+    column = "deaths"; // either 'deaths' or 'exposure'
 
 function loadData(cb) {
     d3.json('../assets/data/world-110m.json', function(error, worldShape) {
@@ -35,24 +37,42 @@ function getRadius(d) {
 }
 
 function getAPColor(d) {
-    return  d > 100 ? 'rgba(59,56,59,0.75)' :
-        d > 80 ? 'rgba(93,96,99,0.75)'  :
-            d > 60 ? 'rgba(123,123,123,0.76)'  :
-                d > 40 ? 'rgba(164,161,160,0.75)'  :
-                    d > 20 ? 'rgba(215,215,215,0.76)'  :
-                        'rgba(253,240,255,0.75)' ;
+    return  d > 100 ? 'rgb(41,41,84)' :
+        d > 80 ? 'rgba(60,52,106,0.75)'  :
+            d > 60 ? 'rgba(78,70,135,0.76)'  :
+                d > 40 ? 'rgba(101,71,163,0.75)'  :
+                    d > 20 ? 'rgba(120,73,184,0.76)'  :
+                        'rgba(152,87,230,0.82)' ;
+}
+
+function getExpColor(d) {
+    return  d > 100 ? 'rgb(30,61,50)' :
+        d > 80 ? 'rgba(41,77,64,0.75)'  :
+            d > 60 ? 'rgba(65,106,91,0.76)'  :
+                d > 40 ? 'rgba(81,128,112,0.75)'  :
+                    d > 20 ? 'rgba(114,184,161,0.76)'  :
+                        'rgba(128,215,186,0.82)' ;
 }
 
 function loadLegend() {
-    // d3.select("#legendGlobe").selectAll("*").remove()
+
+    d3.select("#legendGlobe").selectAll("*").remove();
     var div = document.getElementById('legendGlobe')
+    div.innerHTML = "";
     var grades = [0,20,40,60,80,100];
     div.style.textAlign = 'left';
     div.innerHTML += '<b>Deaths from Air Quality</b><br>';
     let sizes = ["fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    if (column == "deaths") {
+        for (var i = 0; i < grades.length; i++) {
+            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        }
+    } else {
+        for (var i = 0; i < grades.length; i++) {
+            div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        }
     }
+
 }
 
 function loadChart(data) {
@@ -62,7 +82,7 @@ function loadChart(data) {
     y = [];
     data.forEach(function(d) {
         x.push(d.properties.year);
-        y.push(d.properties.deaths_per1000);
+        y.push(d.properties.deaths_per100000);
     });
 
 
@@ -95,7 +115,7 @@ function loadAll(year) {
 
     }
 
-    var year = year;
+    // var year = year;
     document.getElementById('canvasid').innerHTML = '<canvas id="globe" style="height: 100%; width: 100%;"></canvas>'; // replaces the inner HTML of #someBox to a canvas
 
     // ms to wait after dragging before auto-rotating
@@ -107,15 +127,13 @@ function loadAll(year) {
     // start angles
     var angles = { x: -20, y: 40, z: 0};
     // colors
-    var colorWater = 'rgba(59,127,231,0.77)';
-    var colorLand = '#327129';
+    var colorWater = 'rgb(10,39,82)';
+    var colorLand = '#9b9b9b';
     var colorPoint = '#6d1371';
-    var colorGraticule = 'rgba(204,204,204,0)';
-    var colorCountry = 'rgba(200,197,21,0.2)';
+    var colorGraticule = 'rgba(255,255,255,0)';
+    var colorCountry = 'rgba(255,255,255,0.33)';
 
     // year for data
-
-    // Handler
 
     function enter(country) {
 
@@ -302,12 +320,13 @@ function loadAll(year) {
         stroke(graticule, colorGraticule)
         fill(land, colorLand)
         for (let i = 0; i < points.length; i++) {
-            fillPoints(points[i], colorPoint, true)
+            fillPoints(points[i])
         }
 
         if (currentCountry) {
             fill(currentCountry, colorCountry)
         }
+        loadLegend();
     }
 
     function fill(obj, color) {
@@ -317,10 +336,14 @@ function loadAll(year) {
         context.fill()
     }
 
-    function fillPoints(obj, column) {
-        column = column || "deaths";
-        var rad = getRadius(obj.properties.deaths_per1000);
-        var apCol = getAPColor(obj.properties.deaths_per1000);
+    function fillPoints(obj) {
+        if (column == "exposure") {
+            var rad = getRadius(obj.properties.pm25_exposure);
+            var apCol = getExpColor(obj.properties.pm25_exposure);
+        } else {
+            var rad = getRadius(obj.properties.deaths_per100000);
+            var apCol = getAPColor(obj.properties.deaths_per100000);
+        }
         var circle = d3.geoCircle().center([obj.geometry.coordinates[0], obj.geometry.coordinates[1]]).radius(rad);
         context.beginPath();
         context.strokeStyle = "rgba(93,96,99,0.51)";
@@ -406,10 +429,9 @@ function loadAll(year) {
         })
     }
 
-    function loadCanvas(year, column)
+    function loadCanvas(year)
     {
         year = year || 1990;
-        column = column || "deaths";
         if (first) {
             loadData(function(world, cList) {
                 countryList = cList;
