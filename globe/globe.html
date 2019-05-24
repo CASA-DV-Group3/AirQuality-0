@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Globe</title>
     <link rel="stylesheet" href="../assets/css/globe.css"/>
     <script src="../assets/js/countries.js"></script>
     <script src="../assets/libs/versor.js"></script>
@@ -12,15 +12,17 @@
 
 </head>
 <body>
-<div style="height: 80vh;" style="background-color: #1d2124">
+<div style="height: 80vh;">
+    <div class="panel panel-default text-light" style="position: absolute; padding-left: 80%; padding-top: 5%;">
+        <h2>Globe</h2>
+    </div>
     <h2 id="current"></h2>
     <h2 id="globePlot" style="position:absolute; padding-top: 7%; width:20%; height: 35%;"></h2>
     <div class="panel panel-default">
         <div class="panel-body" id="legendGlobe" style="position:absolute; padding-top: 25%; bottom:0; width: 6%;">
-            <h2 >Legend</h2>
+            <h2>Legend</h2>
         </div>
     </div>
-
 <div id="canvasid">
     <canvas id="globe" style="height: 90%; width: 90%;"></canvas>
 </div>
@@ -33,8 +35,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
 </div>
 <br><br><br>
-<div style="height: 10vh; padding-top: 2%; text-align: center" class="text-dark">
-    <span class="text-dark">Select Year: </span><span class="text-dark" id="globeSliderVal">1990</span><br>
+<div style="padding-left: 50%; text-align: center" class="text-dark">
+    <span class="text-dark">Select Year: </span><span class="text-light" id="globeSliderVal"></span><br>
     <input id="globeSlider" type="text" data-slider-handle="custom"/>
     <link rel="stylesheet" href="../assets/css/index.css"/>
     <script>
