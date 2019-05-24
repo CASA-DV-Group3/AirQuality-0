@@ -129,7 +129,6 @@ function loadAirQualityData(qVal) {
             if (no2 < 0) {
                 no2 = "No Data Available"
             }
-
             let markerPopup = "<div id='graphpopup' style='width: 40vh;'><b>Station:</b> " + row['properties']['station'] +"<br><b>Station ID:</b> " + row['properties']['id'] +"<br><b>Latest Date: </b>" + timeDate[0] + "<br><b>Latest Time: </b>" + timeDate[1] + "<br><b>Current Air Quality Levels:</b><br><b style='color: #750082;'>AQI:</b> "+ row['properties']['aqi'] +" <br><b style='color: #208182;'>NO2: </b>" + no2 + "<br><b style='color: #822a1d;'>SO2: </b>" + so2 + "<br><div id='graphHere"+ row['properties']['id'] + "'>The Graph Goes Here</div><br></div>"
             //TODO: chose better style and add button
             // <button class='btn btn-light' onclick='mymap.setView([51.1, 0.12], 6);';>Load more data</button>

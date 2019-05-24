@@ -138,7 +138,7 @@
 
             // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
-                this._div.innerHTML = '<h3>Text about the map</h3><br><h4>This will reload when changing points</h4><br><button class="btn btn-outline-info">Left</button><button class="btn btn-outline-info">Right</button>'
+                this._div.innerHTML = '<h3>Text about the map</h3><br><h4>This will reload when changing points</h4><br><button class="btn btn-outline-info btn-sm" onclick="mymap.setView(new L.LatLng(40.737, -73.923), 8);;">Zoom to Layer</button><button class="btn btn-outline-info btn-sm">Left</button><button class="btn btn-outline-info btn-sm">Right</button>'
             };
 
             legend.addTo(mymap); // add the legend
