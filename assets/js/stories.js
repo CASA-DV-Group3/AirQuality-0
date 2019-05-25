@@ -47,7 +47,7 @@ function getHomePageStory() {
             //get the image
             let imageLink = "assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
 
-            document.getElementById("storyimage").src=imageLink;
+            document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
 
@@ -65,7 +65,7 @@ function getHomePageStory() {
 
             let imageLink = "assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
 
-            document.getElementById("storyimage").src=imageLink;
+            document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
         }
