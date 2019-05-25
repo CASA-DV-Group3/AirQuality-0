@@ -26,7 +26,7 @@
     <div class="panel panel-default text-light" style="position: absolute; margin-left: 1%; margin-top: 30%; width: 28%;">
         <h3 class="text-light" style="text-align: center">Global Health Impact</h3>
         <div id="theSlider" style="margin-left: 10%">
-            <i class="fa fa-play" id="playButton" onclick="console.log('here')"></i> <span class="text-light">Current Year: </span><span class="text-light" id="globeSliderVal">1990</span><br>
+            <i class="fa fa-play" id="playButton" onclick="moveSlider();"></i> <span class="text-light">Current Year: </span><span class="text-light" id="globeSliderVal">2017</span><br>
              <input id="globeSlider" style="margin-left: 10%" type="text" data-slider-handle="custom"/>
         </div>
         <br>
@@ -52,15 +52,41 @@
     <script>
         var slider = new Slider("#globeSlider", {step: 1,
             min: 1990,
-            max: 2017});
+            max: 2017,
+            value: 2017});
 
         slider.on("slide", function(sliderValue) {
             document.getElementById("globeSliderVal").textContent = sliderValue;
-            loadAll(sliderValue)
+            // loadAll(sliderValue) // Uncomment this to have the animation play
         });
 
         loadLegend(); // load legend for glo
         loadAll() // load canvas layer
+        var onClick = false,
+            timeOutSlider,
+            currentVal = 1990;
+        function moveSlider() {
+            if (onClick) {
+                window.clearInterval(timeOutSlider);
+                onClick = false
+                return
+            } else {
+                currentVal = document.getElementById("globeSliderVal").textContent
+                if (currentVal >= 2017) {
+                    return
+                }
+                onClick = true;
+                document.getElementById("globeSliderVal").textContent = currentVal;
+
+                timeOutSlider = setInterval(sliderMove, 1000);
+                function sliderMove() {
+                    currentVal++
+                    document.getElementById("globeSliderVal").innerHTML = currentVal;
+                }
+            }
+
+        }
+
     </script>
 
 </body>
