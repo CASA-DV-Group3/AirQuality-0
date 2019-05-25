@@ -121,12 +121,12 @@
                     // loop through the grades
                     grades = [0,  50,100,150,200,300];
                 div.style.textAlign = 'center';
-                div.innerHTML += '<a id="aqiHover" href="#d" onclick="window.open(\'https://aqicn.org/map/london/\')"><b>Air Quality Metric</b></a><br>'
+                div.innerHTML += '<a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>Air Quality Metric</b></a><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
                 labels = ["Good","Moderate","Unhealthy to Sensitive Groups","Unhealthy","Very Unhealthy","Hazardous"];
                 for (var i = 0; i < grades.length; i++) {
                     var widthHeight = i*1.1+10;
-                    div.innerHTML += '<div id="aqiButton"><i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " (" + labels[i] + ")" +'<br></div>' : "+ (" + labels[i] + ")" + "</div>");
+                    div.innerHTML += '<div id="aqiButton"><i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i>' + String(Number(grades[i])+1) + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " (" + labels[i] + ")" +'<br></div>' : "+ (" + labels[i] + ")" + "</div>");
 
                 }
                 return div;
@@ -183,7 +183,7 @@
             <br/>Map engine : <a href="https://www.mapbox.com/" target="_blank">Mapbox GL JS</a>
                                 <a href="https://www.leafletjs.com/" target="_blank">Leaflet JS</a>
 
-                <br/>Github : <a href="https://github.com/CASA-DV-Group3/AirQuality-0.github.io" target="_blank">@CASA-DV-Group3</a>
+                <br/>Github : <a href="https://github.com/CASA-DV-Group3/AirQuality-0" target="_blank">@CASA-DV-Group3</a>
             <br/>
             <br/>@ 2019 CASA, University College London</p>
             <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
