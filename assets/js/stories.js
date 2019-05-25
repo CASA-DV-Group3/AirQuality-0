@@ -20,7 +20,7 @@ var storyLine = [
 
 
 
-var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."}, {text:"nextText"}];
+var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.<br>"}, {text: "Some truly pay a far higher price with each breath."}, {text:"nextText"}];
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
@@ -33,16 +33,18 @@ function getHomePage(){
 
 function getHomePageStory() {
     let index = 0;
-    $('#introText').hide().delay(200).fadeIn('slow');
-    $('#backButtonBar').hide().delay(1400).fadeIn('slow');
-    $('#forwardButtonBar').hide().delay(1400).fadeIn('slow');
+    $('#introText1').hide().delay(300).fadeIn('slow');
+    $('#introText2').hide().delay(3000).fadeIn('slow');
+    $('#backButtonBar').hide().delay(5000).fadeIn('slow');
+    $('#forwardButtonBar').hide().delay(6000).fadeIn('slow');
         document.getElementById("introPage").style.display = "block";
         document.getElementById('page1_innertext').style.display = "none";
-        document.getElementById("introText").innerHTML = firstPageLine[index].text;
+        document.getElementById("introText1").innerHTML = firstPageLine[index].text;
+        document.getElementById("introText2").innerHTML = firstPageLine[1].text;
 }
 
 function moveForward() {
-    let index = 1;
+    let index = 2;
     $('#forwardButtonBar').hide()
     document.getElementById("introPage").style.display = "block";
     document.getElementById('page1_innertext').style.display = "none";
