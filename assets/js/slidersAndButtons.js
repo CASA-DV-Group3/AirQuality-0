@@ -131,8 +131,8 @@ L.easyButton({
     id: "playViz",
     states: [{
         stateName: 'unplayed',        // name the state
-        icon:      '&#x25b6;',               // and define its properties
-        title:     'Play Analysis',      // like its title
+        icon:      '&#65110;',               // and define its properties
+        title:     'Help with Map',      // like its title
         onClick: function(btn, map) {       // and its callback
             document.getElementById('infoDiv').innerText = "Hello There";
             btn.state('played');
@@ -140,7 +140,7 @@ L.easyButton({
     }, {
         stateName: 'played',
         icon:      'fa-pause',
-        title:     'Pause Analysis',
+        title:     'Stop Help',
         onClick: function(btn, map) {
             document.getElementById('infoDiv').innerHTML = '<h3>Text about the map</h3><br><h4>This will reload when changing points</h4><br><button class="btn btn-outline-info btn-sm" onclick="mymap.setView(new L.LatLng(40.737, -73.923), 8);;">Zoom to Layer</button><button class="btn btn-outline-info btn-sm">Left</button><button class="btn btn-outline-info btn-sm">Right</button>';
             btn.state('unplayed');
