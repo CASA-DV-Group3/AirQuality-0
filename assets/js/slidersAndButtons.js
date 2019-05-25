@@ -157,6 +157,7 @@ L.easyButton({
             if (lowClicked) {
                 low.click();
             }
+            mymap.setView([20, 24], 2);
             btn.state('unplayed');
         }
     }]
