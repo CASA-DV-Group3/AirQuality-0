@@ -150,7 +150,10 @@ L.easyButton({
         icon:      'fa-pause',
         title:     'Pause Analysis',
         onClick: function(btn, map) {
-            document.getElementById('infoDiv').innerHTML = '<h3>Text about the map</h3><br><h4>This will reload when changing points</h4><br><button class="btn btn-outline-info btn-sm">Left</button><button class="btn btn-outline-info btn-sm">Right</button>';
+            document.getElementById('infoDiv').innerHTML = " <h3>Global Air Quality Monitoring</h3><br>" +
+                "                                    <h5>To load the mointoring station data click on one of the industrial grouping buttons on the left-hand side</h5><br>" +
+                "                                    Air Quality Index (AQI) is used in this for an explanation of AQI groupings, visit <a id=\"aqiHover\" href=\"#d\" onclick=\"window.open(\\'https://www.ourair.org/sbc/the-air-quality-index/\\')\"><b>AQI index</b></a>" +
+                "                                    ";
             if (lowClicked) {
                 low.click();
             }
