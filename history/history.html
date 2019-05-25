@@ -17,23 +17,47 @@
     <link rel="stylesheet" href="../assets/css/material-kit.css"/>
     <script src="../assets/libs/material-kit.js"></script>
 
+    <style>
+        body{
+            background-color: #262626;
+        }
+    </style>
+
 </head>
 <body>
 <div class="section text-justify">
 <div class="col-md-8 ml-auto mr-auto" style="color:#ffffff">
     <div id="page2_innertext" class="brand text-center">
-        <h1>Invisible Cities</h1>
-        <h3 class="title text-center">World City Air Quality</h3>
-        <button type="button" onclick="getHistory();" class="btn btn-outline-info">Begin Story</button>
+        <h2>History</h2>
+        <div id="historyText" style="text-align: left">
+            <img src="../assets/img/molecule.png" style="height: 80px; padding: 10px; float:left">
+            <p>World Health Organisation (2015) emphasised that air pollution issue is one of the global health
+                emergencies in Sustainable Development Goals Agenda. According to statistics from WHO, over 90% world
+                population lives in areas where air quality cannot reach the standard of WHO, while 1 in 9 deaths is
+                caused by diseases related to air pollution worldwide.</p><br>
+            <img src="../assets/img/policy.png" style="height: 80px; padding: 10px; float:left">
+            <p>Not much progress has been made to govern global air quality. Although, a series of air pollution control
+                legislative acts have been passed by Europe Union in the recent decades to achieve the arbitrary goal of
+                “clean air for all”. More needs to be done.</p><br>
+            <img src="../assets/img/cloud.png" style="height: 80px; padding: 10px; float:left">
+            <p>Several countries have developed monitoring systems to detect levels of air pollution. Globally, the
+                ‘World Air Quality Index Project’ is an initiative for the monitoring of air quality. Moreover, some
+                countries and organisations have independent air pollution monitoring system such as the Environmental
+                Protection Agency (EPA) in the United States and European Air Quality Index from Europe Environment Agency.</p><br>
+        </div>
     </div>
-    <div id="storyPage" class="brand text-center" style="display:none">
-        <div id="timePoint" class="title text-center" style="display: none"></div>
-        <img id="storyImage" height="140">
+
+    <div id="page2story" class="brand text-center" style="display:none">
+        <div id="timePoint" class="title text-center"></div>
+        <img id="storyImage" style="height: 200px; padding: 10px; margin-bottom: 10%">
         <div id="storyText" class="brand text-center"></div>
         <div id="buttonbar" class="btn-bar">
             <div id="sliderbuttons"><a id="prev" href="#"><</a><a id="next" href="#">></a></div>
-            <button type="button" onclick="console.log('function here'); index=0;" class="btn btn-outline-info">Back to Home Page</button>
         </div>
+    </div>
+    <div style="position: absolute">
+        <button id="page2button" type="button" onclick="getStoryLine(); index=0" class="btn btn-outline-info">Begin Story</button>
+        <button id="page2back" type="button" onclick="hideStoryLine(); index=0;" class="btn btn-outline-info" style="display:none">Hide Story</button>
     </div>
 
 </div>

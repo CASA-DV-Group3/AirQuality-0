@@ -1,7 +1,8 @@
 var storyLine = [
     {year: 2019, text: "Second inquest into death of Ella Kissi-Debrah in London reveals reluctant action despite awareness," +
             "'There is momentum for change and it is fundamental that air pollution is brought down to within lawful limits.'"},
-    {year: 2017, text:"c to prevent a repeat of the 'airpocalypse' the previous year caused by the extra smoke and chemicals."},
+    {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the \"airpocalypse\" the previous " +
+            "year caused by the extra smoke and chemicals."},
     {year: 2015, text:"Chai Jing's self-funded 'Under the Dome' documentary features a mother’s worries about raising her new-born daughter in the polluted air of a major Chinese city."},
     {year: 2005, text:"Authorities admit air pollution will be a problem at the Beijing Olympics.\n" +
             "'Controlling only local sources in Beijing will not be sufficient to attain the air quality goal set for the Beijing Olympics." +
@@ -73,23 +74,29 @@ function getHomePageStory() {
 }
 
 
-function getHistory() {
-    index = 0;
-    document.getElementById("storyPage").style.display = "block";
-    document.getElementById('page2_innertext').style.display = "none";
+function getStoryLine(){
+    document.getElementById("historyText").style.display = "none";
+    let index = 0;
+    let imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
+    document.getElementById("page2story").style.display = "block";
+    document.getElementById("page2back").style.display = "block";
+    document.getElementById("page2button").style.display = "none";
     document.getElementById("storyText").innerHTML = storyLine[index].text;
 
 
     document.getElementById("next").addEventListener('click', function(e) {
-        if (index === 12){
-            document.getElementById("storyPage").style.display = "none";
-            document.getElementById('page2_innertext').style.display = "block";
+        if (index === storyLine.length-1){
+            index=0;
+            document.getElementById("page2story").style.display = "none";
+            document.getElementById("page2back").style.display = "none";
+            document.getElementById("historyText").style.display = "block"
+            document.getElementById("page2button").style.display = "block";
             return
         }
         else{
             index = index + 1;
             //get the image
-            let imageLink = "assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
+            imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
 
             document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
@@ -100,8 +107,11 @@ function getHistory() {
 
     document.getElementById("prev").addEventListener('click', function(e){
         if (index === 0){
-            document.getElementById("storyPage").style.display = "none";
-            document.getElementById('page2_innertext').style.display = "block";
+            inedx=0;
+            document.getElementById("page2story").style.display = "none";
+            document.getElementById("page2back").style.display = "none";
+            document.getElementById("historyText").style.display = "block"
+            document.getElementById("page2button").style.display = "block";
             return
         }
         else{
@@ -115,5 +125,13 @@ function getHistory() {
         }
 
     })
+}
+
+function hideStoryLine(){
+    document.getElementById("page2story").style.display = "none";
+    document.getElementById("page2back").style.display = "none";
+    document.getElementById("historyText").style.display = "block"
+    document.getElementById("page2button").style.display = "block";
+    return
 }
 
