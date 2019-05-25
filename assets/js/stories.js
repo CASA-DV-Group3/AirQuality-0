@@ -30,7 +30,7 @@ var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
 "        The report will follow this \n" +
 "        <br>\n" +
 "        The report will follow this <a href='#' onclick='viewStructure();'>structure</a>\n" +
-"        <br>\n" +
+"        <br>Scroll down to begin\n" +
 "    </div>"
 
 function viewStructure() {
@@ -39,11 +39,11 @@ function viewStructure() {
         "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/big_globe_icon.png\"> – <b>Globe View:</b> this visualisation aims to<br>\n" +
         "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/world-map.png\"> – <b>Map Level:</b>this visualisation aims to<br>\n" +
         "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/icon_region.png\"> – <b>Region Level:</b> this visualisation aims to<br>\n" +
-        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/street_icon.png\"> – <b>Street Level:</b> this visualisation aims to\n" +
+        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/street_icon.png\"> – <b>Street Level:</b> this visualisation aims to<br>Scroll down to begin\n" +
         "    </div>"
 }
 
-var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.<br>"}, {text: "Some truly pay a far higher price with each breath."}, {text:introDiv}];
+var firstPageLine = [{text: "We all buy our food and drink...<br>"}, {text: "but no one buys our air."}, {text:introDiv}];
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
@@ -59,7 +59,7 @@ function getHomePageStory() {
     $('#introText1').hide().delay(300).fadeIn('slow');
     $('#introText2').hide().delay(3000).fadeIn('slow');
     $('#backButtonBar').hide().delay(5000).fadeIn('slow');
-    $('#forwardButtonBar').hide().delay(6000).fadeIn('slow');
+    $('#forwardButtonBar').hide().delay(5500).fadeIn('slow');
         document.getElementById("introPage").style.display = "block";
         document.getElementById('page1_innertext').style.display = "none";
         document.getElementById("introText1").innerHTML = firstPageLine[index].text;
