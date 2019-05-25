@@ -78,8 +78,8 @@ function getStoryLine(){
     document.getElementById("historyText").style.display = "none";
     let index = 0;
     let imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
-    document.getElementById("page2story").style.display = "block";
-    document.getElementById("page2back").style.display = "block";
+    document.getElementById("page2story").style.display = "inline-block";
+    document.getElementById("page2back").style.display = "inline-block";
     document.getElementById("page2button").style.display = "none";
 
     document.getElementById("storyImage").src=imageLink;
@@ -92,8 +92,8 @@ function getStoryLine(){
             index=0;
             document.getElementById("page2story").style.display = "none";
             document.getElementById("page2back").style.display = "none";
-            document.getElementById("historyText").style.display = "block"
-            document.getElementById("page2button").style.display = "block";
+            document.getElementById("historyText").style.display = "inline-block"
+            document.getElementById("page2button").style.display = "inline-block";
             return
         }
         else{
@@ -113,8 +113,8 @@ function getStoryLine(){
             inedx=0;
             document.getElementById("page2story").style.display = "none";
             document.getElementById("page2back").style.display = "none";
-            document.getElementById("historyText").style.display = "block"
-            document.getElementById("page2button").style.display = "block";
+            document.getElementById("historyText").style.display = "inline-block"
+            document.getElementById("page2button").style.display = "inline-block";
             return
         }
         else{
@@ -133,8 +133,8 @@ function getStoryLine(){
 function hideStoryLine(){
     document.getElementById("page2story").style.display = "none";
     document.getElementById("page2back").style.display = "none";
-    document.getElementById("historyText").style.display = "block"
-    document.getElementById("page2button").style.display = "block";
+    document.getElementById("historyText").style.display = "inline-block"
+    document.getElementById("page2button").style.display = "inline-block";
     return
 }
 
