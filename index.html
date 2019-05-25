@@ -121,7 +121,7 @@
                     // loop through the grades
                     grades = [0,  50,100,150,200,300];
                 div.style.textAlign = 'center';
-                div.innerHTML += '<a id="aqiHover" href="https://aqicn.org/map/london/"><b>Air Quality Metric</b></a><br>'
+                div.innerHTML += '<a id="aqiHover" href="#d" onclick="window.open(\'https://aqicn.org/map/london/\')"><b>Air Quality Metric</b></a><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
                 labels = ["Good","Moderate","Unhealthy to Sensitive Groups","Unhealthy","Very Unhealthy","Hazardous"];
                 for (var i = 0; i < grades.length; i++) {
@@ -173,7 +173,7 @@
 </div>
 
 <!-- ABOUT -->
-<div class="section" id="about" style="display: none" onclick="off()" data-hash="ab">
+<div class="section" id="about" style="display: none" onclick="off()" data-hash="about">
     <div id="aboutText" class="text-dark">
         <h3>London Invisible Cities</h3>
         <br/>
