@@ -136,14 +136,17 @@
             info.onAdd = function(map) {
                 this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
                 this._div.id = "infoDiv"
-                this._div.style.marginBottom = "40%";
+                this._div.style.marginBottom = "30%";
                 this.update();
                 return this._div;
             };
 
             // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
-                this._div.innerHTML = '<h3>Global Air Quality Monitoring</h3><br><h4>This will reload when changing points</h4><br><button class="btn btn-outline-info btn-sm">Left</button><button class="btn btn-outline-info btn-sm">Right</button>'
+                this._div.innerHTML = '<h3>Global Air Quality Monitoring</h3><br>' +
+                                    '<h5>To load the mointoring station data click on one of the industrial grouping buttons on the left-hand side</h5><br>' +
+                                    'to view AQI explaination, visit <a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>AQI index</b></a>' +
+                                    ''
             };
 
             legend.addTo(mymap); // add the legend
