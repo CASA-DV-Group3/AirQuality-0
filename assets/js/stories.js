@@ -81,6 +81,9 @@ function getStoryLine(){
     document.getElementById("page2story").style.display = "block";
     document.getElementById("page2back").style.display = "block";
     document.getElementById("page2button").style.display = "none";
+
+    document.getElementById("storyImage").src=imageLink;
+    document.getElementById('timePoint').innerHTML = storyLine[index].year;
     document.getElementById("storyText").innerHTML = storyLine[index].text;
 
 
