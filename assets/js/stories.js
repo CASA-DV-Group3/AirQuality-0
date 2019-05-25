@@ -116,7 +116,6 @@ function getStoryLine(){
             index = index + 1;
             //get the image
             imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
-            console.log(imageLink)
             document.getElementById("storyImageCaption").innerText=figureCaptions[index].text;
             document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
@@ -136,10 +135,8 @@ function getStoryLine(){
         }
         else{
             index = index - 1;
-
             let imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
-            console.log(imageLink)
-            document.getElementById("storyImageCaption").innerText=figureCaptions[index];
+            document.getElementById("storyImageCaption").innerText=figureCaptions[index].text;
             document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
