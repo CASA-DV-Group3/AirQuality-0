@@ -10,21 +10,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
-    <link href='../assets/css/2.5DStreet.css' type='text/css' rel='stylesheet' />
+    <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
     <!--This link failed-->
 
     <style>
-        body { margin:0; padding:0; }
+        body {
+            margin: 0;
+        }
 
         #streetview { position:absolute; top:0; bottom:0; width:100%; }
 
         .map-overlay {
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font: 20px inherit ;
+            background-color: rgba(46, 46, 46, 0.8);
             position: absolute;
-            width: 28%;
+            width: 22%;
+            height: 100%;
+            border-radius: 3px;
             top: 0;
             left: 0;
-            padding: 10px;
+            padding: 0px;
         }
 
         .map-overlay .map-overlay-inner {
@@ -35,110 +40,201 @@
         .map-overlay table {
             border: none;
             width: 100%;
-            display: block;
-            padding: 0px 10px 10px 10px;
+            display: inline-block;
+            padding: 0px;
         }
 
         .map-overlay .bottonlist{
-            font: "Arial";
-            cursor: pointer; /* Pointer/hand icon */
             display: block; /* Make the buttons appear below each other */
+            padding: 10px 0px;
         }
 
-        .map-overlay  .button{
-            background-color: Transparent;
-            width: 180px;
-            border: none;
-            color: white;
-            padding: 5px;
-            text-align: left;
-            text-decoration: none;
-            display: block;
-            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            cursor: pointer;
-        }
 
         .map-overlay .button:hover {background-color: rgba(255, 255, 255, 0.3)}
 
         .map-overlay .radiobutton{
-            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font: 16px inherit ;
         }
 
         .map-overlay .viewButton {
             background-color: Transparent;
+            border:1px solid #FFFFFF;
             width: 120px;
             color: white;
-            border-bottom-color: white;
-            border-bottom-width: thin;
-            border-radius: 4px;
-            padding: 5px 10px;
+            border-radius: 3px;
+            padding: 5px 20px;
             text-align: center;
             text-decoration: none;
             display: inline;
-            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font: 14px inherit ;
+            cursor: pointer; /* Pointer/hand icon */
 
         }
 
         .map-overlay .viewButton:hover {background-color: rgba(255, 255, 255, 0.3)}
 
-        .map-overlay h2 {
-            color: #eaeaea;
-            font-size: 24px;
-            line-height: 24px;
-            display: block;
-            margin: 0 0 10px;
-        }
-
-        .map-overlay h3 {
-            padding: 5px 0px;
-            color: #eaeaea;
-            font-size: 16px;
+        h2,
+        h3,
+        h4,
+        h5,
+        h6
+        {
             color: #ffffff;
-            line-height: 24px;
             display: block;
             margin: 10px 0px;
         }
 
-        .map-overlay label {
-            font: 16px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        p{
             color: #ffffff;
-            vertical-align: bottom;
-            margin: 0;
-            padding: 0;
+            font: 8px inherit;
+        }
+
+
+        .map-overlay label {
+            font-size: 12px;
+            color: #ffffff;
+            horiz-align: center;
+            padding: 10px 10px 20px 10px;
+        }
+
+        .collapsible {
+            background-color: Transparent;
+            width: 100%;
+            color: white;
+            font-size: 14px;
+            border: none;
+            padding: 5px;
+            text-align: left;
+            display: block;
+            cursor: pointer;
+        }
+
+        .active .collapsible:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 10px;
+            display: none;
+            overflow: hidden;
+            background-color: rgba(89, 89, 89, 0.5);
+        }
+
+        #legend {
+            font-size: 12px;
+            width: 100%;
+            height: 40px;
+            padding: 5px 10px;
+        }
+
+        .row {
+            position: center;
+            height: 12px;
+            width: 90%;
+            padding-left: 5px;
+        }
+
+        .colors {
+            background: linear-gradient(to right, #32e458,#eab71f,#e55720,#bf1c1c,#800d2d,#441038);
+            margin-bottom: 5px;
+        }
+
+        .legendLabel {
+            width: 15%;
+            color: #FFFFFF;
+            display: inline-block;
+            text-align: left;
         }
     </style>
 
 </head>
 <body>
-<div id='streetview'></div>
+<div id='streetview'>
+    <!-- Modify the style: right position so it matches with the mapbox attribution -->
+    <div id="attribution" class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-ctrl-bottom-right" style="position: fixed; bottom: 0; right: 230px;">
+        <a href="https://www.mapbox.com/about/maps/">© Mapbox</a> &nbsp;|&nbsp;
+        <a href="https://www.openstreetmap.org/about/">© OpenStreetMap</a>  &nbsp;|&nbsp;
+        <a href="https://data.london.gov.uk/dataset/laei-2008-concentration-maps?resource=159b2b40-d881-4ee5-88e2-09cbf0e1c012">London Data Store</a>  &nbsp;|&nbsp;
+        <a href="https://apps.mapbox.com/feedback/?owner=uczlqju&id=cjv3rkko11j721fqr3s1xekl1&access_token=pk.eyJ1IjoidWN6bHFqdSIsImEiOiJjam4zOXRjMHUwY3htM3BteXgxazVxZ3QzIn0.mmRn_HjpXDzMJrKj1apGNQ">Improve this map</a> &nbsp;|
+    </div>
+</div>
 
 <div class='map-overlay top'>
     <div class='map-overlay-inner'>
-        <h2>Air Pollution in Central London</h2>
+        <h3>Air Pollutant Emission in Central London</h3>
 
-        <h3>Choose a year: </h3>
+        <h5>Year</h5>
         <table><tr><td>
-            <input type="radio" class="radiobutton" name="year" id="2008" value="2008"><label>2008</label>
-            <input type="radio" class="radiobutton" name="year" id="2011" value="2011"><label>2011</label>
-            <input type="radio" class="radiobutton" name="year" id="2015" value="2015" checked><label>2015</label>
-        </td>
-        </tr>
+            <input type="radio" class="radiobutton" name="year" id="2008"><label>2008</label>
+            <input type="radio" class="radiobutton" name="year" id="2011"><label>2011</label>
+            <input type="radio" class="radiobutton" name="year" id="2015" checked><label>2015</label>
+        </td></tr>
         </table>
 
-        <h3>Choose a layer: </h3>
+        <h5>Choose view: </h5>
         <div class="bottonlist">
-            <input type="button" class="button" id="NO2a" value="NO2 Annual Mean" checked><label></label>
-            <input type="button" class="button" id="NOX" value="NOX Annual Mean" ><label></label>
-            <input type="button" class="button" id="PM10a" value="PM 10 Annual Mean" ><label></label>
-            <input type="button" class="button" id="PM10e" value="PM 10 Exceedence" ><label></label>
-            <input type="button" class="button" id="PM25e" value="PM 2.5 Exceedence" ><label></label>
+            <button class="viewButton" id="3D">Street View</button>
+            <button class="viewButton" id="top">Airscape</button>
         </div>
 
-        <h3>Choose view: </h3>
-        <div class="bottonlist">
-            <input type="button" class="viewButton" id="3D" value="Street View">
-            <input type="button" class="viewButton" id="top" value="Airscape">
+        <h5>Emission Volume (μg/m3)</h5>
+        <div id="legend">
+            <div class='row colors'></div>
+            <div class='legendLabel'>0</div>
+            <div class='legendLabel'>30</div>
+            <div class='legendLabel'>60</div>
+            <div class='legendLabel'>90</div>
+            <div class='legendLabel'>120</div>
+            <div class='legendLabel'>900</div>
+
         </div>
+
+        <h5>Explore by Pollutants</h5>
+        <div class="bottonlist">
+            <button class="collapsible"  id="NO2a" checked>NO2 Annual Mean</button>
+            <div class="content">
+                <p>Nitrogen dioxide is mainly generated by vehicle emissions. It indicates the presence of other oxides
+                    of nitrogen (collectively described as NOX). Colors and column heights show the distribution of
+                    annual average emissions of NO2 in central London.</p>
+            </div>
+            <button class="collapsible"  id="NOX">NOX Annual Mean</button>
+            <div class="content">
+                <p>The presence of oxides of nitrogen (NOX) is highly linked to No2 concentration. Colors and column
+                    heights show the distribution of annual average emissions of NOX in central London.</p>
+            </div>
+            <button class="collapsible" id="PM10a">PM 10 Annual Mean</button>
+            <div class="content">
+                <p>Heavier particulate matter such as smoke, dust from roads and construction sites, most harmful when
+                    breathed into deepest part of lungs.  Primary effect on health is damage to lungs, heart and
+                    circulation.Colors and column heights show the distribution of
+                    annual average emissions of PM10 in central London.</p>
+            </div>
+            <button class="collapsible"  id="PM10e">PM 10 Exceedence</button>
+            <div class="content">
+                <p> Colors and column heights show the distribution of the volume of PM10
+                    exceeding the EU emission limit.</p>
+            </div>
+            <button class="collapsible"  id="PM25e">PM 2.5 Exceedence</button>
+            <div class="content">
+                <p>Fine particulate matter (PM2.5) sources include burning and vehicle emissions.  It is light and remains
+                    suspended in the air for a long time (it is the main visible component of pollution), causing
+                    coughing, sneezing and shortness of breath.  Long term effects include asthma, chronic bronchitis
+                    and heart disease. Colors and column heights show the distribution of the volume of PM2.5
+                    exceeding the EU emission limit.</p>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -148,11 +244,12 @@
     var map = new mapboxgl.Map({
         container: 'streetview',
         style: 'mapbox://styles/uczlqju/cjv3rkko11j721fqr3s1xekl1',
-        center: [-0.115, 51.515],
+        center: [-0.125, 51.515],
         zoom: 12,
-        maxZoom: 18,
-        minZoom: 10,
-        pitch: 0
+        minZoom: 12,
+        maxZoom: 15,
+        pitch: 0,
+        attributionControl: false
     });
 
 
@@ -200,15 +297,16 @@
                     property: layerField,
                     type: 'exponential',
                     stops: [
-                        [0, '#4fe421'],
-                        [20, '#e1bb25'],
-                        [50, '#d78021'],
-                        [100, '#be491b'],
-                        [450, '#912a16'],
-                        [800, '#5e0e20']]
+                        [0, '#32e458'],
+                        [10, '#32e458'],
+                        [30, '#eab71f'],
+                        [40, '#e55720'],
+                        [80, '#bf1c1c'],
+                        [100, '#800d2d'],
+                        [800, '#441038']]
                 },
                 'fill-extrusion-height': layerHeight,  //expression that controls the extrusion height based on attribute
-                'fill-extrusion-opacity': 0.7,
+                'fill-extrusion-opacity': 0.8,
                 'fill-extrusion-opacity-transition': {  //Opacity transition adds a delay when changing the opacity for a smooth layer change effect
                     duration: 1000,
                     delay: 0
@@ -218,7 +316,7 @@
 
         // add the air pollution to the map
 
-        var layerList = document.getElementsByClassName("button");
+        var layerList = document.getElementsByClassName("collapsible");
         var yearList = document.getElementsByClassName("radiobutton");
 
         var buttonID = 'NO2a';
@@ -254,19 +352,29 @@
                     property: layerField,
                     type: 'exponential',
                     stops: [
-                        [0, '#4fe421'],
-                        [20, '#e1bb25'],
-                        [50, '#d78021'],
-                        [100, '#be491b'],
-                        [450, '#912a16'],
-                        [800, '#5e0e20']]
+                        [0, '#32e458'],
+                        [10, '#32e458'],
+                        [30, '#eab71f'],
+                        [40, '#e55720'],
+                        [80, '#bf1c1c'],
+                        [100, '#800d2d'],
+                        [800, '#441038']]
                 };
 
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                };
 
                 map.setPaintProperty('airQuality','fill-extrusion-color', paintDesign);
                 map.setPaintProperty('airQuality','fill-extrusion-height', layerHeight);
             })
         }
+
+
 
 
         for (var i = 0; i < yearList.length; i++) {
@@ -291,12 +399,13 @@
                     property: layerField,
                     type: 'exponential',
                     stops: [
-                        [0, '#4fe421'],
-                        [20, '#e1bb25'],
-                        [50, '#d78021'],
-                        [100, '#be491b'],
-                        [450, '#912a16'],
-                        [800, '#5e0e20']]
+                        [0, '#32e458'],
+                        [10, '#32e458'],
+                        [30, '#eab71f'],
+                        [40, '#e55720'],
+                        [80, '#bf1c1c'],
+                        [100, '#800d2d'],
+                        [800, '#441038']]
                 };
 
                 map.setPaintProperty('airQuality','fill-extrusion-color', paintDesign);
@@ -304,9 +413,10 @@
             })
         }
 
+        // The action for view buttons
         document.getElementById("3D").addEventListener('click', function(e){
-            let viewAngle = 60;
-            let zoomSize = 14;
+            let viewAngle = 50;
+            let zoomSize = 13;
             let cor = [-0.12, 51.52];
             map.flyTo({
                 centre: cor,
