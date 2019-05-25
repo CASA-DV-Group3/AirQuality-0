@@ -120,7 +120,7 @@
                 var div = L.DomUtil.create('div', 'infoLegend'),
                     // loop through the grades
                     grades = [0,  50,100,150,200,300];
-                div.style.textAlign = 'center';
+                div.style.textAlign = 'left';
                 div.innerHTML += '<a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>Air Quality Metric</b></a><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
                 labels = ["Good","Moderate","Unhealthy to Sensitive Groups","Unhealthy","Very Unhealthy","Hazardous"];
