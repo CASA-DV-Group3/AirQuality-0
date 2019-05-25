@@ -26,14 +26,13 @@
     <div class="panel panel-default text-light" style="position: absolute; margin-left: 1%; margin-top: 28%; width: 30%;">
         <h3 class="text-light" style="text-align: left">Global Health Impact of Air Pollution</h3>
         <h5 class="text-light" style="text-align: left"><i>'The Invisible Killer'</i></h5>
-        <button class="btn btn-primary btn-sm" onclick="column='deaths'" style="margin-left: 12%;">View Deaths</button>
-        <button class="btn btn-info btn-sm" onclick="column='exposure'" style="margin-left: 10%;">View Exposure</button>
+        <p>This is where text about the globe is here. The World Health Organisation's BreatheLife campaign calls it the invisible killer (WHO 2019). Here we are plotting the global health impact</p>
         <div id="theSlider" style="margin-left: 10%">
             <i class="fa fa-play" id="playButton" onclick="moveSlider();"></i> <span class="text-light">Current Year: </span><span class="text-light" id="globeSliderVal">2017</span><br>
-             <input id="globeSlider" style="margin-left: 10%" type="text" data-slider-handle="custom"/>
+            <input id="globeSlider" style="margin-left: 10%" type="text" data-slider-handle="custom"/>
         </div>
-        <br>
-        <p>This is where text about the globe is here. The World Health Organisation's BreatheLife campaign calls it the invisible killer (WHO 2019). Here we are plotting the global health impact</p>
+        <button class="btn btn-primary btn-sm" onclick="column='deaths'" style="margin-left: 12%;">View Deaths</button>
+        <button class="btn btn-info btn-sm" onclick="column='exposure'" style="margin-left: 10%;">View Exposure</button>
     </div>
     <h2 id="current"></h2>
     <div class="text-light" id="globePlot" style="position:absolute; margin-top: 9%; margin-left: 1%; width:25%; height: 30%;">
