@@ -123,12 +123,13 @@
                 // loop through our density intervals and generate a label with a colored square for each interval
                 labels = ["http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png","http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png"];
                 for (var i = 0; i < grades.length; i++) {
-                    var widthHeight = i*1.1+8;
-                    div.innerHTML += '<i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                    var widthHeight = i*1.1+10;
+                    div.innerHTML += '<div id="aqibutton"><i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i></div> ' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
 
                 }
                 return div;
             };
+
 
             info.onAdd = function(map) {
                 this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
