@@ -121,9 +121,6 @@ function getHistory() {
     })
 }
 
-var high = document.getElementById("high");
-var mid = document.getElementById("mid");
-var low = document.getElementById("low");
 function getMapStory() {
 
 }
