@@ -136,7 +136,7 @@
             info.onAdd = function(map) {
                 this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
                 this._div.id = "infoDiv"
-                this._div.style.marginBottom = "30%";
+                this._div.style.marginBottom = "25%";
                 this.update();
                 return this._div;
             };
@@ -145,7 +145,7 @@
             info.update = function (props) {
                 this._div.innerHTML = '<h3>Global Air Quality Monitoring</h3><br>' +
                                     '<h5>To load the mointoring station data click on one of the industrial grouping buttons on the left-hand side</h5><br>' +
-                                    'to view AQI explaination, visit <a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>AQI index</b></a>' +
+                                    'Air Quality Index (AQI) is used in this for an explanation of AQI groupings, visit <a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>AQI index</b></a>' +
                                     ''
             };
 
