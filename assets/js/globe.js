@@ -139,9 +139,9 @@ function loadChart(data) {
 
     var layout = {
         margin: {
-            l: 40,
+            l: 55,
             r: 5,
-            b: 50,
+            b: 40,
             t: 5,
             pad: 0
         },
@@ -165,17 +165,23 @@ function loadChart(data) {
                 text: 'Year',
                 font: {
                     size: 18,
-                    color: '#7f7f7f'
-                }}
+                    color: '#cfcfcf'
+                }},
+            tickfont: {
+                color: '#cfcfcf'
+            },
         },
         yaxis: {
             range: [0, 220],
             title: {
-                text: 'Count',
+                text: 'Value',
                 font: {
                     size: 18,
-                    color: '#7f7f7f'
-                }}
+                    color: '#cfcfcf'
+                }},
+            tickfont: {
+                color: '#cfcfcf'
+            },
         },
         paper_bgcolor: 'rgba(67,67,67,0)',
         plot_bgcolor: 'rgb(104,104,104)'
