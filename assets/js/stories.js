@@ -20,8 +20,7 @@ var storyLine = [
 
 
 
-var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."},
-                    {text: "Next page"}];
+var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."}, {text:"nextText"}];
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
@@ -34,43 +33,22 @@ function getHomePage(){
 
 function getHomePageStory() {
     let index = 0;
-    if (index !== firstPageLine.length-1) {
-        console.log("here")
+    $('#introText').hide().delay(200).fadeIn('slow');
+    $('#backButtonBar').hide().delay(1400).fadeIn('slow');
+    $('#forwardButtonBar').hide().delay(1400).fadeIn('slow');
         document.getElementById("introPage").style.display = "block";
         document.getElementById('page1_innertext').style.display = "none";
         document.getElementById("introText").innerHTML = firstPageLine[index].text;
-    }
-    if (index >= firstPageLine.length-1) {
-        index = 0;
-    }
-    document.getElementById("introNext").addEventListener('click', function(e) {
-        index = index + 1;
-        if (index >= firstPageLine.length){
-            console.log("no here")
-            index = 0;
-            document.getElementById("introPage").style.display = "none";
-            document.getElementById('page1_innertext').style.display = "block";
-            return
-        }
-        else {
-            document.getElementById('introText').innerHTML = firstPageLine[index].text;
-
-        }
-
-    });
-
-    document.getElementById("introPrev").addEventListener('click', function(e){
-        if (index === 0){
-            document.getElementById("introPage").style.display = "none";
-            document.getElementById('page1_innertext').style.display = "block";
-            return
-        }
-        else {
-            index = index - 1;
-            document.getElementById('introText').innerHTML = firstPageLine[index].text;
-        }
-    })
 }
+
+function moveForward() {
+    let index = 1;
+    $('#forwardButtonBar').hide()
+    document.getElementById("introPage").style.display = "block";
+    document.getElementById('page1_innertext').style.display = "none";
+    document.getElementById("introText").innerHTML = firstPageLine[index].text;
+}
+
 
 
 function getHistory() {
