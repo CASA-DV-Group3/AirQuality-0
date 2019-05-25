@@ -65,13 +65,13 @@ function loadLegend() {
     div.style.textAlign = 'left';
     let sizes = ["fa-xs", "fa-xs","fa-sm","fa-lg","fa-2x","fa-3x", "fa-4x"];
     if (column == "deaths") {
-        div.innerHTML += '<i class="text-light">Deaths from Particulates Matter (PM2.5) per 100,000 persons</i><br>';
+        div.innerHTML += '<i class="text-light">Deaths from Particulate Matter (PM2.5) per 100,000 persons</i><br>';
         div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(0) + '"></i><a class="text-light">No Data</a><br>';
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getAPColor(grades[i]+0.0000001) + '"></i><a class="text-light">' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " Deaths" + '</a><br>' : '+ Deaths');
         }
     } else {
-        div.innerHTML += '<i class="text-light">Exposure to Particulate Matter (PM2.5) (micrograms per cubic metre)</i><br>';
+        div.innerHTML += '<i class="text-light">Exposure to Particulate Matter (micrograms per cubic metre)</i><br>';
         div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(0) + '"></i><a class="text-light">No Data</a><br>';
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += '<i class="fa fa-circle ' + sizes[i] + '" style="color:' + getExpColor(grades[i]+0.0000001) + '"></i><a class="text-light">' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " &mu;/m<sup>3</sup>" + '</a><br>' : '+ mg/m3');
