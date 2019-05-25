@@ -28,11 +28,12 @@ var firstPageLine = [{year:"", text: "We all buy our food and drink, but no-one 
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
+var index;
 function getHomePageStory() {
     document.getElementById("storyPage").style.display = "block";
     document.getElementById('page1_innertext').style.display = "none";
 
-    var index = 0;
+    index = 0;
     document.getElementById("storyText").innerHTML = storyLine[index].text;
 
 
