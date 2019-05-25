@@ -117,7 +117,7 @@ function loadChart(data) {
         y: y1,
         name: "Deaths from PM2.5 per 100k ",
         line: {
-            color: 'rgb(107,0,22)',
+            color: 'rgb(245,73,95)',
             width: 2,
             dash: 'dot',
             shape: 'spline'
@@ -130,7 +130,7 @@ function loadChart(data) {
         y: y2,
         name: "PM2.5 Exposure",
         line: {
-            color: 'rgb(0,75,58)',
+            color: 'rgb(102,229,129)',
             width: 2,
             shape: 'spline'
         },
