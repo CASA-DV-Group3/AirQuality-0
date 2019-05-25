@@ -38,23 +38,23 @@ function getRadius(d) {
 }
 
 function getAPColor(d) {
-    return  d > 100 ? 'rgb(41,41,84)' :
-        d > 80 ? 'rgba(60,52,106,0.75)'  :
-            d > 60 ? 'rgba(78,70,135,0.76)'  :
-                d > 40 ? 'rgba(101,71,163,0.75)'  :
-                    d > 20 ? 'rgba(120,73,184,0.76)'  :
-                        d > 0.5 ? 'rgba(158,82,229,0.76)'  :
-                        'rgba(113,120,119,0.82)' ;
+    return  d > 100 ? 'rgba(105,0,30,0.90)' :
+        d > 80 ? 'rgba(130,0,21,0.90)'  :
+            d > 60 ? 'rgb(171,28,28,0.90)'  :
+                d > 40 ? 'rgb(195,59,36,0.90)'  :
+                    d > 20 ? 'rgb(207,81,65,0.90)'  :
+                        d > 0.5 ? 'rgb(221,125,114,0.90)'  :
+                        'rgba(113,120,119,0.82,0.90)' ;
 }
 
 function getExpColor(d) {
-    return  d > 100 ? 'rgb(30,61,50)' :
-        d > 80 ? 'rgba(41,77,64,0.75)'  :
-            d > 60 ? 'rgba(65,106,91,0.76)'  :
-                d > 40 ? 'rgba(81,128,112,0.75)'  :
-                    d > 20 ? 'rgba(114,184,161,0.76)'  :
-                        d > 0.5 ? 'rgba(142,226,200,0.76)'  :
-                        'rgba(113,120,119,0.82)' ;
+    return  d > 100 ? 'rgb(0,73,51,0.90)' :
+        d > 80 ? 'rgb(6,95,55,0.90)'  :
+            d > 60 ? 'rgb(10,125,43,0.90)'  :
+                d > 40 ? 'rgb(30,156,64,0.90)'  :
+                    d > 20 ? 'rgb(63,180,62,0.90)'  :
+                        d > 0.5 ? 'rgb(112,225,92,0.90)'  :
+                        'rgba(113,120,119,,0.90)' ;
 }
 
 function loadLegend() {
@@ -117,7 +117,7 @@ function loadChart(data) {
         y: y1,
         name: "Deaths from PM2.5 per 100k ",
         line: {
-            color: 'rgb(132,30,129)',
+            color: 'rgb(107,0,22)',
             width: 2,
             dash: 'dot',
             shape: 'spline'
@@ -130,7 +130,7 @@ function loadChart(data) {
         y: y2,
         name: "PM2.5 Exposure",
         line: {
-            color: 'rgb(91,172,139)',
+            color: 'rgb(0,75,58)',
             width: 2,
             shape: 'spline'
         },
@@ -153,10 +153,10 @@ function loadChart(data) {
             font: {
                 family: 'sans-serif',
                 size: 12,
-                color: '#000'
+                color: '#ffffff'
             },
-            bgcolor: '#E2E2E2',
-            bordercolor: '#FFFFFF',
+            bgcolor: 'rgba(255,255,255,0.11)',
+            bordercolor: 'rgba(0,0,0,0)',
             borderwidth: 2
         },
         xaxis: {
@@ -165,10 +165,10 @@ function loadChart(data) {
                 text: 'Year',
                 font: {
                     size: 18,
-                    color: '#cfcfcf'
+                    color: '#ffffff'
                 }},
             tickfont: {
-                color: '#cfcfcf'
+                color: '#ffffff'
             },
         },
         yaxis: {
@@ -177,14 +177,14 @@ function loadChart(data) {
                 text: 'Value',
                 font: {
                     size: 18,
-                    color: '#cfcfcf'
+                    color: '#ffffff'
                 }},
             tickfont: {
-                color: '#cfcfcf'
+                color: '#ffffff'
             },
         },
-        paper_bgcolor: 'rgba(67,67,67,0)',
-        plot_bgcolor: 'rgb(104,104,104)'
+        paper_bgcolor: 'rgba(41,44,51,0.61)',
+        plot_bgcolor: 'rgba(255,255,255,0.1)'
     };
     Plotly.newPlot('globePlot', [trace1,trace2], layout);
 }
@@ -209,11 +209,11 @@ function loadAll(year) {
     // start angles
     var angles = { x: -20, y: 40, z: 0};
     // colors
-    var colorWater = 'rgb(24,25,35)';
-    var colorLand = '#333447';
+    var colorWater = 'rgb(22,25,30)';
+    var colorLand = '#71727d';
     var colorPoint = '#6d1371';
     var colorGraticule = 'rgba(255,255,255,0)';
-    var colorCountry = 'rgba(137,160,215,0.5)';
+    var colorCountry = 'rgba(215,215,215,0.71)';
 
     // year for data
 
