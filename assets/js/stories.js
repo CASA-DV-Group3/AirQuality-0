@@ -30,7 +30,7 @@ var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
 "        The report will follow this \n" +
 "        <br>\n" +
 "        The report will follow this <a href='#' onclick='viewStructure();'>structure</a>\n" +
-"        <br><br>Scroll down to begin\n" +
+"        <br><br><i>Scroll down to begin</i>\n" +
 "    </div>"
 
 function viewStructure() {
