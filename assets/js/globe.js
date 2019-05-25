@@ -209,11 +209,11 @@ function loadAll(year) {
     // start angles
     var angles = { x: -20, y: 40, z: 0};
     // colors
-    var colorWater = 'rgb(10,39,82)';
-    var colorLand = '#9b9b9b';
+    var colorWater = 'rgb(24,25,35)';
+    var colorLand = '#333447';
     var colorPoint = '#6d1371';
     var colorGraticule = 'rgba(255,255,255,0)';
-    var colorCountry = 'rgba(255,255,255,0.33)';
+    var colorCountry = 'rgba(137,160,215,0.5)';
 
     // year for data
 
