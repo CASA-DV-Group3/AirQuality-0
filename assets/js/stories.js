@@ -1,5 +1,4 @@
-var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys air.\n" +
-        "Some truly pay a far higher price with each breath."},
+var storyLine = [
     {year: 2019, text: "Second inquest into death of Ella Kissi-Debrah in London reveals reluctant action despite awareness," +
             "'There is momentum for change and it is fundamental that air pollution is brought down to within lawful limits.'"},
     {year: 2017, text:"c to prevent a repeat of the 'airpocalypse' the previous year caused by the extra smoke and chemicals."},
@@ -21,26 +20,68 @@ var storyLine = [{year:"", text: "We all buy our food and drink, but no-one buys
 
 
 
-var firstPageLine = [{year:"", text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."},
-    {year: 2019, text: "Second inquest into death of Ella Kissi-Debrah in London reveals reluctant action despite awareness," +
-            "'There is momentum for change and it is fundamental that air pollution is brought down to within lawful limits.'"},
-    {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the 'airpocalypse' the previous year caused by the extra smoke and chemicals."}];
+var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.  Some truly pay a far higher price with each breath."},
+                    {text: "Next page"}];
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
-var index;
-function getHomePageStory() {
-    document.getElementById("storyPage").style.display = "block";
-    document.getElementById('page1_innertext').style.display = "none";
+var index = 0;
 
+function getHomePage(){
+    document.getElementById("introPage").style.display = "none";
+    document.getElementById('page1_innertext').style.display = "block";
+}
+
+function getHomePageStory() {
     index = 0;
+    if (index !== firstPageLine.length-1) {
+        console.log("here")
+        document.getElementById("introPage").style.display = "block";
+        document.getElementById('page1_innertext').style.display = "none";
+        document.getElementById("introText").innerHTML = firstPageLine[index].text;
+    }
+    if (index === firstPageLine.length-1) {
+    }
+    document.getElementById("introNext").addEventListener('click', function(e) {
+        index = index + 1;
+        if (index === firstPageLine.length){
+            document.getElementById("introPage").style.display = "none";
+            document.getElementById('page1_innertext').style.display = "block";
+            return
+        }
+        else {
+            document.getElementById('introText').innerHTML = firstPageLine[index].text;
+
+        }
+
+    });
+
+    document.getElementById("introPrev").addEventListener('click', function(e){
+        console.log("clicked")
+        if (index === 0){
+            document.getElementById("introPage").style.display = "none";
+            document.getElementById('page1_innertext').style.display = "block";
+            return
+        }
+        else {
+            index = index - 1;
+            document.getElementById('introText').innerHTML = firstPageLine[index].text;
+        }
+    })
+}
+
+
+function getHistory() {
+    index = 0;
+    document.getElementById("storyPage").style.display = "block";
+    document.getElementById('page2_innertext').style.display = "none";
     document.getElementById("storyText").innerHTML = storyLine[index].text;
 
 
     document.getElementById("next").addEventListener('click', function(e) {
         if (index === 12){
             document.getElementById("storyPage").style.display = "none";
-            document.getElementById('page1_innertext').style.display = "block";
+            document.getElementById('page2_innertext').style.display = "block";
             return
         }
         else{
@@ -58,7 +99,7 @@ function getHomePageStory() {
     document.getElementById("prev").addEventListener('click', function(e){
         if (index === 0){
             document.getElementById("storyPage").style.display = "none";
-            document.getElementById('page1_innertext').style.display = "block";
+            document.getElementById('page2_innertext').style.display = "block";
             return
         }
         else{
@@ -73,47 +114,4 @@ function getHomePageStory() {
 
     })
 }
-
-function getHomePage(){
-    document.getElementById("storyPage").style.display = "none";
-    document.getElementById('page1_innertext').style.display = "block";
-}
-
-function getHistory() {
-    document.getElementById("buttonbar").style.display = "block";
-    document.getElementById("timePoint").style.display = "block";
-    var index = 0;
-    document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
-
-    document.getElementById("next").addEventListener('click', function(e) {
-        if (index === 12){
-            document.getElementById("timePoint").style.display = "none";
-            document.getElementById('page2_innertext').innerHTML = originalText;
-            document.getElementById("buttonbar").style.display = "none";
-            return
-        }
-        else{
-            index = index + 1;
-            document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
-        }
-    })
-
-    document.getElementById("prev").addEventListener('click', function(e){
-        if (index === 0){
-            document.getElementById("timePoint").style.display = "none";
-            document.getElementById("buttonbar").style.display = "none";
-            document.getElementById('page2_innertext').innerHTML = originalText;
-            return
-        }
-        else{
-            index = index - 1;
-            document.getElementById('timePoint').innerHTML = storyLine[index].year;
-            document.getElementById('page2_innertext').innerHTML = storyLine[index].text;
-        }
-
-    })
-}
-
-
 
