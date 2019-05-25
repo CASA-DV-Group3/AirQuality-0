@@ -90,16 +90,6 @@
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
-    <style>
-        div#infolegend:hover {
-            background: url('assets/img/globe.png');
-            width: 30px;
-            height: 30px;
-            background-position: -10px 50px;
-        }
-    </style>
-
-
     <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
         <div id="map" style="height: 100vh;  margin-top: 0;"></div>
         <script>
@@ -127,16 +117,16 @@
 
 
             legend.onAdd = function(map) {
-                var div = L.DomUtil.create('div', 'info legend'),
+                var div = L.DomUtil.create('div', 'infoLegend'),
                     // loop through the grades
                     grades = [0,  50,100,150,200,300];
-                div.style.textAlign = 'left';
-                div.innerHTML += '<b>Air Quality Metric</b><br>'
+                div.style.textAlign = 'center';
+                div.innerHTML += '<a id="aqiHover" href="https://aqicn.org/map/london/"><b>Air Quality Metric</b></a><br>'
                 // loop through our density intervals and generate a label with a colored square for each interval
-                labels = [".png","http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png"];
+                labels = ["Good","Moderate","Unhealthy to Sensitive Groups","Unhealthy","Very Unhealthy","Hazardous"];
                 for (var i = 0; i < grades.length; i++) {
                     var widthHeight = i*1.1+10;
-                    div.innerHTML += '<div id="aqibutton"><i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br></div>' : '+</div>');
+                    div.innerHTML += '<div id="aqiButton"><i style="background:' + getColor(grades[i]+0.0000001) + '"><img src="assets/img/circle_icon.png" height=' + '\''+ widthHeight+ '\'' + 'width=' + '\'' + widthHeight + '\'' + '></i>' + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + " (" + labels[i] + ")" +'<br></div>' : "+ (" + labels[i] + ")" + "</div>");
 
                 }
                 return div;
@@ -158,6 +148,16 @@
             info.addTo(mymap); // add the legend
 
         </script>
+
+<!--        <style>-->
+<!--            #aqiHover:hover {-->
+<!--                background: url('assets/img/London-air-pollution-838x420.jpg');-->
+<!--                position: absolute;-->
+<!--                margin-bottom: 30%;-->
+<!--                /*width: 100px;*/-->
+<!--                /*height: 100px;*/-->
+<!--            }-->
+<!--        </style>-->
 
         <script src="assets/js/mapp5.js"></script>
     </div>
