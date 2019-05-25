@@ -25,7 +25,7 @@ var firstPageLine = [{text: "We all buy our food and drink, but no-one buys air.
 
 var originalText = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getHomePageStory();\" class=\"btn btn-outline-info\">Begin Story</button>"
 
-var index = 0;
+// var index = 0;
 
 function getHomePage(){
     document.getElementById("introPage").style.display = "none";
@@ -33,18 +33,21 @@ function getHomePage(){
 }
 
 function getHomePageStory() {
-    index = 0;
+    let index = 0;
     if (index !== firstPageLine.length-1) {
         console.log("here")
         document.getElementById("introPage").style.display = "block";
         document.getElementById('page1_innertext').style.display = "none";
         document.getElementById("introText").innerHTML = firstPageLine[index].text;
     }
-    if (index === firstPageLine.length-1) {
+    if (index >= firstPageLine.length-1) {
+        index = 0;
     }
     document.getElementById("introNext").addEventListener('click', function(e) {
         index = index + 1;
-        if (index === firstPageLine.length){
+        if (index >= firstPageLine.length){
+            console.log("no here")
+            index = 0;
             document.getElementById("introPage").style.display = "none";
             document.getElementById('page1_innertext').style.display = "block";
             return
@@ -57,7 +60,6 @@ function getHomePageStory() {
     });
 
     document.getElementById("introPrev").addEventListener('click', function(e){
-        console.log("clicked")
         if (index === 0){
             document.getElementById("introPage").style.display = "none";
             document.getElementById('page1_innertext').style.display = "block";
