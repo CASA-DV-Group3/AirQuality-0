@@ -45,10 +45,12 @@ function getHomePageStory() {
 
 function moveForward() {
     let index = 2;
-    $('#forwardButtonBar').hide()
+    console.log(index);
+    $('#forwardButtonBar').hide();
+    $('#IntroText2').hide();
     document.getElementById("introPage").style.display = "block";
     document.getElementById('page1_innertext').style.display = "none";
-    document.getElementById("introText").innerHTML = firstPageLine[index].text;
+    document.getElementById("introText1").innerHTML = firstPageLine[index].text;
 }
 
 
