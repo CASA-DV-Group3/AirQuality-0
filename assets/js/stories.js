@@ -27,7 +27,7 @@ var figureCaptions = [
     {year: 1992, text:"Yingqi (2011)"},
     {year: 1984, text:"WHO (2016)"},
     {year: 1982, text:"Films For Earth (2011)"},
-    {year: 1967, text:"MachKenzie (2016)"},
+    {year: 1967, text:"MacKenzie (2016)"},
     {year: 1956, text:"WriteOpinion.com (2011)"},
     {year: 1952, text:"Smogday (2011)"},
     {year: 1948, text:"Kiger (2018)"},
