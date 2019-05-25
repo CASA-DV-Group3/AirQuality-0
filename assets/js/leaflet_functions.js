@@ -105,9 +105,10 @@ function loadAirQualityData(qVal) {
 
                 let uniqId = $('#graphpopup > div')[0];
                 // console.log($('#graphpopup > div')[0]) // get all divs below
-                uniqId.innerHTML = "Loading 24hr graph for this station..."
+                uniqId.innerHTML = "Loading 24hr graph for this station"
                 uniqId = "#" + uniqId.id.toString();
-                drawLineChart(20, uniqueIDNumber, uniqId)
+                console.log(uniqId)
+                drawLineChart(14, uniqueIDNumber, uniqId)
             }
             layerMarkers.addLayer(marker);
         });
@@ -137,8 +138,7 @@ function drawLineChart(date, uniqId, divID){
         // define the file name
         // Change the path when necessary
         // Attention: use "\\" instead of "\"
-        let jsonfilename = "assets/data/stationData/STATIONdata"+ D + H + "_merged.geojson";
-
+        let jsonfilename = "../data/stationData/STATIONdata"+ D + H + "_merged.geojson";
         let xhr = new XMLHttpRequest();
         xhr.open('GET', jsonfilename, false);
         xhr.send();
@@ -157,25 +157,17 @@ function drawLineChart(date, uniqId, divID){
     };
 
 
-    var theId = $('#graphpopup > div')[0];
-    theId.innerHTML = ""
     // a error report
     var errorMassage = "The historical data of this city is not available.";
     if (airQuality.length === 0){
-        theId.innerHTML = "Sorry no available data!"
         return errorMassage;
     }
 
 
-    // console.log($('#graphpopup > div')[0]) // get all divs below
-
-
-
-    var fields = ["aqi"]//, "pm10", "pm25", "no2", "co", "so2", "o3"];
+    var fields = ["aqi", "pm10", "pm25", "no2", "co", "so2", "o3"];
 
     // Check the time of data
     if (airQuality[0]["time"] === airQuality[1]["time"]){
-        theId.innerHTML = "Data is not up to date, so not displaying here!"
         return errorMassage;
     }
 
@@ -184,18 +176,19 @@ function drawLineChart(date, uniqId, divID){
         var T = parseTime(element["hour"]);
         element["hour"] = formatTime(T);
         element["aqi"] = +element["aqi"];
-        // element["pm10"] = +element["pm10"];
-        // element["pm25"] = +element["pm25"];
-        // element["no2"] = +element["no2"];
-        // element["co"] = +element["co"];
-        // element["so2"] = +element["so2"];
-        // element["o3"] = +element["o3"];
+        element["pm10"] = +element["pm10"];
+        element["pm25"] = +element["pm25"];
+        element["no2"] = +element["no2"];
+        element["co"] = +element["co"];
+        element["so2"] = +element["so2"];
+        element["o3"] = +element["o3"];
     });
 
     // Sort the data according to GMT(BST)
     airQuality.sort(function(a, b){
         return a["order"]-b["order"];
     });
+    console.log(airQuality);
 
     // Creat chart for every contaminant
     for (let i=0; i<fields.length; i++){
@@ -218,7 +211,7 @@ function drawLineChart(date, uniqId, divID){
 
             // define the line
             var valueline = d3.line()
-                .x(function(d) { return x(d['order']); })
+                .x(function(d) { return x(d.hour); })
                 .y(function(d) { return y(d[contaminant]); });
 
             // append the svg object to the body of the page
@@ -233,7 +226,7 @@ function drawLineChart(date, uniqId, divID){
 
 
             // Scale the range of the data
-            x.domain(d3.extent(airQuality, function(element) { return element["order"]; }));
+            x.domain(d3.extent(airQuality, function(element) { return element["hour"]; }));
             y.domain([0, d3.max(airQuality, function(element) { return element[contaminant]; })]);
 
             // Add the valueline path.
@@ -252,32 +245,12 @@ function drawLineChart(date, uniqId, divID){
                 .call(d3.axisLeft(y));
 
             // Add tags to axis
-            svg.append("text")
-            .attr("transform",
-            "translate(" + (width/2) + " ," +
-            (height + margin.top + 20) + ")")
-            .style("text-anchor", "middle")
-            .text("Time");
-
-            // svg.selectAll(".dot")
-            //     .data([airQuality])
-            //     .enter()
-            //     .append("circle") // Uses the enter().append() method
-            //     .attr("class", "dot") // Assign a class for styling
-            //     .attr("cx", function(d) { return x(d.order) })
-            //     .attr("cy", function(d) { return y(d.aqi) })
-            //     .attr("r", 5);
-            //
-            //
-            // svg.selectAll(".text")
-            //     .data([airQuality])
-            //     .enter()
-            //     .append("text") // Uses the enter().append() method
-            //     .attr("class", "label") // Assign a class for styling
-            //     .attr("x", function(d, i) { return x(d.order) })
-            //     .attr("y", function(d) { return y(d.aqi) })
-            //     .attr("dy", "-5")
-            //     .text(function(d) {return d.aqi; });
+            //svg.append("text")
+            //.attr("transform",
+            //"translate(" + (width/2) + " ," +
+            //(height + margin.top + 20) + ")")
+            //.style("text-anchor", "middle")
+            //.text("Time");
 
             svg.append("text")
                 .attr("transform", "rotate(-90)")
@@ -286,7 +259,6 @@ function drawLineChart(date, uniqId, divID){
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text(contaminant);
-
         }
 
     }

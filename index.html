@@ -42,11 +42,9 @@
             <div class="collapse navbar-collapse">
                 <ul id="menu" >
                     <li data-menuanchor="page1" class="active"><a href="#page1" title="Top"><img src="assets/img/homepage.png"></a></li>
-<!--                    <li data-menuanchor="page2" class="active"><a href="#page2" title="History"><img src="assets/img/airpol.png"></a></li>-->
-                    <li data-menuanchor="page3" class="active"><a href="#page3" title="Globe Map"><img src="assets/img/globe.png"></a></li>
-                    <li data-menuanchor="page4" class="active"><a href="#page4" title="2D Map"><img src="assets/img/statistics.png"></a></li>
-                    <li data-menuanchor="page5"><a href="#page5" title="Region Map"><img src="assets/img/place.png"></a></li>
-                    <li data-menuanchor="page6"><a href="#page6" title="Street Map"><img src="assets/img/street.png"></a></li>
+                    <li data-menuanchor="page2" class="active"><a href="#page2" title="Globe Map"><img src="assets/img/globe.png"></a></li>
+                    <li data-menuanchor="page3" class="active"><a href="#page3" title="2D Map"><img src="assets/img/statistics.png"></a></li>
+                    <li data-menuanchor="page4"><a href="#page4" title="Street Map"><img src="assets/img/street.png"></a></li>
                     <li onclick="on();"><a href="#about" title="about"><img src="assets/img/info-button.png"></a></li>
                 </ul>
             </div>
@@ -59,30 +57,21 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
+                            <div id="timePoint" class="title text-center" style="display: none"></div>
                             <div id="page1_innertext" class="brand text-center">
                                 <h1>Invisible Cities</h1>
                                 <h3 class="title text-center">World City Air Quality</h3>
-                                <button type="button" onclick="getHomePageStory();" class="btn btn-outline-info">Begin Story</button>
+                                <button type="button" onclick="getIntro();" class="btn btn-outline-info">Begin Story</button>
                             </div>
-                            <div id="storyPage" class="brand text-center" style="display:none">
-                                <div id="timePoint" class="title text-center"></div>
-                                <img id="storyimage" height="140">
-                                <div id="storyText" class="brand text-center" ></div>
-                                <div id="buttonbar" class="btn-bar" >
-                                    <div id="sliderbuttons"><a id="prev" href="#" ><</a><a id="next" href="#" >></a></div>
-                                    <button type="button" onclick="getHomePage();" class="btn btn-outline-info">Back to Home Page</button>
+                            <div id="buttonbar" class="btn-bar" style="display:none">
+                                <div id="sliderbuttons"><a id="prev" href="#" ><</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
         </div>
     </div>
-
-<!--    <div id="page2" style="height: 100vh; padding: 0px 0;" class="section" data-hash="b">-->
-<!--&lt;!&ndash;        <iframe id="history" src="history/history.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>&ndash;&gt;-->
-<!--    </div>-->
 
     <div class="section"  style="display: block; vertical-align: middle;" data-hash="ab">
         <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
@@ -90,23 +79,23 @@
             <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
             <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/icon_region.png">
-            <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
             <br>
         </div>
+
+
     </div>
 
-    <div id="page3" style="height: 100vh; padding: 0px 0;" class="section" data-hash="c">
+
+    <div id="page2" style="height: 100vh; padding: 0px 0;" class="section" data-hash="b">
         <iframe id="globe" src="globe/globe.html" height="100%" width="100%" frameBorder="10px" scrolling="no"></iframe>
+
     </div>
     <div class="section"  style="display: block; vertical-align: middle;" data-hash="bc">
         <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
             <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/icon_region.png">
             <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
             <br>
@@ -115,7 +104,7 @@
 
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
+    <div id="page3" class="section" style="height: 100vh; padding: 0px 0;" data-hash="c">
         <div id="map" style="height: 100vh;  margin-top: 0;"></div>
 
         <script>
@@ -137,17 +126,22 @@
             L.Control.Watermark = L.Control.extend({
                 onAdd: function(map) {
                     var img = L.DomUtil.create('img');
+
                     img.src = 'assets/img/London-air-pollution-838x420.jpg';
                     img.style.width = '200px';
+
                     return img;
                 },
+
                 onRemove: function(map) {
                     // Nothing to do here
                 }
             });
+
             L.control.watermark = function(opts) {
                 return new L.Control.Watermark(opts);
             }
+
             L.control.watermark({ position: 'bottomleft' }).addTo(mymap);
 
         </script>
@@ -160,42 +154,13 @@
             <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
             <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/icon_region.png">
-            <br>
             <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
             <br>
         </div>
     </div>
 
-    <div id="page5" class="section text-dark" style="height: 100vh; padding: 0px 0;" data-hash="e">
-        <iframe id="region" src="region/region.html" height="100%" width="100%"  scrolling="no"></iframe>
-    </div>
 
-    <div class="section text-dark"  style="display: block; vertical-align: middle;" data-hash="cd">
-        <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/icon_region.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
-            <br>
-        </div>
-    </div>
-
-    <div class="section text-dark"  style="display: block; vertical-align: middle;" data-hash="ef">
-        <div class="text-dark" style="height: 100vh; align-content: center; vertical-align: central;">
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/big_globe_icon.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/world-map.png">
-            <br>
-            <img style="height:10rem; padding-bottom: 2rem;" src="assets/img/street_icon.png">
-            <br>
-        </div>
-    </div>
-
-    <div id="page6" class="section" style="height: 100vh; padding: 0px 0;" data-hash="f">
+    <div id="page4" class="section" style="height: 100vh; padding: 0px 0;" data-hash="d">
         <iframe id="streetMap" src="street/2.5D_centralLondon.html" height="100%" width="100%"  scrolling="no"></iframe>
     </div>
 </div>
@@ -214,7 +179,6 @@
                 <br/>Github : <a href="https://github.com/CASA-DV-Group3/AirQuality-0.github.io" target="_blank">@CASA-DV-Group3</a>
             <br/>
             <br/>@ 2019 CASA, University College London</p>
-            <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </div>
 
 </div>

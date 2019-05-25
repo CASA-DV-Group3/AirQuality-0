@@ -27,20 +27,3 @@
  display: none;
  text-align: center;
 }
-
-.line {
-    stroke-width: 3;
-    stroke: #ffab00;
-    fill: none;
-}
-
-
-/*.axis path,*/
-/*.axis line {*/
-/*    fill: none;*/
-/*    stroke: #000;*/
-/*    shape-rendering: crispEdges;*/
-/*}*/
-/*.axis text {*/
-/*    font-size: 10px;*/
-/*}*/
