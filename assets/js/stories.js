@@ -17,8 +17,21 @@ var storyLine = [
     {year: 1948, text:"Donora smog in Pennsylvania, USA.  Nearly half the population of the small town were affected and twenty died from the smog of hydrogen fluoride, sulphur dioxide and other toxins."},
     {year: 1930, text:"Sixty people died in the December smog covering the valley of factories lining the River Meuse in Belgium. \n " +
             "It 'led to the first scientific proof for the potential of atmospheric pollution to cause deaths.'\n" +
-            "Belgium did not introduce air quality legislation until it was created by the EU."},];
+            "Belgium did not introduce air quality legislation until it was created by the EU."}];
 
+var figureCaptions = [
+    {year: 2019, text: "Christian (2019)"},
+    {year: 2017, text: "Tandon (2018)"},
+    {year: 2015, text: "Chen (2016)"},
+    {year: 2005, text:"Emery (2009)"},
+    {year: 1992, text:"Yingqi (2011)"},
+    {year: 1984, text:"WHO (2016)"},
+    {year: 1982, text:"Films For Earth (2011)"},
+    {year: 1967, text:"MachKenzie (2016)"},
+    {year: 1956, text:"WriteOpinion.com (2011)"},
+    {year: 1952, text:"Smogday (2011)"},
+    {year: 1948, text:"Kiger (2018)"},
+    {year: 1930, text:"National Archies (2008)"}];
 
 
 var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
@@ -84,7 +97,7 @@ function getStoryLine(){
     document.getElementById("page2story").style.display = "inline-block";
     document.getElementById("page2back").style.display = "inline-block";
     document.getElementById("page2button").style.display = "none";
-
+    document.getElementById("storyImageCaption").innerText =figureCaptions[index].text;
     document.getElementById("storyImage").src=imageLink;
     document.getElementById('timePoint').innerHTML = storyLine[index].year;
     document.getElementById("storyText").innerHTML = storyLine[index].text;
@@ -103,7 +116,8 @@ function getStoryLine(){
             index = index + 1;
             //get the image
             imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
-
+            console.log(imageLink)
+            document.getElementById("storyImageCaption").innerText=figureCaptions[index].text;
             document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
@@ -113,7 +127,7 @@ function getStoryLine(){
 
     document.getElementById("prev").addEventListener('click', function(e){
         if (index === 0){
-            inedx=0;
+            index=0;
             document.getElementById("page2story").style.display = "none";
             document.getElementById("page2back").style.display = "none";
             document.getElementById("historyText").style.display = "inline-block"
@@ -123,8 +137,9 @@ function getStoryLine(){
         else{
             index = index - 1;
 
-            let imageLink = "assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
-
+            let imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
+            console.log(imageLink)
+            document.getElementById("storyImageCaption").innerText=figureCaptions[index];
             document.getElementById("storyImage").src=imageLink;
             document.getElementById('timePoint').innerHTML = storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
