@@ -1,5 +1,5 @@
 /*Styling for hover over easy buttons on leaflet map*/
-#high[title]:hover:after, #mid[title]:hover:after, #low[title]:hover:after {
+#high[title]:hover:after, #mid[title]:hover:after, #low[title]:hover:after, #playViz[title]:hover:after {
     content: attr(title);
     position: absolute;
     top: 0%;

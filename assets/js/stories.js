@@ -121,3 +121,7 @@ function getHistory() {
     })
 }
 
+
+function getMapStory() {
+
+}
