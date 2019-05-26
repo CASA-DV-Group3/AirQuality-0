@@ -151,7 +151,3 @@ function hideStoryLine(){
     document.getElementById("page2button").style.display = "inline-block";
     return
 }
-
-function getMapStory() {
-
-}
