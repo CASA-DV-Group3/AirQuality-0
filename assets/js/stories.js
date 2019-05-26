@@ -49,12 +49,12 @@ var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
 "    </div>"
 
 function viewStructure() {
-    document.getElementById('introDiv').innerHTML = "    <div id=\"leftHandIcons\" class='text-center text-light'>\n" +
+    document.getElementById('introDiv').innerHTML = "    <div id=\"leftHandIcons\" class='text-center text-light' style='font-size: 0.83rem'>\n" +
         "        <h3>Outline of the Project</h3>\n" +
-        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/big_globe_icon.png\"> – <b>Globe View:</b> Visualising the global health impact of air pollutants produced from human-activity<br>\n" +
-        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/world-map.png\"> – <b>Map Level:</b> Monitoring live global air quality measurements from across the world<br>\n" +
-        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/icon_region.png\"> – <b>Region Level:</b> Visualising the space-time dynamics of regional air quality<br>\n" +
-        "        <img style=\"height:5rem; padding-bottom: 2rem;\" src=\"assets/img/street_icon.png\"> – <b>Street Level:</b> Viewing air quality at the street-level where it directly interacts with cities <br><i>Scroll down to begin</i>\n" +
+        "        <img style=\"height:5rem; padding-bottom: 2rem; align-content: left\" src=\"assets/img/big_globe_icon.png\"> – <b>Globe View:</b> Visualisation showing global health impact of air pollution <br>\n" +
+        "        <img style=\"height:5rem; padding-bottom: 2rem; align-content: left\" src=\"assets/img/world-map.png\"> – <b>Map Level:</b> Visualisation showing current global air quality measurements from available monitoring stations <br>\n" +
+        "        <img style=\"height:5rem; padding-bottom: 2rem; align-content: left\" src=\"assets/img/icon_region.png\"> – <b>Region Level:</b> Visualisation showing the changing space-time dynamics of regional air quality <br>\n" +
+        "        <img style=\"height:5rem; padding-bottom: 2rem; align-content: left\" src=\"assets/img/street_icon.png\"> – <b>Street Level:</b> Visualisation showing the spatial concentrations of common air pollutants at the street-level <br><i>Scroll down to begin</i>\n" +
         "    </div>"
 }
 
