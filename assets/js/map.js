@@ -25,7 +25,7 @@ function addMapControls () {
     info.onAdd = function(map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this._div.id = "infoDiv";
-        this._div.style.marginBottom = "30%";
+        this._div.style.marginBottom = "0%";
         this._div.style.textAlign = "left";
         this.update();
         return this._div;
@@ -35,10 +35,10 @@ function addMapControls () {
     info.update = function (props) {
         this._div.innerHTML = '<h3>Global Air Quality Monitoring Stations</h3>' +
             '<h5 class="text-light" style="text-align: left; font-size: 0.9rem"><i>\'Making the invisible visible\'</i></h5>' +
-            '<p class="text-light">For this visualisation, the mointoring station data click on one of the industrial grouping (World Bank, 2017) buttons on the left-hand side</p><br>' +
-            'Air Quality Index (AQI) is used in this for an explanation of AQI groupings, visit <a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>AQI index</b></a>' +
-            ''
-
+            '<p class="text-light">For this visualisation, live data from air quality monitoring stations across the world can be loaded onto the map using the buttons on the left-hand side.' +
+            'The buttons are divided into three groups of % GDP that is accounted for by the industrial sector, which serve as a proxy for countries we expect to pollute more (World Bank, 2017). ' +
+            'The data itself is a measure of the Air Quality Index (AQI) in a location, which contains a calculation determining the health <a href="#" class="text-light" data-toggle="tooltip" data-placement="top" title="Broadly determined by the WHO: Air Quality Guidelines set out in 2005"><u>risk</u></a>' +
+            ' associated with the local concentrations of air pollutants (read more <a id="aqiHover" href="#d" onclick="window.open(\'https://www.ourair.org/sbc/the-air-quality-index/\')"><b>here</b></a>). '
     };
 
     legend.addTo(mymap); // add the legend
