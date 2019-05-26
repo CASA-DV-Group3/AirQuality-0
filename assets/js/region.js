@@ -1,8 +1,8 @@
 // basemap variables
 var key = 'pk.eyJ1IjoidWNmbnpseSIsImEiOiJjanZ4emd0NDkwMXViM3ltbnludjRyNHFuIn0.HqhJ2fe_OAaO_opl87cZbg';
 // world view
-var zoomLat = 30;
-var zoomLng = 18;
+var zoomLat = 20;
+var zoomLng = -10;
 var zoomLevel = 1.5;
 // var zoomLat = 31.2243;
 // var zoomLng = 120.9162;
@@ -27,22 +27,24 @@ var data08;
 var data09;
 var data10;
 var data11;
+var aqi;
+var time;
 
 // animation control variables
 var counter = 0;
 var n = 0;
 
 // mousePressed - flyTo function control variables
-var pressC = 0;
-var locs = [
-    [18, 30],
-    [18.5797, 48.2197],
-    [-94.1777, 40.9867],
-    [93.8556, 20.9441],
-    [112.4017, 31.5683],
-    [120.9162, 31.2243]
-];
-var zooms = [1.5, 4, 4, 4, 4, 8];
+// var pressC = 0;
+// var locs = [
+//     [18, 30],
+//     [18.5797, 48.2197],
+//     [-94.1777, 40.9867],
+//     [93.8556, 20.9441],
+//     [112.4017, 31.5683],
+//     [120.9162, 31.2243]
+// ];
+// var zooms = [1.5, 4, 4, 4, 4, 8];
 // World - [18, 30], 1.5
 // Europe - [18.5797, 48.2197], 4
 // North America (US) - [-94.1777, 40.9867], 4
@@ -53,8 +55,15 @@ var zooms = [1.5, 4, 4, 4, 4, 8];
 
 // styling variables
 // var color;
-var color1 = '#74F051';
-var color2 = '#E52E2D';
+var color50 = '#74F051';
+var color100 = '#d1ca1f';
+var color150 ='#ca5c3b' ;
+var color200 = '#E52E2D';
+var color300 = '#8a2c59';
+var color300plus = '#6d1682';
+var colorp;
+// size variable
+var r;
 
 // button variables
 var button;
@@ -76,7 +85,7 @@ function preload() {
 
 function setup() {
     // Create basemap and canvas
-    canvas = createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight).parent("map");
     animap = mappa.tileMap({
         lat: zoomLat,
         lng: zoomLng,
@@ -91,9 +100,9 @@ function setup() {
     setTimeout(function() {
         mbmap = animap.map;
         mbmap.scrollZoom.disable();
-        // mbmap.keyboard.disableRotation();
-        mbmap.removeLayer("settlement-label");
-        mbmap.removeLayer("settlement-subdivision-label");
+        mbmap.keyboard.disable();
+        // mbmap.removeLayer("settlement-label");
+        // mbmap.removeLayer("settlement-subdivision-label");
     }, 5000);
 
     // Prepare the data
@@ -110,8 +119,12 @@ function setup() {
     datas.push(data11);
 
     // set up the color value
-    color1 = color(color1);
-    color2 = color(color2); // red, 200
+    color50 = color(color50);
+    color100 = color(color100);
+    color150 = color(color150);
+    color200 = color(color200);
+    color300 = color(color300);
+    color300plus = color(color300plus);
 
     // button = createButton('Fly');
     // button.position(width-250, 60);
@@ -129,28 +142,50 @@ function draw() {
     data = datas[n];
     runCounter(5);// switch data in datas
 
-    // draw time counter and background box on the Upper-Right
-    fill(10, 200);
-    rectMode(CORNERS);
-    rect(width-270, 0, width-20, 40);
-    // rect(width*0, height*.90, width*.16, height);
-    fill(255);
-    textSize(20);
-    textAlign(LEFT, CENTER);
-    text(data.features[484].properties.time, width-250, 20);
-
     // plot the points
     for (let station of data.features) {
-        let aqi = station.properties.aqi;
-        let r = sqrt(aqi);
-        let colorp = lerpColor(color1,color2,aqi/200);
-        colorp.setAlpha(100);
+        aqi = station.properties.aqi;
+        // colorp = lerpColor(color0,color200,aqi/200);
+        // r = sqrt(aqi);
+        if (aqi <= 50) {
+            colorp = color50;
+            r = 5;
+        } else if (aqi <= 100) {
+            colorp = color100;
+            r = 10;
+        } else if (aqi <= 150) {
+            colorp = color150;
+            r = 15;
+        } else if (aqi <= 200) {
+            colorp = color200;
+            r = 20;
+        } else if (aqi <= 300) {
+            colorp = color300;
+            r = 25;
+        } else {
+            colorp = color300plus;
+            r = 30;
+        }
+        colorp.setAlpha(150);
         fill(colorp)
         noStroke();
         let position = animap.latLngToPixel(station.geometry.coordinates[1], station.geometry.coordinates[0]);
         ellipse(position.x,position.y,r,r);
     }
 
+    // draw time counter and background box on the Upper-Right
+    fill(52, 51, 50, 180);
+    rectMode(CORNERS);
+    // rect(width-270, 0, width-20, 40);
+    rect(0,0,305,40);
+    time = data.features[484].properties.time;
+    fill(255);
+    textSize(18);
+    textFont('Helvetica');
+    textAlign(LEFT, CENTER);
+    text("Local Time: ", 10, 20);
+    text(time, 110, 20);
+    // text(data.features[484].properties.time, width-250, 20);
 }
 
 
@@ -178,17 +213,54 @@ function runCounter(k) {
 //     }
 // }
 
-// when mouse is pressed (Double Clicked), fly to different region (zoom: 4)
-function mousePressed() {
-    try {
-        if (pressC < 6) {
-            mbmap.flyTo({
-                center: locs[pressC],
-                zoom: zooms[pressC]
-            });
-            pressC = pressC + 1;
-        } else {
-            pressC = 0;
-        }
-    } catch (e) {}
-}
+// // when mouse is pressed (Double Clicked), fly to different region (zoom: 4)
+// function mousePressed() {
+//     try {
+//         if (pressC < 6) {
+//             mbmap.flyTo({
+//                 center: locs[pressC],
+//                 zoom: zooms[pressC]
+//             });
+//             pressC = pressC + 1;
+//         } else {
+//             pressC = 0;
+//         }
+//     } catch (e) {}
+// }
+document.getElementById("world").addEventListener("click", function () {
+    mbmap.flyTo({
+        center: [-10, 20],
+        zoom: 1.5
+    });
+})
+document.getElementById("europe").addEventListener("click", function () {
+    // time = data.features[484].properties.time;
+    fill(255);
+    textSize(18);
+    textFont('Helvetica');
+    textAlign(LEFT, CENTER);
+    text("Local Time: ", 10, 40);
+    text(time, 110, 40);
+    mbmap.flyTo({
+        center: [10.5797, 48.2197],
+        zoom: 4
+    });
+})
+document.getElementById("north america").addEventListener("click", function () {
+    mbmap.flyTo({
+        center: [-103, 40],
+        zoom: 4
+    });
+})
+document.getElementById("south asia").addEventListener("click", function () {
+    mbmap.flyTo({
+        center: [90, 22],
+        zoom: 4
+    });
+})
+document.getElementById("east asia").addEventListener("click", function () {
+    mbmap.flyTo({
+        center: [115, 32],
+        zoom: 4
+    });
+})
