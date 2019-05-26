@@ -16,6 +16,7 @@ var map = new mapboxgl.Map({
 var layerField = 'NO2a_15';
 var layerHeight = ['/', ['number', ['get', layerField], 0.2], 0.2];
 
+
 map.on('load', function() {
     // Set global light properties which influence 3D layer shadows
     map.setLight({color: "#fff", intensity: 0.15, position: [1.15, 210, 30]});
@@ -98,10 +99,9 @@ map.on('load', function() {
                 {
                     "type": "Feature",
                     "properties": {
-                        "marker-color": "#800000",
-                        "marker-size": "medium",
-                        "marker-symbol": "circle-stroked",
-                        "name": "Euston Road"
+                        "name": "Euston Road",
+                        "description": "In the 5th place of the most heavily polluted areas in London. (Taylor, 2019)",
+                        "emission": "92.45ug/m3 "
                     },
                     "geometry": {
                         "type": "Point",
@@ -114,10 +114,9 @@ map.on('load', function() {
                 {
                     "type": "Feature",
                     "properties": {
-                        "marker-color": "#800000",
-                        "marker-size": "medium",
-                        "marker-symbol": "",
-                        "name": "Stand"
+                        "name": "Strand",
+                        "description": "In the 6th place of the most heavily polluted areas in London. (Taylor, 2019)",
+                        "emission": "92ug/m3 "
                     },
                     "geometry": {
                         "type": "Point",
@@ -130,10 +129,9 @@ map.on('load', function() {
                 {
                     "type": "Feature",
                     "properties": {
-                        "marker-color": "#800000",
-                        "marker-size": "medium",
-                        "marker-symbol": "",
-                        "name": "Oxford Street"
+                        "name": "Oxford Street",
+                        "description": "Oxford Street is the most highly polluted street in Europe (BBC, 2016).",
+                        "emission": "88ug/m3"
                     },
                     "geometry": {
                         "type": "Point",
@@ -304,6 +302,31 @@ map.on('load', function() {
             speed: 0.2, // make the flying slow
             curve: 1, // change the speed at which it zooms out
         });
+    });
+
+    map.on('mouseenter', 'placemakers', function (e) {
+        map.getCanvas().style.cursor = 'pointer';
+
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.description;
+        var NO2level = e.features[0].properties.emission;
+
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        var popuptext = "<div><b>"+ e.features[0].properties.name + "</b><br>"
+            + description +  "<br><b>Average No2 Emission: </b>" + NO2level+"</div>";
+
+        new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(popuptext)
+            .addTo(map);
+    });
+
+    map.on('mouseleave', 'placemakers', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
     });
 
 
