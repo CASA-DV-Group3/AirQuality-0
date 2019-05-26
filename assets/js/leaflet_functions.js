@@ -2,7 +2,7 @@
 * Contains all needed functions for the main leaflet maps
 */
 
-var title = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World City Air Quality</h3> <button type=\"button\" onclick=\"getStory('1');\" class=\"btn btn-outline-info\">Begin Story</button>"
+var title = "<h1>Invisible Cities</h1> <h3 class=\"title text-center\">World Air Quality</h3> <button type=\"button\" onclick=\"getStory('1');\" class=\"btn btn-outline-info\">Begin</button>"
 // Function for mapping colors to the currency values returned from the API for each country
 function getColor(d) {
     return  d > 300 ? '#8e6464' :
@@ -23,26 +23,6 @@ function changeOpacity(d) {
 }
 
 
-
-var info = L.control({
-    position: 'bottomright'
-});
-
-info.onAdd = function(map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
-
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-    this._div.innerHTML = '<h4>Live Currency Comparison</h4>' + (props ?
-        '<b>' + props.ADMIN + '</b><br /> Currency = ' + props.currency + '</b><br />' + '1 ' + currentCurrency + '= ' + props.value + ' ' + props.currency:
-        '<b> Current Base Currency = ' + currentCurrency + '</b> <br>Hover over a country to compare</br>');
-};
-
-
-
 function subsetAirQualityData(data, qv) {
     var subsetData = [];
     var counter = 0;
@@ -57,35 +37,6 @@ function subsetAirQualityData(data, qv) {
 }
 
 var layerMarkers = L.layerGroup([]);
-
-// TODO: make transfer of load data functions
-function loadNewData() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/testAPIdata.geojson', false);
-    xhr.send();
-    let geojsonDATA = JSON.parse(xhr.responseText);
-    if (layerMarkers) {
-        layerMarkers.remove()
-    }
-    // create marker layer group
-    layerMarkers = L.layerGroup([]);
-    geojsonDATA['features'].forEach(function(row){
-        let lat = Number(row['geometry']['coordinates'][0]);
-        let lng = Number(row['geometry']['coordinates'][1]);
-        let geojsonMarkerOptions = {
-            radius: Math.log(row['properties']['aqi']),
-            fillColor: getColor(row['properties']['aqi']),
-            color: "#000000",
-            weight: 0.1,
-            opacity: 1,
-            fillOpacity: changeOpacity(row['properties']['aqi'])
-        };
-
-        let marker = L.circleMarker([lat, lng], geojsonMarkerOptions).bindPopup("<div id='graphpopup'>The Air Quality is:"+row['properties']['aqi']+"<br><button onclick='console.log('hello')'>A Button</button>Bar graph</div>");
-        layerMarkers.addLayer(marker);
-    });
-    mymap.addLayer(layerMarkers);
-}
 
 
 function loadAirQualityData(qVal) {
