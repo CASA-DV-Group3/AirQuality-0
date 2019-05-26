@@ -306,7 +306,7 @@ map.on('load', function() {
             curve: 1, // change the speed at which it zooms out
         });
     });
-
+    var popup;
     map.on('mouseenter', 'placemakers', function (e) {
         map.getCanvas().style.cursor = 'pointer';
 
@@ -321,7 +321,7 @@ map.on('load', function() {
         var popuptext = "<div><b>"+ e.features[0].properties.name + "</b><br>"
             + description +  "<br><b>Average No2 Emission: </b>" + NO2level+"</div>";
 
-        new mapboxgl.Popup()
+        popup = new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(popuptext)
             .addTo(map);
