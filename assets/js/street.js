@@ -72,7 +72,115 @@ map.on('load', function() {
         }
     });
 
-    // add the air pollution to the map
+    map.addLayer({
+        'id': 'labels',
+        'type': 'symbol',
+        source: {
+            type: 'vector',
+            url: 'mapbox://mapbox.mapbox-streets-v8'
+        },
+        'source-layer': 'place_label',
+        'layout': {
+            'text-field': '{name_en}',
+            'text-font': ['Open Sans Bold', 'Roboto Medium'],
+            'text-size': 12
+        },
+        'paint': {
+            'text-color': 'rgba(0,0,0,0.6)',
+        }
+    });
+
+    map.addSource('highPollutant', {
+        type: 'geojson',
+        data: {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#800000",
+                        "marker-size": "medium",
+                        "marker-symbol": "circle-stroked",
+                        "name": "Euston Road"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            -0.1329517364501953,
+                            51.52646129946882
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#800000",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Stand"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            -0.12067794799804688,
+                            51.51066556016948
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#800000",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Oxford Street"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            -0.14453887939453125,
+                            51.514925474796925
+                        ]
+                    }
+                }
+            ]
+        }
+    });
+
+    // Add the makers of high pollution places
+    map.addLayer({
+        "id": "placemakers",
+        "type": "circle",
+        "source": "highPollutant",
+        "filter": ["==", "$type", "Point"],
+        'paint': {
+            "circle-radius": 4,
+            "circle-color": "#FFFFFF",
+            "circle-stroke-width": 4,
+            "circle-stroke-color": "#400600"
+        }
+    });
+
+    map.addLayer({
+        "id": "placename",
+        "type": "symbol",
+        "source": "highPollutant",
+        "filter": ["==", "$type", "Point"],
+        'layout': {
+            'symbol-placement': "point",
+            //'text-variable-anchor': "bottom",
+            'text-offset':[0,-1.2],
+            'text-field': '{name}',
+            'text-font': ['Open Sans Bold', 'Roboto Medium'],
+            'text-size': 16
+        },
+        'paint': {
+            'text-color': 'rgba(255,255,255,0.91)',
+            'text-halo-color': 'rgba(27,27,27,0.91)',
+            'text-halo-width': 1
+        }
+    });
+
 
     var layerList = document.getElementsByClassName("collapsible");
     var yearList = document.getElementsByClassName("radiobutton");
