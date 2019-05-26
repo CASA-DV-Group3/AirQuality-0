@@ -4,7 +4,7 @@ var storyLine = [
     {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the \"airpocalypse\" the previous " +
             "year caused by the extra smoke and chemicals."},
     {year: 2015, text:"Chai Jing's self-funded 'Under the Dome' documentary features a mother’s worries about raising her new-born daughter in the polluted air of a major Chinese city."},
-    {year: 2005, text:"The World Health Organisation introduces the Global Air Quality Guidelines which serves as a guide for harmful effects, and the safe concentrations, of human-produced air pollutants in a region."},
+    {year: 2005, text:"The World Health Organisation introduces the <i>Global Air Quality Guidelines</i> which serves as a guide for harmful effects, and the safe concentrations, of human-produced air pollutants in a region."},
     {year: 1992, text:"Guangzhou is the first city in China to ban fireworks due to the air pollution they cause."},
     {year: 1984, text:"The Bhopal disaster in India at Union Carbide’s pesticide plant exposed hundreds of thousands of people to forty tons of toxic methyl " +
             "isocyanate. \n Nearly four thousand died and the US company paid almost $500m in compensation."},
@@ -16,6 +16,7 @@ var storyLine = [
     {year: 1930, text:"Sixty people died in the December smog covering the valley of factories lining the River Meuse in Belgium. \n " +
             "It 'led to the first scientific proof for the potential of atmospheric pollution to cause deaths.'\n" +
             "Belgium did not introduce air quality legislation until it was created by the EU."}];
+
 
 var figureCaptions = [
     {year: 2019, text: "Christian (2019)"},
@@ -31,6 +32,8 @@ var figureCaptions = [
     {year: 1948, text:"Kiger (2018)"},
     {year: 1930, text:"National Archies (2008)"}];
 
+storyLine = storyLine.reverse()
+figureCaptions = figureCaptions.reverse()
 
 var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
 "        <h3>Introduction\n</h3>" +
@@ -97,7 +100,7 @@ function getStoryLine(){
     document.getElementById("page2button").style.display = "none";
     document.getElementById("storyImageCaption").innerText =figureCaptions[index].text;
     document.getElementById("storyImage").src=imageLink;
-    document.getElementById('timePoint').innerHTML = storyLine[index].year;
+    document.getElementById('timePoint').innerHTML = "Year: " + storyLine[index].year;
     document.getElementById("storyText").innerHTML = storyLine[index].text;
 
 
@@ -116,7 +119,7 @@ function getStoryLine(){
             imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
             document.getElementById("storyImageCaption").innerText=figureCaptions[index].text;
             document.getElementById("storyImage").src=imageLink;
-            document.getElementById('timePoint').innerHTML = storyLine[index].year;
+            document.getElementById('timePoint').innerHTML = "Year: " + storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
 
         }
@@ -136,7 +139,7 @@ function getStoryLine(){
             let imageLink = "../assets/img/StoryImage/StoryImage" + storyLine[index].year + ".jpg";
             document.getElementById("storyImageCaption").innerText=figureCaptions[index].text;
             document.getElementById("storyImage").src=imageLink;
-            document.getElementById('timePoint').innerHTML = storyLine[index].year;
+            document.getElementById('timePoint').innerHTML = "Year: " + storyLine[index].year;
             document.getElementById('storyText').innerHTML = storyLine[index].text;
         }
 
