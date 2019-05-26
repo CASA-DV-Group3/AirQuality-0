@@ -114,9 +114,16 @@ map.on('load', function() {
                 {
                     "type": "Feature",
                     "properties": {
+<<<<<<< HEAD
                         "name": "Strand",
                         "description": "In the 6th place of the most heavily polluted areas in London. (Taylor, 2019)",
                         "emission": "92ug/m3 "
+=======
+                        "marker-color": "#800000",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Strand"
+>>>>>>> d7cfd36df8e8f004e3e57eb170743d199ac196f9
                     },
                     "geometry": {
                         "type": "Point",
@@ -136,7 +143,7 @@ map.on('load', function() {
                     "geometry": {
                         "type": "Point",
                         "coordinates": [
-                            -0.14453887939453125,
+                            -0.14183887939453125,
                             51.514925474796925
                         ]
                     }
