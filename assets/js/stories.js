@@ -39,7 +39,7 @@ var introDiv = " <div id='introDiv' class='text-left text-light'>\n" +
 "        <h3 class='text-light text-center'>Introduction\n</h3>" +
 "        <br>\n" +
 "        <i><b>Air Pollution</b> is the presence of chemicals in the air that threaten the health and welfare of people, plants, or animals (Park & Allaby, 2017). <br></i><br>\n" +
-    "Making air pollution visible is vital for understanding it's outreach and, in turn, highlights the need for more effective mitigating policy.  " +
+    "Making air pollution visible is vital for understanding it's outreach and, in turn, highlights the need for policy to mitigate it.  " +
 "        As such this project presents a range of visualisations to investigate air quality, it's impact and the current state of air pollution monitoring.  " +
 " The visualisations examine air quality from different perspectives (global down to street-level) and following this <a class=\"text-warning\" href='#' onclick='viewStructure();'>structure</a>" +
 "        <br><br><i class='text-center' style='margin-left: 40%;'>Scroll down to begin</i>\n" +
