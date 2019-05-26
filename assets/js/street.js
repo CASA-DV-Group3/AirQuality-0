@@ -188,7 +188,7 @@ map.on('load', function() {
 
     var buttonID = 'NO2a';
 
-    for (var i = 0; i < layerList.length; i++) {
+    for (let i = 0; i < layerList.length; i++) {
         var radioID;
         if (document.getElementById('2011').checked) {
             radioID = '2011';
@@ -203,6 +203,7 @@ map.on('load', function() {
         layerList[i].addEventListener('click', function(e) {
             buttonID = e.target.id;
 
+            //define layer id by name
             layerField = buttonID + "_" + radioID.substring(2);
             layerField = layerField.replace(/\s/g,'');
 
@@ -232,9 +233,14 @@ map.on('load', function() {
             var content = this.nextElementSibling;
             if (content.style.display === "block") {
                 content.style.display = "none";
-            } else {
+            }
+            else {
+                for(let z=0; z < layerList.length; z++){
+                    let hidecontent = layerList[z].nextElementSibling;
+                    hidecontent.style.display = "none";
+                }
                 content.style.display = "block";
-            };
+            }
 
             map.setPaintProperty('airQuality','fill-extrusion-color', paintDesign);
             map.setPaintProperty('airQuality','fill-extrusion-height', layerHeight);
@@ -244,7 +250,7 @@ map.on('load', function() {
 
 
 
-    for (var i = 0; i < yearList.length; i++) {
+    for (let i = 0; i < yearList.length; i++) {
 
         yearList[i].addEventListener('click', function(e) {
             let radioID = e.target.id;
