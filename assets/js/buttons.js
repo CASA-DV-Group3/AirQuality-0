@@ -10,7 +10,7 @@ mymap.on('dblclick', function() {
     }
 });
 
-
+// variables that keep a record of which buttons have been clicked
 var quantileView = [],
     highClicked = false,
     midClicked = false,
