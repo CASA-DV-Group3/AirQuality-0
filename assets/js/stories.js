@@ -42,7 +42,7 @@ var introDiv = " <div id='introDiv' class='text-left text-light'>\n" +
 "        This project sets out to educate and inform its users to the <i>invisible</i> danger of air pollution and it's current state of monitoring \n" +
 "        Users will also be able to explore more \n" +
 "        The report will follow this <a class=\"text-warning\" href='#' onclick='viewStructure();'>structure</a>\n" +
-"        <br><br><i class='text-center'>Scroll down to begin</i>\n" +
+"        <br><br><i class='text-center' style='margin-left: 40%;'>Scroll down to begin</i>\n" +
 "    </div>"
 
 function viewStructure() {
