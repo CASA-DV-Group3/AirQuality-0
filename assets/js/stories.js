@@ -35,15 +35,12 @@ var figureCaptions = [
 storyLine = storyLine.reverse()
 figureCaptions = figureCaptions.reverse()
 
-var introDiv = " <div id='introDiv' class='text-center text-light'>\n" +
-"        <h3>Introduction\n</h3>" +
+var introDiv = " <div id='introDiv' class='text-left text-light'>\n" +
+"        <h3 class='text-light text-center'>Introduction\n</h3>" +
 "        <br>\n" +
-"        The webpage sets out to visualise \n" +
-"        <br>\n" +
-"        The report will follow this \n" +
-"        <br>\n" +
-"        The report will follow this \n" +
-"        <br>\n" +
+"        Air Pollution is the presence of chemicals that threaten the health and welfare of people, plants, or animals (Park & Allaby, 2017). \n" +
+"        This project sets out to educate and inform its users to the <i>invisible</i> danger of air pollution and it's current state of monitoring \n" +
+"        Users will also be able to explore more \n" +
 "        The report will follow this <a class=\"text-warning\" href='#' onclick='viewStructure();'>structure</a>\n" +
 "        <br><br><i>Scroll down to begin</i>\n" +
 "    </div>"
