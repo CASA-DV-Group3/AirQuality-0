@@ -146,7 +146,7 @@ function loadChart(data) {
             l: 55,
             r: 5,
             b: 40,
-            t: 5,
+            t: 10,
             pad: 0
         },
         showlegend: true,

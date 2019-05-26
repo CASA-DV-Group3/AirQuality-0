@@ -36,10 +36,14 @@
 <body>
 <div style="height: 100vh; background: rgba(25,26,26,1);">
     <div class="panel panel-default text-light" style="position: absolute; margin-left: 1%; margin-top: 28%; width: 30%;">
-        <h5 id="corrText" class="text-light" style="margin-left: 0%; margin-top: -3%; font-size: 0.9em;"></h5>
+        <h5 id="corrText" class="text-light" style="margin-left: 0%; margin-top: -10%; font-size: 0.9em;"></h5>
         <h3 class="text-light" style="text-align: left">Global Health Impact of Air Pollution</h3>
-        <h6 class="text-light" style="text-align: left"><i>'The Invisible Killer'</i></h6>
-        <p>This is where text about the globe is here <i>double click on a country</i> to keep data in the chart. The World Health Organisation's BreatheLife campaign calls it the invisible killer (WHO 2019). Here we are plotting the global health impact</p>
+        <h5 class="text-light" style="text-align: left; font-size: 0.9rem"><i>'The Invisible Killer' (WHO, 2019)</i></h5>
+        <p><a href="#" class="text-light" data-toggle="tooltip" data-placement="top" title="i.e. carbon dust produced from vehicle exhausts"><u>Particular matter</u></a> is an air pollutant that is
+            very harmful when breathed in and can be transported from its source around the globe (Tilt, 2019).
+            This visualisation compares the exposure and death rate relating to <a href="#" class="text-light" data-toggle="tooltip" data-placement="top" title="Particulate matter less than 2.5 micro meters"><u>PM2.5</u></a>.
+        Hover over the globe to view Country data <i>double click</i> to keep data in the chart.</p>
+
         <div id="theSlider" style="margin-left: 0%">
             <i class="fa fa-play" id="playButton" onclick="moveSlider();"></i> <span class="text-light">Current Year: </span><span class="text-light" id="globeSliderVal">2017</span><br>
             <input id="globeSlider" style="margin-left: 10%" type="text" data-slider-handle="custom"/>
@@ -47,8 +51,8 @@
         <button class="btn btn-danger btn-sm" onclick="column='deaths'" style="margin-left: 0%;">View Deaths</button>
         <button class="btn btn-success btn-sm" onclick="column='exposure'" style="margin-left: 0%;">View Exposure</button>
     </div>
-    <h2 id="current" class="text-light"></h2>
-    <div class="text-light" id="globePlot" style="position:absolute; margin-top: 9%; margin-left: 1%; width:25%; height: 30%;">
+    <h2 id="current" class="text-light" style="margin-top: 3%; margin-left: 1%"></h2>
+    <div class="text-light" id="globePlot" style="position:absolute; margin-top: 7%; margin-left: 1%; width:25%; height: 30%;">
         <h3 class="text-light" style="margin-left: 20%; margin-top: 10%;">Hover over a country to view data</h3>
     </div>
 
