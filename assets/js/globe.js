@@ -585,7 +585,7 @@ function loadAll(year) {
             .on('end', dragended)
         )
         .on('mousemove', mousemove)
-        .on('click', clicker)
+        .on('dblclick', clicker)
 
 
 }
