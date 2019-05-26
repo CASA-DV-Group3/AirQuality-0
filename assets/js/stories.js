@@ -4,9 +4,7 @@ var storyLine = [
     {year: 2017, text:"New Delhi in India bans fireworks during Diwali to prevent a repeat of the \"airpocalypse\" the previous " +
             "year caused by the extra smoke and chemicals."},
     {year: 2015, text:"Chai Jing's self-funded 'Under the Dome' documentary features a mother’s worries about raising her new-born daughter in the polluted air of a major Chinese city."},
-    {year: 2005, text:"Authorities admit air pollution will be a problem at the Beijing Olympics.\n" +
-            "'Controlling only local sources in Beijing will not be sufficient to attain the air quality goal set for the Beijing Olympics." +
-            "There is an urgent need for regional air quality management studies and new emission control strategies'"},
+    {year: 2005, text:"The World Health Organisation introduces the Global Air Quality Guidelines which serves as a guide for harmful effects, and the safe concentrations, of human-produced air pollutants in a region."},
     {year: 1992, text:"Guangzhou is the first city in China to ban fireworks due to the air pollution they cause."},
     {year: 1984, text:"The Bhopal disaster in India at Union Carbide’s pesticide plant exposed hundreds of thousands of people to forty tons of toxic methyl " +
             "isocyanate. \n Nearly four thousand died and the US company paid almost $500m in compensation."},
