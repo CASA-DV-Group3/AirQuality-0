@@ -166,3 +166,11 @@ L.easyButton({
 var high = document.getElementById("high");
 var mid = document.getElementById("mid");
 var low = document.getElementById("low");
+
+// for about page
+function on() {
+    document.getElementById("about").style.display = "block";
+}
+function off() {
+    document.getElementById("about").style.display = "none";
+}

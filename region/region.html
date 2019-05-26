@@ -15,10 +15,182 @@
 
 </head>
 <body>
-<div id="mapid">
-    <script src="../assets/js/aniP5Mappa.js"></script>
+
+<style>
+    .console {
+        width: 280px;
+        height: 380px;
+        position: absolute;
+        bottom: 30px;
+        left: 0px;
+        padding: 10px;
+        /*background-color: #0E0E0E;*/
+        background-color: rgb(52, 51, 50, 0.7);
+        color: #fff;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        z-index: 1;
+    }
+    .console h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+    }
+    .console p {
+        margin: 0 0 10px;
+        font-size: 13px;
+    }
+    .console a {
+        margin: 0 0 10px;
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .legend {
+        width: 150px;
+        height: 180px;
+        position: absolute;
+        bottom: 30px;
+        left: 0px;
+        padding: 10px;
+        background-color: transparent;
+        color: #fff;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        border-radius: 0px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        z-index: 1;
+    }
+    .legend h4 {
+        margin: 0 0 10px;
+        font-size: 15px;
+    }
+    .legend div span50 {
+        border-radius: 50%;
+        display: inline-block;
+        height: 5px;
+        width: 5px;
+        background-color: #74F051;
+        margin: 0px 22.5px 0px 12.5px;
+    }
+    .legend div span100 {
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        background-color: #d1ca1f;
+        margin: 0px 20px 0px 10px;
+    }
+    .legend div span150 {
+        border-radius: 50%;
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+        background-color: #ca5c3b;
+        margin: 0px 17.5px 0px 7.5px;
+    }
+    .legend div span200 {
+        border-radius: 50%;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        background-color: #E52E2D;
+        margin: 0px 15px 0px 5px;
+    }
+    .legend div span300 {
+        border-radius: 50%;
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        background-color: #8a2c59;
+        margin: 0px 12.5px 0px 2.5px;
+    }
+    .legend div span300plus {
+        border-radius: 50%;
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        background-color: #6d1682;
+        margin: 0px 10px 0px 0px;
+    }
+    .legend div text {
+        color: #fff;
+        font-size: 12px;
+        position: relative;
+        /*bottom: 10px;*/
+    }
+
+    .flyto {
+        width: 150px;
+        height: 180px;
+        position: absolute;
+        bottom: 30px;
+        left: 130px;
+        padding: 10px;
+        background-color: transparent;
+        color: #fff;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        border-radius: 0px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        z-index: 1;
+    }
+    .flyto h4 {
+        margin: 0 0 10px;
+        font-size: 15px;
+    }
+    .flyto button {
+        color: #fff;
+        background: transparent;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        padding: 4px;
+    }
+    .flyto button:hover {
+        color: black;
+        background: #fff;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        padding: 4px;
+    }
+
+</style>
+
+
+
+<div id="map"></div>
+<div id='legend' class='console'>
+    <h3>Air Quality Changes in 24h</h3>
+    <p>Data: <a href="https://aqicn.org/api/">The World Air Quality Index Project</a></p>
+    <p>
+        This animation displays how the air quality changes over a period of time at various scales.
+        The corresponding local time is shown in the upper-left corner.
+        Through the buttons below, users can zoom to specific regions for detailed exploration.
+    </p>
+</div>
+<div class="legend">
+    <h4>AQI</h4>
+    <div><span300plus></span300plus><text style="bottom: 10px">300+</text></div>
+    <div><span300></span300><text style="bottom: 7.5px">201-300</text></div>
+    <div><span200></span200><text style="bottom: 5px">151-200</text></div>
+    <div><span150></span150><text style="bottom: 2.5px">101-150</text></div>
+    <div><span100></span100><text style="bottom: 0px">51-100</text></div>
+    <div><span50></span50>0-50</div>
+</div>
+<div class="flyto">
+    <h4>Fly To: </h4>
+    <p>
+        <button id="world">World</button>
+    </p>
+    <p>
+        <button id="europe">Europe</button>
+    </p>
+    <p>
+        <button id="north america">North America</button>
+    </p>
+        <button id="south asia">South Asia</button>
+        <button id="east asia">East Asia</button>
+    </p>
 </div>
 
-
+<script src="../assets/js/region.js"></script>
 </body>
 </html>
