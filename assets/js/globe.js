@@ -124,7 +124,7 @@ function loadChart(data) {
             dash: 'dot',
             shape: 'spline'
         },
-        hoverinfo:"",
+        hoverinfo:"x+y",
         mode: 'lines+markers'
     };
 
@@ -137,7 +137,7 @@ function loadChart(data) {
             width: 2,
             shape: 'spline'
         },
-        hoverinfo:"",
+        hoverinfo:"x+y",
         mode: 'lines+markers'
     };
 
