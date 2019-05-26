@@ -112,6 +112,8 @@ function loadChart(data) {
 
     });
 
+    document.getElementById('corrText').innerText = "Correlation (Spearman\'s Rank Coefficient): " + String(jStat.spearmancoeff(y1,y2).toFixed(2));
+
     var trace1 = {
         x: x,
         y: y1,
