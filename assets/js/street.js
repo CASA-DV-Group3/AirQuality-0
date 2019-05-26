@@ -117,7 +117,7 @@ map.on('load', function() {
                         "marker-color": "#800000",
                         "marker-size": "medium",
                         "marker-symbol": "",
-                        "name": "Stand"
+                        "name": "Strand"
                     },
                     "geometry": {
                         "type": "Point",
@@ -138,7 +138,7 @@ map.on('load', function() {
                     "geometry": {
                         "type": "Point",
                         "coordinates": [
-                            -0.14453887939453125,
+                            -0.14183887939453125,
                             51.514925474796925
                         ]
                     }
