@@ -38,10 +38,10 @@ figureCaptions = figureCaptions.reverse()
 var introDiv = " <div id='introDiv' class='text-left text-light'>\n" +
 "        <h3 class='text-light text-center'>Introduction\n</h3>" +
 "        <br>\n" +
-"        Air Pollution is the presence of chemicals that threaten the health and welfare of people, plants, or animals (Park & Allaby, 2017). \n" +
-"        This project sets out to educate and inform its users to the <i>invisible</i> danger of air pollution and it's current state of monitoring \n" +
-"        Users will also be able to explore more \n" +
-"        The report will follow this <a class=\"text-warning\" href='#' onclick='viewStructure();'>structure</a>\n" +
+"        <i><b>Air Pollution</b> is the presence of chemicals in the air that threaten the health and welfare of people, plants, or animals (Park & Allaby, 2017). <br></i><br>\n" +
+    "Making air pollution visible is vital for understanding it's outreach and, in turn, highlights the need for more effective mitigating policy.  " +
+"        As such this project presents a range of visualisations to investigate air quality, it's impact and the current state of air pollution monitoring.  " +
+" The visualisations examine air quality from different perspectives (global down to street-level) and following this <a class=\"text-warning\" href='#' onclick='viewStructure();'>structure</a>" +
 "        <br><br><i class='text-center' style='margin-left: 40%;'>Scroll down to begin</i>\n" +
 "    </div>"
 
@@ -69,9 +69,9 @@ function getHomePage(){
 function getHomePageStory() {
     let index = 0;
     $('#introText1').hide().delay(300).fadeIn('slow');
-    $('#introText2').hide().delay(3000).fadeIn('slow');
-    $('#backButtonBar').hide().delay(5000).fadeIn('slow');
-    $('#forwardButtonBar').hide().delay(5500).fadeIn('slow');
+    $('#introText2').hide().delay(2300).fadeIn('slow');
+    $('#backButtonBar').hide().delay(4000).fadeIn('slow');
+    $('#forwardButtonBar').hide().delay(4500).fadeIn('slow');
         document.getElementById("introPage").style.display = "block";
         document.getElementById('page1_innertext').style.display = "none";
         document.getElementById("introText1").innerHTML = firstPageLine[index].text;
@@ -81,6 +81,7 @@ function getHomePageStory() {
 function moveForward() {
     let index = 2;
     $('#forwardButtonBar').hide();
+    $('#introText1').hide().delay(300).fadeIn('slow');
     document.getElementById("introPage").style.display = "block";
     document.getElementById('page1_innertext').style.display = "none";
     document.getElementById("introText1").innerHTML = firstPageLine[index].text;
