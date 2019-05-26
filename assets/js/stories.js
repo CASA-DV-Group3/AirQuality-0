@@ -30,7 +30,7 @@ var figureCaptions = [
     {year: 1956, text:"WriteOpinion.com (2011)"},
     {year: 1952, text:"Smogday (2011)"},
     {year: 1948, text:"Kiger (2018)"},
-    {year: 1930, text:"National Archies (2008)"}];
+    {year: 1930, text:"National Archives (2008)"}];
 
 storyLine = storyLine.reverse()
 figureCaptions = figureCaptions.reverse()
