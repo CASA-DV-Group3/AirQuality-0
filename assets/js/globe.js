@@ -8,7 +8,7 @@ var countries,
     land,
     first = true,
     graticule = d3.geoGraticule10(),
-    year = 2017;
+    year = 2017; // year to start the globe on
     column = "deaths"; // either 'deaths' or 'exposure'
     theClick = false;
 
