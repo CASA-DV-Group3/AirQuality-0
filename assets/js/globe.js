@@ -29,12 +29,12 @@ function loadData(cb) {
 
 
 function getRadius(d) {
-    return  d > 100 ? 4 :
-        d > 80 ? 3 :
-            d > 60 ? 2 :
-                d > 40 ? 1 :
-                    d > 20 ? 0.75 :
-                        0.5;
+    return  d > 100 ? (Math.sqrt(100)/4) :
+        d > 80 ? (Math.sqrt(80)/4) :
+            d > 60 ? (Math.sqrt(60)/4) :
+                d > 40 ? (Math.sqrt(40)/4) :
+                    d > 20 ? (Math.sqrt(20)/4) :
+                        0.4;
 }
 
 function getAPColor(d) {
